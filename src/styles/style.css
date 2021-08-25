@@ -11,9 +11,11 @@
 }
 .menu a{
 color:white;
-  text-transform: uppercase;
-  padding:5px 17px;
-  cursor: pointer;
+text-transform: uppercase;
+padding:5px 17px;
+cursor: pointer;
+text-decoration: none;
+list-style: none;
 }
 
 body{
