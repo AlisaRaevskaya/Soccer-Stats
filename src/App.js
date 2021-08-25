@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import Header from "./components/Header";
 import MainPage from "./pages/Main";
 import CreateMenu from './pages/NewMenu';
@@ -9,20 +9,17 @@ import NotFound from './pages/NotFound';
 import data from './data';
 
 export default function App() {
-  const jsonData =  data;
+  let jsonData = data;
 
   return (
     <Router>
-        <Header />
-        <Switch>
-        <Link to="/">{MainPage}</Link>
-        <Link to="/create_new_menu">{CreateMenu}</Link>
-        <Link to="/mymenus">{MainPage}</Link>
-        <Route exact path="/"><MyMenus/></Route>
-        <Route path="/create_new_menu" component={ CreateMenu } />
-        <Route path="/mymenus"><MyMenus jsonData ={jsonData}></MyMenus></Route>
-        <Route path="*" component={ NotFound}  />
-        </Switch>
+      <Header/>
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route path="/create_new_menu" component={CreateMenu} />
+        <Route path="/mymenus"><MyMenus jsonData={jsonData}/></Route>
+        <Route path="*" component={NotFound} />
+      </Switch>
     </Router>
   );
 }

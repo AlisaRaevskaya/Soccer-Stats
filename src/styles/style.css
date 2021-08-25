@@ -15,7 +15,9 @@ text-transform: uppercase;
 padding:5px 17px;
 cursor: pointer;
 text-decoration: none;
-list-style: none;
+}
+.menu li{
+  list-style-type: none;
 }
 
 body{
@@ -25,12 +27,7 @@ body{
 
 .main-background{
   display:flex;
-  position: absolute;
   justify-content: center;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
   align-items: center;
 }
 
@@ -76,5 +73,5 @@ color:white;
 }
 .active{
   font-weight: "bold";
-  color:seashell;
+background-color: blueviolet;
 }

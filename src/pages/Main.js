@@ -23,7 +23,7 @@ export default function Main() {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     );
 }

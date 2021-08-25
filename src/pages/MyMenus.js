@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
- function MyMenu(props){
+function MyMenus(props){
     return(
         <div className="white-color">
             <h1>My Menus</h1>
@@ -15,10 +15,11 @@ import PropTypes from "prop-types";
         </div>
     )
 }
-MyMenu.PropTypes ={
+
+MyMenus.propTypes ={
     jsonData: PropTypes.array
 }
 //объект со ключом = свойству
 //определяем тип
 
-export default MyMenu;
+export default MyMenus
