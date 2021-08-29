@@ -1,0 +1,3299 @@
+{
+    "count": 6,
+    "filters": {
+        "dateFrom": "2018-08-23",
+        "dateTo": "2018-08-23"
+    },
+    "matches": [
+        {
+            "id": 204967,
+            "competition": {
+                "id": 2013,
+                "name": "Série A"
+            },
+            "season": {
+                "id": 15,
+                "startDate": "2018-04-14",
+                "endDate": "2018-12-02",
+                "currentMatchday": 20,
+                "availableStages": [
+                    "REGULAR_SEASON"
+                ]
+            },
+            "utcDate": "2018-08-22T22:30:00Z",
+            "status": "FINISHED",
+            "attendance": null,
+            "matchday": 20,
+            "stage": "REGULAR_SEASON",
+            "group": "Regular Season",
+            "lastUpdated": "2018-08-23T02:30:23Z",
+            "homeTeam": {
+                "id": 1777,
+                "name": "EC Bahia",
+                "coach": {
+                    "id": 11142,
+                    "name": "Enderson Moreira",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1370,
+                    "name": "Tiago Pagnussat",
+                    "shirtNumber": 3
+                },
+                "lineup": [
+                    {
+                        "id": 1370,
+                        "name": "Tiago Pagnussat",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 38734,
+                        "name": "Gilberto",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 1368,
+                        "name": "Lucas Fonseca",
+                        "position": "Defender",
+                        "shirtNumber": 28
+                    },
+                    {
+                        "id": 1380,
+                        "name": "Zé Rafael",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1334,
+                        "name": "Bruno",
+                        "position": "Defender",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 1386,
+                        "name": "Léo",
+                        "position": "Midfielder",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1365,
+                        "name": "Anderson",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 33
+                    },
+                    {
+                        "id": 1382,
+                        "name": "Elton",
+                        "position": "Midfielder",
+                        "shirtNumber": 17
+                    },
+                    {
+                        "id": 1381,
+                        "name": "Vinicius",
+                        "position": "Midfielder",
+                        "shirtNumber": 29
+                    },
+                    {
+                        "id": 1391,
+                        "name": "Edigar Junio",
+                        "position": "Attacker",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 1390,
+                        "name": "Gregore",
+                        "position": "Midfielder",
+                        "shirtNumber": 26
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1374,
+                        "name": "Douglas Grolli",
+                        "position": "Defender",
+                        "shirtNumber": 13
+                    },
+                    {
+                        "id": 1385,
+                        "name": "Élber",
+                        "position": "Midfielder",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1388,
+                        "name": "Nilton",
+                        "position": "Midfielder",
+                        "shirtNumber": 19
+                    },
+                    {
+                        "id": 1124,
+                        "name": "Clayton",
+                        "position": "Attacker",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1371,
+                        "name": "Edson",
+                        "position": "Defender",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1383,
+                        "name": "Regis",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1372,
+                        "name": "Nino Paraíba",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1366,
+                        "name": "Douglas Friedrich",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 13599,
+                        "name": "Paulo Victor",
+                        "position": "Defender",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1378,
+                        "name": "Marco Antonio",
+                        "position": "Midfielder",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1389,
+                        "name": "Flavio",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1392,
+                        "name": "Júnior Brumado",
+                        "position": "Attacker",
+                        "shirtNumber": 23
+                    }
+                ]
+            },
+            "awayTeam": {
+                "id": 6684,
+                "name": "SC Internacional",
+                "coach": {
+                    "id": 11147,
+                    "name": "Odair Hellmann",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1575,
+                    "name": "Rodrigo Dourado",
+                    "shirtNumber": 13
+                },
+                "lineup": [
+                    {
+                        "id": 1572,
+                        "name": "Rodrigo Moledo",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    },
+                    {
+                        "id": 1562,
+                        "name": "Marcelo Lomba",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1581,
+                        "name": "Camilo",
+                        "position": "Midfielder",
+                        "shirtNumber": 21
+                    },
+                    {
+                        "id": 1580,
+                        "name": "Edenilson",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1575,
+                        "name": "Rodrigo Dourado",
+                        "position": "Midfielder",
+                        "shirtNumber": 13
+                    },
+                    {
+                        "id": 1567,
+                        "name": "Víctor Cuesta",
+                        "position": "Defender",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1590,
+                        "name": "William Pottker",
+                        "position": "Attacker",
+                        "shirtNumber": 99
+                    },
+                    {
+                        "id": 1582,
+                        "name": "Patrick Nascimento",
+                        "position": "Midfielder",
+                        "shirtNumber": 88
+                    },
+                    {
+                        "id": 1593,
+                        "name": "Rossi",
+                        "position": "Attacker",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 1584,
+                        "name": "Luis Eduardo Dudu",
+                        "position": "Midfielder",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1566,
+                        "name": "Iago",
+                        "position": "Defender",
+                        "shirtNumber": 28
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1179,
+                        "name": "Emerson Santos",
+                        "position": "Defender",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1564,
+                        "name": "Uendel",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1570,
+                        "name": "Gabriel Dias",
+                        "position": "Defender",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1574,
+                        "name": "Zeca",
+                        "position": "Defender",
+                        "shirtNumber": 37
+                    },
+                    {
+                        "id": 1565,
+                        "name": "William Klaus",
+                        "position": "Defender",
+                        "shirtNumber": 44
+                    },
+                    {
+                        "id": 1561,
+                        "name": "Keiller",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 32
+                    },
+                    {
+                        "id": 45887,
+                        "name": "Martín Sarrafiore",
+                        "position": "Attacker",
+                        "shirtNumber": 29
+                    },
+                    {
+                        "id": 61369,
+                        "name": "Gustavo",
+                        "position": "Midfielder",
+                        "shirtNumber": 33
+                    },
+                    {
+                        "id": 1563,
+                        "name": "Daniel",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 42
+                    },
+                    {
+                        "id": 1579,
+                        "name": "Juan",
+                        "position": "Midfielder",
+                        "shirtNumber": 47
+                    },
+                    {
+                        "id": 1585,
+                        "name": "Brenner",
+                        "position": "Midfielder",
+                        "shirtNumber": 48
+                    }
+                ]
+            },
+            "score": {
+                "winner": "AWAY_TEAM",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "homeTeam": 0,
+                    "awayTeam": 1
+                },
+                "halfTime": {
+                    "homeTeam": 0,
+                    "awayTeam": 1
+                },
+                "extraTime": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                },
+                "penalties": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                }
+            },
+            "goals": [
+                {
+                    "minute": 23,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 6684,
+                        "name": "SC Internacional"
+                    },
+                    "scorer": {
+                        "id": 1582,
+                        "name": "Patrick Nascimento"
+                    },
+                    "assist": {
+                        "id": 1593,
+                        "name": "Rossi"
+                    }
+                }
+            ],
+            "bookings": [
+                {
+                    "minute": 33,
+                    "team": {
+                        "id": 6684,
+                        "name": "SC Internacional"
+                    },
+                    "player": {
+                        "id": 1590,
+                        "name": "William Pottker"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 33,
+                    "team": {
+                        "id": 1777,
+                        "name": "EC Bahia"
+                    },
+                    "player": {
+                        "id": 1368,
+                        "name": "Lucas Fonseca"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 84,
+                    "team": {
+                        "id": 6684,
+                        "name": "SC Internacional"
+                    },
+                    "player": {
+                        "id": 1580,
+                        "name": "Edenilson"
+                    },
+                    "card": "YELLOW_CARD"
+                }
+            ],
+            "substitutions": [
+                {
+                    "minute": 59,
+                    "team": {
+                        "id": 1777,
+                        "name": "EC Bahia"
+                    },
+                    "playerOut": {
+                        "id": 1391,
+                        "name": "Edigar Junio"
+                    },
+                    "playerIn": {
+                        "id": 1383,
+                        "name": "Regis"
+                    }
+                },
+                {
+                    "minute": 68,
+                    "team": {
+                        "id": 6684,
+                        "name": "SC Internacional"
+                    },
+                    "playerOut": {
+                        "id": 1593,
+                        "name": "Rossi"
+                    },
+                    "playerIn": {
+                        "id": 1579,
+                        "name": "Juan"
+                    }
+                },
+                {
+                    "minute": 71,
+                    "team": {
+                        "id": 6684,
+                        "name": "SC Internacional"
+                    },
+                    "playerOut": {
+                        "id": 1584,
+                        "name": "Luis Eduardo Dudu"
+                    },
+                    "playerIn": {
+                        "id": 1574,
+                        "name": "Zeca"
+                    }
+                },
+                {
+                    "minute": 74,
+                    "team": {
+                        "id": 6684,
+                        "name": "SC Internacional"
+                    },
+                    "playerOut": {
+                        "id": 1581,
+                        "name": "Camilo"
+                    },
+                    "playerIn": {
+                        "id": 1585,
+                        "name": "Brenner"
+                    }
+                },
+                {
+                    "minute": 74,
+                    "team": {
+                        "id": 1777,
+                        "name": "EC Bahia"
+                    },
+                    "playerOut": {
+                        "id": 1381,
+                        "name": "Vinicius"
+                    },
+                    "playerIn": {
+                        "id": 1378,
+                        "name": "Marco Antonio"
+                    }
+                },
+                {
+                    "minute": 83,
+                    "team": {
+                        "id": 1777,
+                        "name": "EC Bahia"
+                    },
+                    "playerOut": {
+                        "id": 1334,
+                        "name": "Bruno"
+                    },
+                    "playerIn": {
+                        "id": 1124,
+                        "name": "Clayton"
+                    }
+                }
+            ],
+            "referees": [
+                {
+                    "id": 11137,
+                    "name": "Rodrigo D'Alonso Ferreira",
+                    "nationality": null
+                },
+                {
+                    "id": 11138,
+                    "name": "Helton Nunes",
+                    "nationality": null
+                },
+                {
+                    "id": 11140,
+                    "name": "Alex dos Santos",
+                    "nationality": null
+                },
+                {
+                    "id": 11139,
+                    "name": "Thiago Americano Labes",
+                    "nationality": null
+                }
+            ]
+        },
+        {
+            "id": 204974,
+            "competition": {
+                "id": 2013,
+                "name": "Série A"
+            },
+            "season": {
+                "id": 15,
+                "startDate": "2018-04-14",
+                "endDate": "2018-12-02",
+                "currentMatchday": 20,
+                "availableStages": [
+                    "REGULAR_SEASON"
+                ]
+            },
+            "utcDate": "2018-08-22T22:30:00Z",
+            "status": "FINISHED",
+            "attendance": null,
+            "matchday": 20,
+            "stage": "REGULAR_SEASON",
+            "group": "Regular Season",
+            "lastUpdated": "2018-08-23T02:31:23Z",
+            "homeTeam": {
+                "id": 1840,
+                "name": "Paraná Clube",
+                "coach": {
+                    "id": 11218,
+                    "name": "Claudinei Oliveira",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1624,
+                    "name": "Silvinho",
+                    "shirtNumber": 11
+                },
+                "lineup": [
+                    {
+                        "id": 1601,
+                        "name": "Cleber",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1624,
+                        "name": "Silvinho",
+                        "position": "Attacker",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 1607,
+                        "name": "Guilherme Biteco",
+                        "position": "Midfielder",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1609,
+                        "name": "Alex Santana",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1600,
+                        "name": "Mansur",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 12800,
+                        "name": "Renê",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    },
+                    {
+                        "id": 1595,
+                        "name": "Richard",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 1605,
+                        "name": "Junior Santos",
+                        "position": "Midfielder",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 18684,
+                        "name": "Rafael Grampola",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 1604,
+                        "name": "Leandro Vilela",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1612,
+                        "name": "Caio Henrique",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 73230,
+                        "name": "Rodolfo",
+                        "position": "Attacker",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1620,
+                        "name": "Marcelo Báez",
+                        "position": "Attacker",
+                        "shirtNumber": 17
+                    },
+                    {
+                        "id": 37835,
+                        "name": "Matheus Iacovelli",
+                        "position": "Attacker",
+                        "shirtNumber": 21
+                    },
+                    {
+                        "id": 1622,
+                        "name": "Wesley",
+                        "position": "Attacker",
+                        "shirtNumber": 18
+                    },
+                    {
+                        "id": 1599,
+                        "name": "Rayan",
+                        "position": "Defender",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1597,
+                        "name": "Luiz Carlos",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 43966,
+                        "name": "Charles",
+                        "position": "Defender",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1626,
+                        "name": "Raphael",
+                        "position": "Attacker",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 81312,
+                        "name": "Diego Tavares",
+                        "position": "Defender",
+                        "shirtNumber": 13
+                    },
+                    {
+                        "id": 1598,
+                        "name": "David",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 23
+                    },
+                    {
+                        "id": 72760,
+                        "name": "Jhony Santiago",
+                        "position": "Defender",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1608,
+                        "name": "Jhonny",
+                        "position": "Midfielder",
+                        "shirtNumber": 19
+                    }
+                ]
+            },
+            "awayTeam": {
+                "id": 1776,
+                "name": "São Paulo FC",
+                "coach": {
+                    "id": 11171,
+                    "name": "Diego Aguirre",
+                    "countryOfBirth": "Uruguay",
+                    "nationality": "Uruguay"
+                },
+                "captain": {
+                    "id": 1355,
+                    "name": "Húdson",
+                    "shirtNumber": 25
+                },
+                "lineup": [
+                    {
+                        "id": 1354,
+                        "name": "Diego Souza",
+                        "position": "Midfielder",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 46134,
+                        "name": "João Rojas",
+                        "position": "Midfielder",
+                        "shirtNumber": 23
+                    },
+                    {
+                        "id": 1338,
+                        "name": "Robert Arboleda",
+                        "position": "Defender",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1341,
+                        "name": "Anderson Martins",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    },
+                    {
+                        "id": 1349,
+                        "name": "Jucilei",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1802,
+                        "name": "Bruno Peres",
+                        "position": "Defender",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1358,
+                        "name": "Éverton",
+                        "position": "Midfielder",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 1355,
+                        "name": "Húdson",
+                        "position": "Midfielder",
+                        "shirtNumber": 25
+                    },
+                    {
+                        "id": 1340,
+                        "name": "Reinaldo",
+                        "position": "Defender",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1356,
+                        "name": "Nenê",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1332,
+                        "name": "Sidáo",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1336,
+                        "name": "Edimar",
+                        "position": "Defender",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1339,
+                        "name": "Bruno Alves",
+                        "position": "Defender",
+                        "shirtNumber": 34
+                    },
+                    {
+                        "id": 1343,
+                        "name": "Rodrigo Caio",
+                        "position": "Midfielder",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1413,
+                        "name": "Everton Felipe",
+                        "position": "Midfielder",
+                        "shirtNumber": 18
+                    },
+                    {
+                        "id": 1333,
+                        "name": "Jean",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 72764,
+                        "name": "Gonzalo Carneiro Méndez",
+                        "position": "Attacker",
+                        "shirtNumber": 19
+                    },
+                    {
+                        "id": 1345,
+                        "name": "Felipe Araruna",
+                        "position": "Midfielder",
+                        "shirtNumber": 28
+                    },
+                    {
+                        "id": 1362,
+                        "name": "Igor",
+                        "position": "Attacker",
+                        "shirtNumber": 31
+                    },
+                    {
+                        "id": 73058,
+                        "name": "Luan",
+                        "position": null,
+                        "shirtNumber": 27
+                    },
+                    {
+                        "id": 1348,
+                        "name": "Shaylon",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1360,
+                        "name": "Brenner",
+                        "position": "Attacker",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1363,
+                        "name": "Santiago Tréllez",
+                        "position": "Attacker",
+                        "shirtNumber": 17
+                    }
+                ]
+            },
+            "score": {
+                "winner": "DRAW",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "homeTeam": 1,
+                    "awayTeam": 1
+                },
+                "halfTime": {
+                    "homeTeam": 1,
+                    "awayTeam": 1
+                },
+                "extraTime": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                },
+                "penalties": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                }
+            },
+            "goals": [
+                {
+                    "minute": 8,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1776,
+                        "name": "São Paulo FC"
+                    },
+                    "scorer": {
+                        "id": 1356,
+                        "name": "Nenê"
+                    },
+                    "assist": {
+                        "id": 1354,
+                        "name": "Diego Souza"
+                    }
+                },
+                {
+                    "minute": 37,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "scorer": {
+                        "id": 1605,
+                        "name": "Junior Santos"
+                    },
+                    "assist": null
+                }
+            ],
+            "bookings": [
+                {
+                    "minute": 31,
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "player": {
+                        "id": 1607,
+                        "name": "Guilherme Biteco"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 39,
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "player": {
+                        "id": 1605,
+                        "name": "Junior Santos"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 56,
+                    "team": {
+                        "id": 1776,
+                        "name": "São Paulo FC"
+                    },
+                    "player": {
+                        "id": 1362,
+                        "name": "Igor"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 65,
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "player": {
+                        "id": 18684,
+                        "name": "Rafael Grampola"
+                    },
+                    "card": "YELLOW_CARD"
+                }
+            ],
+            "substitutions": [
+                {
+                    "minute": 45,
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "playerOut": {
+                        "id": 1607,
+                        "name": "Guilherme Biteco"
+                    },
+                    "playerIn": {
+                        "id": 73230,
+                        "name": "Rodolfo"
+                    }
+                },
+                {
+                    "minute": 46,
+                    "team": {
+                        "id": 1776,
+                        "name": "São Paulo FC"
+                    },
+                    "playerOut": {
+                        "id": 1355,
+                        "name": "Húdson"
+                    },
+                    "playerIn": {
+                        "id": 1362,
+                        "name": "Igor"
+                    }
+                },
+                {
+                    "minute": 74,
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "playerOut": {
+                        "id": 73230,
+                        "name": "Rodolfo"
+                    },
+                    "playerIn": {
+                        "id": 1608,
+                        "name": "Jhonny"
+                    }
+                },
+                {
+                    "minute": 84,
+                    "team": {
+                        "id": 1840,
+                        "name": "Paraná Clube"
+                    },
+                    "playerOut": {
+                        "id": 18684,
+                        "name": "Rafael Grampola"
+                    },
+                    "playerIn": {
+                        "id": 1626,
+                        "name": "Raphael"
+                    }
+                },
+                {
+                    "minute": 87,
+                    "team": {
+                        "id": 1776,
+                        "name": "São Paulo FC"
+                    },
+                    "playerOut": {
+                        "id": 1356,
+                        "name": "Nenê"
+                    },
+                    "playerIn": {
+                        "id": 1363,
+                        "name": "Santiago Tréllez"
+                    }
+                },
+                {
+                    "minute": 88,
+                    "team": {
+                        "id": 1776,
+                        "name": "São Paulo FC"
+                    },
+                    "playerOut": {
+                        "id": 46134,
+                        "name": "João Rojas"
+                    },
+                    "playerIn": {
+                        "id": 1348,
+                        "name": "Shaylon"
+                    }
+                }
+            ],
+            "referees": [
+                {
+                    "id": 11213,
+                    "name": "Pericles Bassols Pegado Cortez",
+                    "nationality": null
+                },
+                {
+                    "id": 11214,
+                    "name": "Clovis Amaral da Silva",
+                    "nationality": null
+                },
+                {
+                    "id": 11215,
+                    "name": "Cleberson do Nascimento Leite",
+                    "nationality": null
+                },
+                {
+                    "id": 81655,
+                    "name": "Marcelino Castro",
+                    "nationality": null
+                },
+                {
+                    "id": 11216,
+                    "name": "Marcelino Castro de Nazare",
+                    "nationality": null
+                }
+            ]
+        },
+        {
+            "id": 204972,
+            "competition": {
+                "id": 2013,
+                "name": "Série A"
+            },
+            "season": {
+                "id": 15,
+                "startDate": "2018-04-14",
+                "endDate": "2018-12-02",
+                "currentMatchday": 20,
+                "availableStages": [
+                    "REGULAR_SEASON"
+                ]
+            },
+            "utcDate": "2018-08-23T00:00:00Z",
+            "status": "FINISHED",
+            "attendance": null,
+            "matchday": 20,
+            "stage": "REGULAR_SEASON",
+            "group": "Regular Season",
+            "lastUpdated": "2018-08-23T03:57:43Z",
+            "homeTeam": {
+                "id": 1769,
+                "name": "SE Palmeiras",
+                "coach": {
+                    "id": 74736,
+                    "name": "Luiz Felipe Scolari",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1189,
+                    "name": "Bruno Henrique",
+                    "shirtNumber": 19
+                },
+                "lineup": [
+                    {
+                        "id": 1195,
+                        "name": "Miguel Borja",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 1187,
+                        "name": "Felipe Melo",
+                        "position": "Midfielder",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1183,
+                        "name": "Moisés",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1182,
+                        "name": "Dudu",
+                        "position": "Midfielder",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1170,
+                        "name": "Weverton",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 21
+                    },
+                    {
+                        "id": 1189,
+                        "name": "Bruno Henrique",
+                        "position": "Midfielder",
+                        "shirtNumber": 19
+                    },
+                    {
+                        "id": 1177,
+                        "name": "Diogo Barbosa",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1174,
+                        "name": "Mayke",
+                        "position": "Defender",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1194,
+                        "name": "Willian",
+                        "position": "Attacker",
+                        "shirtNumber": 29
+                    },
+                    {
+                        "id": 1171,
+                        "name": "Edú Dracena",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1173,
+                        "name": "Antônio Carlos",
+                        "position": "Defender",
+                        "shirtNumber": 25
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1178,
+                        "name": "Marcos Rocha",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1188,
+                        "name": "Hyoran",
+                        "position": "Midfielder",
+                        "shirtNumber": 28
+                    },
+                    {
+                        "id": 1167,
+                        "name": "Fernando Prass",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 1181,
+                        "name": "Victor Luis",
+                        "position": "Defender",
+                        "shirtNumber": 26
+                    },
+                    {
+                        "id": 1191,
+                        "name": "Lucas Lima",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1741,
+                        "name": "Gustavo Gómez",
+                        "position": "Defender",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1196,
+                        "name": "Deyverson",
+                        "position": "Attacker",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1168,
+                        "name": "Jaílson",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 42
+                    },
+                    {
+                        "id": 1176,
+                        "name": "Luan",
+                        "position": "Defender",
+                        "shirtNumber": 13
+                    },
+                    {
+                        "id": 1184,
+                        "name": "Thiago dos Santos",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 32489,
+                        "name": "Vitinho",
+                        "position": "Midfielder",
+                        "shirtNumber": 39
+                    },
+                    {
+                        "id": 1192,
+                        "name": "Artur Guimaraes",
+                        "position": "Midfielder",
+                        "shirtNumber": 37
+                    }
+                ]
+            },
+            "awayTeam": {
+                "id": 1770,
+                "name": "Botafogo FR",
+                "coach": {
+                    "id": 11154,
+                    "name": "Zé Ricardo",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1215,
+                    "name": "Igor Rabello",
+                    "shirtNumber": 2
+                },
+                "lineup": [
+                    {
+                        "id": 1223,
+                        "name": "Rodrigo Pimpão",
+                        "position": "Attacker",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1198,
+                        "name": "Saulo",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 1215,
+                        "name": "Igor Rabello",
+                        "position": "Midfielder",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1208,
+                        "name": "Yago",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1220,
+                        "name": "Luiz Fernando",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1202,
+                        "name": "Marcinho",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    },
+                    {
+                        "id": 1225,
+                        "name": "Brenner Marlos",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 1207,
+                        "name": "Moises",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1209,
+                        "name": "Jean Irmer",
+                        "position": "Defender",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1213,
+                        "name": "Gustavo Buchecha",
+                        "position": "Midfielder",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 1214,
+                        "name": "Matheus Fernandes",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 11206,
+                        "name": "Rodrigo Aguirre",
+                        "position": "Attacker",
+                        "shirtNumber": 18
+                    },
+                    {
+                        "id": 1212,
+                        "name": "Dudu Cearense",
+                        "position": "Midfielder",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 1200,
+                        "name": "Luis Ricardo",
+                        "position": "Defender",
+                        "shirtNumber": 13
+                    },
+                    {
+                        "id": 1222,
+                        "name": "Marcelo",
+                        "position": "Midfielder",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1204,
+                        "name": "Gilson",
+                        "position": "Defender",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 11205,
+                        "name": "João Pedro Silva",
+                        "position": "Midfielder",
+                        "shirtNumber": 17
+                    },
+                    {
+                        "id": 73962,
+                        "name": "Diego",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1205,
+                        "name": "Kanu",
+                        "position": "Defender",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1219,
+                        "name": "Ezequiel",
+                        "position": "Midfielder",
+                        "shirtNumber": 19
+                    }
+                ]
+            },
+            "score": {
+                "winner": "HOME_TEAM",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "homeTeam": 2,
+                    "awayTeam": 0
+                },
+                "halfTime": {
+                    "homeTeam": 0,
+                    "awayTeam": 0
+                },
+                "extraTime": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                },
+                "penalties": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                }
+            },
+            "goals": [
+                {
+                    "minute": 78,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "scorer": {
+                        "id": 1191,
+                        "name": "Lucas Lima"
+                    },
+                    "assist": {
+                        "id": 1182,
+                        "name": "Dudu"
+                    }
+                },
+                {
+                    "minute": 87,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "scorer": {
+                        "id": 1191,
+                        "name": "Lucas Lima"
+                    },
+                    "assist": null
+                }
+            ],
+            "bookings": [
+                {
+                    "minute": 41,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "player": {
+                        "id": 1207,
+                        "name": "Moises"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 55,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "player": {
+                        "id": 1213,
+                        "name": "Gustavo Buchecha"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 63,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "player": {
+                        "id": 1225,
+                        "name": "Brenner Marlos"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 71,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "player": {
+                        "id": 1207,
+                        "name": "Moises"
+                    },
+                    "card": "YELLOW_RED_CARD"
+                },
+                {
+                    "minute": 73,
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "player": {
+                        "id": 1171,
+                        "name": "Edú Dracena"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 81,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "player": {
+                        "id": 1215,
+                        "name": "Igor Rabello"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 86,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "player": {
+                        "id": 1204,
+                        "name": "Gilson"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 88,
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "player": {
+                        "id": 1182,
+                        "name": "Dudu"
+                    },
+                    "card": "YELLOW_CARD"
+                }
+            ],
+            "substitutions": [
+                {
+                    "minute": 46,
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "playerOut": {
+                        "id": 1189,
+                        "name": "Bruno Henrique"
+                    },
+                    "playerIn": {
+                        "id": 1191,
+                        "name": "Lucas Lima"
+                    }
+                },
+                {
+                    "minute": 69,
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "playerOut": {
+                        "id": 1195,
+                        "name": "Miguel Borja"
+                    },
+                    "playerIn": {
+                        "id": 1196,
+                        "name": "Deyverson"
+                    }
+                },
+                {
+                    "minute": 74,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "playerOut": {
+                        "id": 1213,
+                        "name": "Gustavo Buchecha"
+                    },
+                    "playerIn": {
+                        "id": 1204,
+                        "name": "Gilson"
+                    }
+                },
+                {
+                    "minute": 85,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "playerOut": {
+                        "id": 1225,
+                        "name": "Brenner Marlos"
+                    },
+                    "playerIn": {
+                        "id": 11206,
+                        "name": "Rodrigo Aguirre"
+                    }
+                },
+                {
+                    "minute": 87,
+                    "team": {
+                        "id": 1770,
+                        "name": "Botafogo FR"
+                    },
+                    "playerOut": {
+                        "id": 1220,
+                        "name": "Luiz Fernando"
+                    },
+                    "playerIn": {
+                        "id": 1219,
+                        "name": "Ezequiel"
+                    }
+                },
+                {
+                    "minute": 89,
+                    "team": {
+                        "id": 1769,
+                        "name": "SE Palmeiras"
+                    },
+                    "playerOut": {
+                        "id": 1182,
+                        "name": "Dudu"
+                    },
+                    "playerIn": {
+                        "id": 1192,
+                        "name": "Artur Guimaraes"
+                    }
+                }
+            ],
+            "referees": [
+                {
+                    "id": 11161,
+                    "name": "Anderson Daronco",
+                    "nationality": null
+                },
+                {
+                    "id": 11162,
+                    "name": "Rafael da Silva Alves",
+                    "nationality": null
+                },
+                {
+                    "id": 11164,
+                    "name": "Michael Stanislau",
+                    "nationality": null
+                },
+                {
+                    "id": 81656,
+                    "name": "Andre Bittencourt",
+                    "nationality": null
+                },
+                {
+                    "id": 11440,
+                    "name": "Andre da Silva Bitencourt",
+                    "nationality": null
+                }
+            ]
+        },
+        {
+            "id": 204971,
+            "competition": {
+                "id": 2013,
+                "name": "Série A"
+            },
+            "season": {
+                "id": 15,
+                "startDate": "2018-04-14",
+                "endDate": "2018-12-02",
+                "currentMatchday": 20,
+                "availableStages": [
+                    "REGULAR_SEASON"
+                ]
+            },
+            "utcDate": "2018-08-23T00:00:00Z",
+            "status": "FINISHED",
+            "attendance": null,
+            "matchday": 20,
+            "stage": "REGULAR_SEASON",
+            "group": "Regular Season",
+            "lastUpdated": "2018-08-23T03:52:24Z",
+            "homeTeam": {
+                "id": 1778,
+                "name": "SC Recife",
+                "coach": {
+                    "id": 13940,
+                    "name": "Eduardo Alexandre Baptista",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1396,
+                    "name": "Magrão",
+                    "shirtNumber": 1
+                },
+                "lineup": [
+                    {
+                        "id": 1676,
+                        "name": "Deivid",
+                        "position": "Midfielder",
+                        "shirtNumber": 55
+                    },
+                    {
+                        "id": 1404,
+                        "name": "Ronaldo Alves",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1416,
+                        "name": "Marlone",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1427,
+                        "name": "Gabriel",
+                        "position": "Attacker",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1164,
+                        "name": "Hernane Brocador",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 1411,
+                        "name": "Cláudio Winck",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1412,
+                        "name": "Ernando",
+                        "position": "Defender",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1396,
+                        "name": "Magrão",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 1406,
+                        "name": "Sander",
+                        "position": "Defender",
+                        "shirtNumber": 56
+                    },
+                    {
+                        "id": 1421,
+                        "name": "Matheus Ferreira",
+                        "position": "Midfielder",
+                        "shirtNumber": 13
+                    },
+                    {
+                        "id": 1359,
+                        "name": "Morato",
+                        "position": "Attacker",
+                        "shirtNumber": 49
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1186,
+                        "name": "Michel Bastos",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1417,
+                        "name": "Fellipe Bastos",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1401,
+                        "name": "Durval",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    },
+                    {
+                        "id": 1426,
+                        "name": "Neto",
+                        "position": "Attacker",
+                        "shirtNumber": 25
+                    },
+                    {
+                        "id": 1420,
+                        "name": "Andrigo",
+                        "position": "Midfielder",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1257,
+                        "name": "Rafael Marques",
+                        "position": "Attacker",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1429,
+                        "name": "Carlos",
+                        "position": "Attacker",
+                        "shirtNumber": 95
+                    },
+                    {
+                        "id": 1408,
+                        "name": "Leo Ortiz",
+                        "position": "Defender",
+                        "shirtNumber": 33
+                    },
+                    {
+                        "id": 1398,
+                        "name": "Mailson",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 32
+                    },
+                    {
+                        "id": 19254,
+                        "name": "Jean",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    }
+                ]
+            },
+            "awayTeam": {
+                "id": 1838,
+                "name": "América FC (MG)",
+                "coach": {
+                    "id": 75747,
+                    "name": "Adilson Batista",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1643,
+                    "name": "Matheus Ferraz",
+                    "shirtNumber": 3
+                },
+                "lineup": [
+                    {
+                        "id": 1643,
+                        "name": "Matheus Ferraz",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1653,
+                        "name": "Leandro Donizete",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1640,
+                        "name": "Giovanni",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1656,
+                        "name": "Luan",
+                        "position": "Attacker",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 1660,
+                        "name": "Marquinhos",
+                        "position": "Attacker",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1652,
+                        "name": "Wesley",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1637,
+                        "name": "Gerson Magrão",
+                        "position": "Defender",
+                        "shirtNumber": 17
+                    },
+                    {
+                        "id": 1646,
+                        "name": "Juninho",
+                        "position": "Midfielder",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1649,
+                        "name": "Ruy",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1631,
+                        "name": "João Ricardo",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 1633,
+                        "name": "Messias",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1650,
+                        "name": "David",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1468,
+                        "name": "Paulão",
+                        "position": "Defender",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1657,
+                        "name": "Rafael Moura",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 19873,
+                        "name": "Wesley Gomes",
+                        "position": "Attacker",
+                        "shirtNumber": 19
+                    },
+                    {
+                        "id": 1629,
+                        "name": "Fernando Leal",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1092,
+                        "name": "Robson",
+                        "position": "Attacker",
+                        "shirtNumber": 21
+                    },
+                    {
+                        "id": 1645,
+                        "name": "Christian Savio",
+                        "position": "Midfielder",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1655,
+                        "name": "Matheus",
+                        "position": "Attacker",
+                        "shirtNumber": 18
+                    },
+                    {
+                        "id": 1647,
+                        "name": "Ze Ricardo",
+                        "position": "Midfielder",
+                        "shirtNumber": 14
+                    }
+                ]
+            },
+            "score": {
+                "winner": "AWAY_TEAM",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "homeTeam": 0,
+                    "awayTeam": 2
+                },
+                "halfTime": {
+                    "homeTeam": 0,
+                    "awayTeam": 0
+                },
+                "extraTime": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                },
+                "penalties": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                }
+            },
+            "goals": [
+                {
+                    "minute": 47,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "scorer": {
+                        "id": 1656,
+                        "name": "Luan"
+                    },
+                    "assist": null
+                },
+                {
+                    "minute": 67,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "scorer": {
+                        "id": 1657,
+                        "name": "Rafael Moura"
+                    },
+                    "assist": {
+                        "id": 1656,
+                        "name": "Luan"
+                    }
+                }
+            ],
+            "bookings": [
+                {
+                    "minute": 8,
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "player": {
+                        "id": 1633,
+                        "name": "Messias"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 26,
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "player": {
+                        "id": 1656,
+                        "name": "Luan"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 36,
+                    "team": {
+                        "id": 1778,
+                        "name": "SC Recife"
+                    },
+                    "player": {
+                        "id": 1411,
+                        "name": "Cláudio Winck"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 90,
+                    "team": {
+                        "id": 1778,
+                        "name": "SC Recife"
+                    },
+                    "player": {
+                        "id": 1406,
+                        "name": "Sander"
+                    },
+                    "card": "YELLOW_CARD"
+                }
+            ],
+            "substitutions": [
+                {
+                    "minute": 29,
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "playerOut": {
+                        "id": 1649,
+                        "name": "Ruy"
+                    },
+                    "playerIn": {
+                        "id": 1657,
+                        "name": "Rafael Moura"
+                    }
+                },
+                {
+                    "minute": 46,
+                    "team": {
+                        "id": 1778,
+                        "name": "SC Recife"
+                    },
+                    "playerOut": {
+                        "id": 1421,
+                        "name": "Matheus Ferreira"
+                    },
+                    "playerIn": {
+                        "id": 1417,
+                        "name": "Fellipe Bastos"
+                    }
+                },
+                {
+                    "minute": 57,
+                    "team": {
+                        "id": 1778,
+                        "name": "SC Recife"
+                    },
+                    "playerOut": {
+                        "id": 1359,
+                        "name": "Morato"
+                    },
+                    "playerIn": {
+                        "id": 1186,
+                        "name": "Michel Bastos"
+                    }
+                },
+                {
+                    "minute": 73,
+                    "team": {
+                        "id": 1778,
+                        "name": "SC Recife"
+                    },
+                    "playerOut": {
+                        "id": 1416,
+                        "name": "Marlone"
+                    },
+                    "playerIn": {
+                        "id": 1257,
+                        "name": "Rafael Marques"
+                    }
+                },
+                {
+                    "minute": 80,
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "playerOut": {
+                        "id": 1656,
+                        "name": "Luan"
+                    },
+                    "playerIn": {
+                        "id": 1650,
+                        "name": "David"
+                    }
+                },
+                {
+                    "minute": 86,
+                    "team": {
+                        "id": 1838,
+                        "name": "América FC (MG)"
+                    },
+                    "playerOut": {
+                        "id": 1652,
+                        "name": "Wesley"
+                    },
+                    "playerIn": {
+                        "id": 1647,
+                        "name": "Ze Ricardo"
+                    }
+                }
+            ],
+            "referees": [
+                {
+                    "id": 18911,
+                    "name": "Jailson Macêdo Freitas",
+                    "nationality": null
+                },
+                {
+                    "id": 11261,
+                    "name": "Alessandro Álvaro Rocha de Matos",
+                    "nationality": null
+                },
+                {
+                    "id": 18188,
+                    "name": "Elicarlos Franco de Oliveira",
+                    "nationality": null
+                },
+                {
+                    "id": 18912,
+                    "name": "Jucimar dos Santos Dias",
+                    "nationality": null
+                }
+            ]
+        },
+        {
+            "id": 204966,
+            "competition": {
+                "id": 2013,
+                "name": "Série A"
+            },
+            "season": {
+                "id": 15,
+                "startDate": "2018-04-14",
+                "endDate": "2018-12-02",
+                "currentMatchday": 20,
+                "availableStages": [
+                    "REGULAR_SEASON"
+                ]
+            },
+            "utcDate": "2018-08-23T00:45:00Z",
+            "status": "FINISHED",
+            "attendance": null,
+            "matchday": 20,
+            "stage": "REGULAR_SEASON",
+            "group": "Regular Season",
+            "lastUpdated": "2018-08-23T04:40:23Z",
+            "homeTeam": {
+                "id": 1767,
+                "name": "Grêmio FBPA",
+                "coach": {
+                    "id": 11124,
+                    "name": "Renato Gaúcho",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1147,
+                    "name": "Maicon",
+                    "shirtNumber": 8
+                },
+                "lineup": [
+                    {
+                        "id": 1165,
+                        "name": "André",
+                        "position": "Attacker",
+                        "shirtNumber": 90
+                    },
+                    {
+                        "id": 1140,
+                        "name": "Bruno Cortez",
+                        "position": "Defender",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1141,
+                        "name": "Leo Moura",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1134,
+                        "name": "Paulo Victor",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 48
+                    },
+                    {
+                        "id": 1159,
+                        "name": "Everton",
+                        "position": "Attacker",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 1145,
+                        "name": "Luan Vieira",
+                        "position": "Midfielder",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1135,
+                        "name": "Pedro Geromel",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1146,
+                        "name": "Ramiro",
+                        "position": "Midfielder",
+                        "shirtNumber": 17
+                    },
+                    {
+                        "id": 1147,
+                        "name": "Maicon",
+                        "position": "Midfielder",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1138,
+                        "name": "Walter Kannemann",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    },
+                    {
+                        "id": 1137,
+                        "name": "Jailson",
+                        "position": "Defender",
+                        "shirtNumber": 25
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1154,
+                        "name": "Alisson",
+                        "position": "Midfielder",
+                        "shirtNumber": 23
+                    },
+                    {
+                        "id": 1152,
+                        "name": "Cícero",
+                        "position": "Midfielder",
+                        "shirtNumber": 77
+                    },
+                    {
+                        "id": 1136,
+                        "name": "Marcelo Oliveira",
+                        "position": "Defender",
+                        "shirtNumber": 26
+                    },
+                    {
+                        "id": 1143,
+                        "name": "Paulo Miranda",
+                        "position": "Defender",
+                        "shirtNumber": 28
+                    },
+                    {
+                        "id": 1160,
+                        "name": "Jael",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 1150,
+                        "name": "Léo Gomes",
+                        "position": "Midfielder",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 72762,
+                        "name": "Douglas",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 11189,
+                        "name": "Bruno Grassi",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 21600,
+                        "name": "Marinho",
+                        "position": "Attacker",
+                        "shirtNumber": 70
+                    },
+                    {
+                        "id": 1158,
+                        "name": "Kaio",
+                        "position": "Midfielder",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1156,
+                        "name": "Thaciano",
+                        "position": "Midfielder",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1166,
+                        "name": "Pepê",
+                        "position": "Attacker",
+                        "shirtNumber": 33
+                    }
+                ]
+            },
+            "awayTeam": {
+                "id": 1771,
+                "name": "Cruzeiro EC",
+                "coach": {
+                    "id": 11123,
+                    "name": "Mano Menezes",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1234,
+                    "name": "Léo",
+                    "shirtNumber": 3
+                },
+                "lineup": [
+                    {
+                        "id": 1248,
+                        "name": "Rafinha",
+                        "position": "Midfielder",
+                        "shirtNumber": 18
+                    },
+                    {
+                        "id": 1252,
+                        "name": "Bruno Silva",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1236,
+                        "name": "Ezequiel",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1240,
+                        "name": "Egídio",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1230,
+                        "name": "Fábio",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 1
+                    },
+                    {
+                        "id": 1234,
+                        "name": "Léo",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 24692,
+                        "name": "Hernán Barcos",
+                        "position": "Attacker",
+                        "shirtNumber": 28
+                    },
+                    {
+                        "id": 1245,
+                        "name": "Alejandro Cabral",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1246,
+                        "name": "Lucas Romero",
+                        "position": "Midfielder",
+                        "shirtNumber": 29
+                    },
+                    {
+                        "id": 1244,
+                        "name": "Giorgian De Arrascaeta",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1237,
+                        "name": "Murilo Cerqueira",
+                        "position": "Defender",
+                        "shirtNumber": 4
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1249,
+                        "name": "Thiago Neves",
+                        "position": "Midfielder",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1247,
+                        "name": "Robinho",
+                        "position": "Midfielder",
+                        "shirtNumber": 19
+                    },
+                    {
+                        "id": 1250,
+                        "name": "Lucas Silva",
+                        "position": "Midfielder",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1235,
+                        "name": "Manoel",
+                        "position": "Defender",
+                        "shirtNumber": 27
+                    },
+                    {
+                        "id": 1231,
+                        "name": "Rafael",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1253,
+                        "name": "Federico Mancuello",
+                        "position": "Midfielder",
+                        "shirtNumber": 21
+                    },
+                    {
+                        "id": 1242,
+                        "name": "Marcelo Hermes",
+                        "position": "Defender",
+                        "shirtNumber": 25
+                    },
+                    {
+                        "id": 1254,
+                        "name": "Patrick",
+                        "position": "Midfielder",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1251,
+                        "name": "David",
+                        "position": "Midfielder",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 81440,
+                        "name": "Ederson",
+                        "position": "Midfielder",
+                        "shirtNumber": 40
+                    },
+                    {
+                        "id": 44235,
+                        "name": "Vitor",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 39
+                    }
+                ]
+            },
+            "score": {
+                "winner": "DRAW",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "homeTeam": 1,
+                    "awayTeam": 1
+                },
+                "halfTime": {
+                    "homeTeam": 0,
+                    "awayTeam": 1
+                },
+                "extraTime": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                },
+                "penalties": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                }
+            },
+            "goals": [
+                {
+                    "minute": 44,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "scorer": {
+                        "id": 1252,
+                        "name": "Bruno Silva"
+                    },
+                    "assist": {
+                        "id": 24692,
+                        "name": "Hernán Barcos"
+                    }
+                },
+                {
+                    "minute": 60,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1767,
+                        "name": "Grêmio FBPA"
+                    },
+                    "scorer": {
+                        "id": 1159,
+                        "name": "Everton"
+                    },
+                    "assist": {
+                        "id": 1147,
+                        "name": "Maicon"
+                    }
+                }
+            ],
+            "bookings": [
+                {
+                    "minute": 45,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "player": {
+                        "id": 1245,
+                        "name": "Alejandro Cabral"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 61,
+                    "team": {
+                        "id": 1767,
+                        "name": "Grêmio FBPA"
+                    },
+                    "player": {
+                        "id": 1146,
+                        "name": "Ramiro"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 64,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "player": {
+                        "id": 24692,
+                        "name": "Hernán Barcos"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 72,
+                    "team": {
+                        "id": 1767,
+                        "name": "Grêmio FBPA"
+                    },
+                    "player": {
+                        "id": 1159,
+                        "name": "Everton"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 74,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "player": {
+                        "id": 1236,
+                        "name": "Ezequiel"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 83,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "player": {
+                        "id": 1240,
+                        "name": "Egídio"
+                    },
+                    "card": "YELLOW_CARD"
+                }
+            ],
+            "substitutions": [
+                {
+                    "minute": 46,
+                    "team": {
+                        "id": 1767,
+                        "name": "Grêmio FBPA"
+                    },
+                    "playerOut": {
+                        "id": 1165,
+                        "name": "André"
+                    },
+                    "playerIn": {
+                        "id": 1160,
+                        "name": "Jael"
+                    }
+                },
+                {
+                    "minute": 46,
+                    "team": {
+                        "id": 1767,
+                        "name": "Grêmio FBPA"
+                    },
+                    "playerOut": {
+                        "id": 1141,
+                        "name": "Leo Moura"
+                    },
+                    "playerIn": {
+                        "id": 1154,
+                        "name": "Alisson"
+                    }
+                },
+                {
+                    "minute": 65,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "playerOut": {
+                        "id": 1244,
+                        "name": "Giorgian De Arrascaeta"
+                    },
+                    "playerIn": {
+                        "id": 1249,
+                        "name": "Thiago Neves"
+                    }
+                },
+                {
+                    "minute": 78,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "playerOut": {
+                        "id": 1245,
+                        "name": "Alejandro Cabral"
+                    },
+                    "playerIn": {
+                        "id": 1250,
+                        "name": "Lucas Silva"
+                    }
+                },
+                {
+                    "minute": 85,
+                    "team": {
+                        "id": 1771,
+                        "name": "Cruzeiro EC"
+                    },
+                    "playerOut": {
+                        "id": 1236,
+                        "name": "Ezequiel"
+                    },
+                    "playerIn": {
+                        "id": 1247,
+                        "name": "Robinho"
+                    }
+                },
+                {
+                    "minute": 85,
+                    "team": {
+                        "id": 1767,
+                        "name": "Grêmio FBPA"
+                    },
+                    "playerOut": {
+                        "id": 1137,
+                        "name": "Jailson"
+                    },
+                    "playerIn": {
+                        "id": 72762,
+                        "name": "Douglas"
+                    }
+                }
+            ],
+            "referees": [
+                {
+                    "id": 11248,
+                    "name": "Marcelo de Lima Henrique",
+                    "nationality": null
+                },
+                {
+                    "id": 11249,
+                    "name": "Michael Correia",
+                    "nationality": null
+                },
+                {
+                    "id": 11250,
+                    "name": "Silbert Faria Sisquim",
+                    "nationality": null
+                },
+                {
+                    "id": 44236,
+                    "name": "Daniel de Oliveira Alves Pereira",
+                    "nationality": null
+                }
+            ]
+        },
+        {
+            "id": 204970,
+            "competition": {
+                "id": 2013,
+                "name": "Série A"
+            },
+            "season": {
+                "id": 15,
+                "startDate": "2018-04-14",
+                "endDate": "2018-12-02",
+                "currentMatchday": 20,
+                "availableStages": [
+                    "REGULAR_SEASON"
+                ]
+            },
+            "utcDate": "2018-08-23T00:45:00Z",
+            "status": "FINISHED",
+            "attendance": null,
+            "matchday": 20,
+            "stage": "REGULAR_SEASON",
+            "group": "Regular Season",
+            "lastUpdated": "2018-08-23T04:58:43Z",
+            "homeTeam": {
+                "id": 1765,
+                "name": "Fluminense FC",
+                "coach": {
+                    "id": 73229,
+                    "name": "Marcelo Oliveira",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1068,
+                    "name": "Gum",
+                    "shirtNumber": 3
+                },
+                "lineup": [
+                    {
+                        "id": 1083,
+                        "name": "Jádson",
+                        "position": "Midfielder",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1078,
+                        "name": "Junior Sornoza",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1238,
+                        "name": "Digão",
+                        "position": "Defender",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1066,
+                        "name": "Júlio César",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 1068,
+                        "name": "Gum",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1073,
+                        "name": "Gilberto Júnior",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 1087,
+                        "name": "Douglas",
+                        "position": "Midfielder",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1074,
+                        "name": "Ayrton Lucas",
+                        "position": "Defender",
+                        "shirtNumber": 6
+                    },
+                    {
+                        "id": 1091,
+                        "name": "Richard",
+                        "position": "Attacker",
+                        "shirtNumber": 25
+                    },
+                    {
+                        "id": 1077,
+                        "name": "Pedro Santos",
+                        "position": "Midfielder",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 13604,
+                        "name": "Everaldo",
+                        "position": "Midfielder",
+                        "shirtNumber": 37
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 2817,
+                        "name": "Bryan Cabezas",
+                        "position": "Attacker",
+                        "shirtNumber": 8
+                    },
+                    {
+                        "id": 1067,
+                        "name": "Rodolfo",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 39
+                    },
+                    {
+                        "id": 1075,
+                        "name": "Léo Morais",
+                        "position": "Defender",
+                        "shirtNumber": 33
+                    },
+                    {
+                        "id": 1084,
+                        "name": "Pablo Dyego",
+                        "position": "Midfielder",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 30820,
+                        "name": "Paulo Ricardo",
+                        "position": "Defender",
+                        "shirtNumber": 32
+                    },
+                    {
+                        "id": 1088,
+                        "name": "Marcos Júnior",
+                        "position": "Attacker",
+                        "shirtNumber": 35
+                    },
+                    {
+                        "id": 12953,
+                        "name": "Danielzinho",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1070,
+                        "name": "Mateus",
+                        "position": "Defender",
+                        "shirtNumber": 26
+                    },
+                    {
+                        "id": 1072,
+                        "name": "Marlon",
+                        "position": "Defender",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1094,
+                        "name": "João Carlos",
+                        "position": "Attacker",
+                        "shirtNumber": 29
+                    },
+                    {
+                        "id": 1089,
+                        "name": "Matheus Alessandro",
+                        "position": "Attacker",
+                        "shirtNumber": 28
+                    },
+                    {
+                        "id": 1081,
+                        "name": "Roger Ibanez",
+                        "position": "Midfielder",
+                        "shirtNumber": 41
+                    }
+                ]
+            },
+            "awayTeam": {
+                "id": 1779,
+                "name": "SC Corinthians Paulista",
+                "coach": {
+                    "id": 11227,
+                    "name": "Osmar Loss Vieira",
+                    "countryOfBirth": "Brazil",
+                    "nationality": "Brazil"
+                },
+                "captain": {
+                    "id": 1443,
+                    "name": "Jádson",
+                    "shirtNumber": 10
+                },
+                "lineup": [
+                    {
+                        "id": 1440,
+                        "name": "Henrique Adriano",
+                        "position": "Defender",
+                        "shirtNumber": 3
+                    },
+                    {
+                        "id": 1434,
+                        "name": "Fágner",
+                        "position": "Defender",
+                        "shirtNumber": 23
+                    },
+                    {
+                        "id": 8589,
+                        "name": "Danilo Avelar",
+                        "position": "Defender",
+                        "shirtNumber": 35
+                    },
+                    {
+                        "id": 1454,
+                        "name": "Ángel Romero",
+                        "position": "Attacker",
+                        "shirtNumber": 11
+                    },
+                    {
+                        "id": 1431,
+                        "name": "Cássio Ramos",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 12
+                    },
+                    {
+                        "id": 1443,
+                        "name": "Jádson",
+                        "position": "Midfielder",
+                        "shirtNumber": 10
+                    },
+                    {
+                        "id": 1435,
+                        "name": "Pedro Henrique",
+                        "position": "Defender",
+                        "shirtNumber": 34
+                    },
+                    {
+                        "id": 1453,
+                        "name": "Ralf",
+                        "position": "Midfielder",
+                        "shirtNumber": 15
+                    },
+                    {
+                        "id": 1449,
+                        "name": "Clayson",
+                        "position": "Midfielder",
+                        "shirtNumber": 25
+                    },
+                    {
+                        "id": 1076,
+                        "name": "Douglas",
+                        "position": "Midfielder",
+                        "shirtNumber": 30
+                    },
+                    {
+                        "id": 1448,
+                        "name": "Pedro Victor",
+                        "position": "Midfielder",
+                        "shirtNumber": 38
+                    }
+                ],
+                "bench": [
+                    {
+                        "id": 1460,
+                        "name": "Roger",
+                        "position": "Attacker",
+                        "shirtNumber": 9
+                    },
+                    {
+                        "id": 392,
+                        "name": "Jonathas",
+                        "position": "Attacker",
+                        "shirtNumber": 7
+                    },
+                    {
+                        "id": 1445,
+                        "name": "Gabriel",
+                        "position": "Midfielder",
+                        "shirtNumber": 5
+                    },
+                    {
+                        "id": 1442,
+                        "name": "Danilo",
+                        "position": "Midfielder",
+                        "shirtNumber": 20
+                    },
+                    {
+                        "id": 1457,
+                        "name": "Emerson Sheik",
+                        "position": "Attacker",
+                        "shirtNumber": 47
+                    },
+                    {
+                        "id": 1432,
+                        "name": "Walter",
+                        "position": "Goalkeeper",
+                        "shirtNumber": 27
+                    },
+                    {
+                        "id": 23812,
+                        "name": "Ángelo Araos",
+                        "position": "Midfielder",
+                        "shirtNumber": 16
+                    },
+                    {
+                        "id": 1452,
+                        "name": "Mateus Vital",
+                        "position": "Midfielder",
+                        "shirtNumber": 22
+                    },
+                    {
+                        "id": 1437,
+                        "name": "Leo Santos",
+                        "position": "Defender",
+                        "shirtNumber": 14
+                    },
+                    {
+                        "id": 1438,
+                        "name": "Guilherme Mantuan",
+                        "position": "Defender",
+                        "shirtNumber": 2
+                    },
+                    {
+                        "id": 11224,
+                        "name": "Carlos",
+                        "position": "Defender",
+                        "shirtNumber": 33
+                    }
+                ]
+            },
+            "score": {
+                "winner": "HOME_TEAM",
+                "duration": "REGULAR",
+                "fullTime": {
+                    "homeTeam": 1,
+                    "awayTeam": 0
+                },
+                "halfTime": {
+                    "homeTeam": 1,
+                    "awayTeam": 0
+                },
+                "extraTime": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                },
+                "penalties": {
+                    "homeTeam": null,
+                    "awayTeam": null
+                }
+            },
+            "goals": [
+                {
+                    "minute": 17,
+                    "type": "REGULAR",
+                    "team": {
+                        "id": 1765,
+                        "name": "Fluminense FC"
+                    },
+                    "scorer": {
+                        "id": 1068,
+                        "name": "Gum"
+                    },
+                    "assist": null
+                }
+            ],
+            "bookings": [
+                {
+                    "minute": 35,
+                    "team": {
+                        "id": 1779,
+                        "name": "SC Corinthians Paulista"
+                    },
+                    "player": {
+                        "id": 1453,
+                        "name": "Ralf"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 42,
+                    "team": {
+                        "id": 1779,
+                        "name": "SC Corinthians Paulista"
+                    },
+                    "player": {
+                        "id": 1454,
+                        "name": "Ángel Romero"
+                    },
+                    "card": "RED_CARD"
+                },
+                {
+                    "minute": 45,
+                    "team": {
+                        "id": 1779,
+                        "name": "SC Corinthians Paulista"
+                    },
+                    "player": {
+                        "id": 1435,
+                        "name": "Pedro Henrique"
+                    },
+                    "card": "YELLOW_CARD"
+                },
+                {
+                    "minute": 89,
+                    "team": {
+                        "id": 1765,
+                        "name": "Fluminense FC"
+                    },
+                    "player": {
+                        "id": 1068,
+                        "name": "Gum"
+                    },
+                    "card": "YELLOW_CARD"
+                }
+            ],
+            "substitutions": [
+                {
+                    "minute": 13,
+                    "team": {
+                        "id": 1765,
+                        "name": "Fluminense FC"
+                    },
+                    "playerOut": {
+                        "id": 13604,
+                        "name": "Everaldo"
+                    },
+                    "playerIn": {
+                        "id": 1089,
+                        "name": "Matheus Alessandro"
+                    }
+                },
+                {
+                    "minute": 63,
+                    "team": {
+                        "id": 1765,
+                        "name": "Fluminense FC"
+                    },
+                    "playerOut": {
+                        "id": 1083,
+                        "name": "Jádson"
+                    },
+                    "playerIn": {
+                        "id": 1070,
+                        "name": "Mateus"
+                    }
+                },
+                {
+                    "minute": 64,
+                    "team": {
+                        "id": 1779,
+                        "name": "SC Corinthians Paulista"
+                    },
+                    "playerOut": {
+                        "id": 1448,
+                        "name": "Pedro Victor"
+                    },
+                    "playerIn": {
+                        "id": 1452,
+                        "name": "Mateus Vital"
+                    }
+                },
+                {
+                    "minute": 64,
+                    "team": {
+                        "id": 1779,
+                        "name": "SC Corinthians Paulista"
+                    },
+                    "playerOut": {
+                        "id": 1453,
+                        "name": "Ralf"
+                    },
+                    "playerIn": {
+                        "id": 392,
+                        "name": "Jonathas"
+                    }
+                },
+                {
+                    "minute": 72,
+                    "team": {
+                        "id": 1765,
+                        "name": "Fluminense FC"
+                    },
+                    "playerOut": {
+                        "id": 1087,
+                        "name": "Douglas"
+                    },
+                    "playerIn": {
+                        "id": 1088,
+                        "name": "Marcos Júnior"
+                    }
+                },
+                {
+                    "minute": 81,
+                    "team": {
+                        "id": 1779,
+                        "name": "SC Corinthians Paulista"
+                    },
+                    "playerOut": {
+                        "id": 1443,
+                        "name": "Jádson"
+                    },
+                    "playerIn": {
+                        "id": 23812,
+                        "name": "Ángelo Araos"
+                    }
+                }
+            ],
+            "referees": [
+                {
+                    "id": 11185,
+                    "name": "Ricardo Marques Ribeiro",
+                    "nationality": null
+                },
+                {
+                    "id": 11186,
+                    "name": "Guilherme Dias Camilo",
+                    "nationality": null
+                },
+                {
+                    "id": 11187,
+                    "name": "Sidmar dos Santos Meurer",
+                    "nationality": null
+                },
+                {
+                    "id": 49499,
+                    "name": "Marconi Helbert Vieira",
+                    "nationality": null
+                }
+            ]
+        }
+    ]
+}
