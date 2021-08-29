@@ -1,29 +1,45 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from '../images/logo.png'; 
 
 export default function Main() {
     return (
-        <div>
+        <div className="container">
+            <h1>Soccer Stats</h1>
             <div className="main-background">
                 <div className="main-box">
-                    <div className="main-logo"></div>
+                    <div className="main-logo"><img src={logo}/></div>
 
-                    <div className="">
-                        <form>
+                    <div className ="main-box">
                             <div>
-                                <label htmlFor="login">Login</label>
-                                <input type="text" name="Login" id="login" />
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <NavLink activeClassName="active" to="/teams">
+                                                TEAMS
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink activeClassName="active" to="/team_calendar">
+                                                My Calendar
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink activeClassName="active" to="/competitions">
+                                                Competitions
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink activeClassName="active" to="/matches">
+                                                Matches
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
-                            <div>
-                                <label htmlFor="password">Password</label>
-                                <input type="text" name="Password" id="password" />
-                            </div>
-                            <div>
-                                <button>Continue</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }

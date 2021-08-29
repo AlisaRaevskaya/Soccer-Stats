@@ -1,28 +1,42 @@
-.link {
-  border-bottom: 5px dotted red;
-  cursor: pointer;
+body{
+  background: url(/src/images/soccer-bg-image.jpeg) no-repeat center center fixed;
+  background-size: cover;
 }
-.menu{
-  display:flex;
+.container{
+  max-width: 1170px;
+  max-height: 100%;
+  margin:0 auto;
+}
+
+.menu ul{
+display:flex;
   flex-direction: row;
   align-items: flex-end;
-  justify-content: flex-end;
-  margin-bottom:15px;
+  justify-content: space-around;
+  margin-bottom:15px; 
+
+}
+.menu li{
+  list-style-type: none;
+  display: flex;
 }
 .menu a{
-color:white;
+color:black;
 text-transform: uppercase;
 padding:5px 17px;
 cursor: pointer;
 text-decoration: none;
 }
-.menu li{
-  list-style-type: none;
+.main-box li{
+  color:black;
+  text-transform: uppercase;
+  padding:5px 17px;
+  cursor: pointer;
+  text-decoration: none;
+  display:flex;
 }
-
-body{
-  background: url("/src/images/mengen-login.jpg") no-repeat center center fixed;
-  background-size: cover;
+.main-box a{
+  list-style-type:none;
 }
 
 .main-background{
@@ -32,7 +46,7 @@ body{
 }
 
 .main-box{
-  height: 343px;
+  height: 400px;
   width: 857px;
   box-shadow: 5px 5px 25px 0 rgba(0,0,0,0.25);
   background: white;
@@ -43,13 +57,7 @@ body{
   border:4px solid black;
   border-radius:2px;
 }
-.main-logo{
-width:40%;
-height:100%;
-margin-top:30%;
-background: url("/src/images/HiltonLogo.png") no-repeat;
-/* background-color: rgba(0,0,0,0.25); */
-}
+
 form
 {
   width:60%;
@@ -61,17 +69,21 @@ form
 label{
   display:block;
 }
-input{
+input, select{
   padding:10px 15px;
 }
 button{
 margin-top: 10px;
 padding:5px 10px;
 }
-.white-color{
-color:white;
-}
+
 .active{
   font-weight: "bold";
 background-color: blueviolet;
+}
+.menuSelect{
+margin-left: 50%;
+padding:30px 20px;
+background-color: burlywood;
+color:black;
 }

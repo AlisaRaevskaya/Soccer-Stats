@@ -4,39 +4,35 @@ import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
     <div>
-      <NavLink exact to="/" activeClassName="active">
-        Home
+      <NavLink exact to="/">
+        HOME
       </NavLink>
       <div className="menu">
         <nav>
           <ul>
             <li>
-              <NavLink
-                activeClassName="active"
-                style={{ listStyle: "none" }}
-                to="/create_new_menu"
-              >
-                Create Menu
+              <NavLink activeClassName="active" to="/teams">
+                TEAMS
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" to="/mymenus">
-                My Menus
+              <NavLink activeClassName="active" to="/team_calendar">
+                My Calendar
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" to="/myinfo">
-                My info
+              <NavLink activeClassName="active" to="/competitions">
+                Competitions
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active" to="/logout">
-                Logout
+              <NavLink activeClassName="active" to="/matches">
+                Matches
               </NavLink>
             </li>
           </ul>
         </nav>
       </div>
     </div>
-  );
+  )
 }
