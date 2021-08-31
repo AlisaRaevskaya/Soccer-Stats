@@ -11,7 +11,7 @@ export default function Competitions() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
-    React.useEffect(getCompetitions, []);
+    useEffect(getCompetitions, []);
 
     function getCompetitions(){
         axios({
@@ -23,7 +23,7 @@ export default function Competitions() {
           .then(function (response) {
             setIsLoaded(true);
             setCompetitions(response.data.competitions);
-            console.log(response.data.competitions);
+            // console.log(competitions);
           })
           .catch(function (error) {
               setIsLoaded(true);
@@ -32,7 +32,8 @@ export default function Competitions() {
           });
       }
       
-    //   if (!competitions) return null;
+      if (!competitions) return null;
+       console.log(competitions);
 
       if (error) {
         return <div>Ошибка</div>;
@@ -42,11 +43,19 @@ export default function Competitions() {
         return (
         <div className="container">
         <h1>Competitions</h1>
-        {/* { competitions.map(item => (
+       { competitions.map(item => (
           <div key={item.id} >
-              {item.id}
+           <li>Area -{item.area.name}</li>  
+             <li> Name -  {item.name}</li>
+             <li> Plan -{item.plan}</li>
+                  {/* <li>{item.currentSeason}</li>  */}
+             {/* <li>{item.currentSeason.winner}</li> */}
+             {/* <li>{item.currentSeason.startDate}</li>
+              <li>{item.currentSeason.endDate}</li> 
+             <li>{item.currentSeason.currentMatchday}</li> 
+              <li>{item.currentSeason.winner}</li> */}
               </div>
-        ))} */}
+        ))} 
       </div>
     );
         }

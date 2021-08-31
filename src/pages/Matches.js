@@ -10,11 +10,11 @@ export default function Matches() {
   const matchesUrl = "https://api.football-data.org/v2/matches";
   const apiKey = process.env.DOTENV.API_KEY;
 
-  const [matches, setMatches] = React.useState([]);
+  const [matches, setMatches] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  React.useEffect(getMatches, []);
+ useEffect(getMatches, []);
 
   function getMatches(){
     axios({
@@ -25,7 +25,7 @@ export default function Matches() {
       .then(function (response) {
         setIsLoaded(true);
         setMatches(response.data.matches);
-        console.log(matches);
+        // console.log(matches);
       })
       .catch(function (error) {
           setIsLoaded(true);
