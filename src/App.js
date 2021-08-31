@@ -11,10 +11,10 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
 
-const competitionUrl ='http://api.football-data.org/v2/competitions';
+
 const teamUrl ='http://api.football-data.org/v2/competitions/{id}/teams'
 const matchPerTeamUrl ='http://api.football-data.org/v2/teams/{id}/matches/';
-const matchesUrl ="https://api.football-data.org/v2/matches";
+
 
   return (
     <Router>
