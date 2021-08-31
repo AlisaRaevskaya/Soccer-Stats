@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import List from "../components/List";
+import Table from "../components/MatchesTable";
 
 export default function Matches() {
   const matchesUrl = "https://api.football-data.org/v2/matches";
@@ -43,21 +43,7 @@ export default function Matches() {
     return (
       <div className="container">
     <h1>Matches</h1>
-      <ul>
-        { matches.map(item => (
-          <div key={item.id} >
-           <li>Competition Name -{item.competition.name}</li>
-           <li>AwayTeam Name - {item.awayTeam.name}</li>
-           <li>homeTeam{ - item.homeTeam.name}</li>
-           <li>Score Winner - {item.score.winner}</li>
-           <li>Score Duretion - {item.score.duration}</li>
-           <li>Season startdate - {item.season.startDate}</li>
-           <li>Season endDate - {item.season.endDate}</li>
-           <li>Stage-{item.stage}</li>
-           <li>Status - {item.status}</li>
-          </div>
-        ))}
-      </ul>
+     <Table matches={matches}/>
       </div>
     );
 }

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Table from "../components/CompetitionTable";
 
 export default function Competitions() {
     const competitionUrl ='http://api.football-data.org/v2/competitions';
@@ -43,19 +44,7 @@ export default function Competitions() {
         return (
         <div className="container">
         <h1>Competitions</h1>
-       { competitions.map(item => (
-          <div key={item.id} >
-           <li>Area -{item.area.name}</li>  
-             <li> Name -  {item.name}</li>
-             <li> Plan -{item.plan}</li>
-                  {/* <li>{item.currentSeason}</li>  */}
-             {/* <li>{item.currentSeason.winner}</li> */}
-             {/* <li>{item.currentSeason.startDate}</li>
-              <li>{item.currentSeason.endDate}</li> 
-             <li>{item.currentSeason.currentMatchday}</li> 
-              <li>{item.currentSeason.winner}</li> */}
-              </div>
-        ))} 
+     <Table competitions={competitions}/>
       </div>
     );
         }
