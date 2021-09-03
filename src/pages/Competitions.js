@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Table from "../components/CompetitionTable";
+import Table from "../components/tables/CompetitionTable";
 
 export default function Competitions() {
     const competitionUrl ='http://api.football-data.org/v2/competitions';
