@@ -50,13 +50,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
     }),
-    // new webpack.DefinePlugin({
-    //   'process.env.API_KEY': JSON.stringify('Donald Hump')
-    // }),
-    // new Dotenv(),
-    // new webpack.DefinePlugin({
-    //   'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
-    // })s
     new webpack.DefinePlugin({
       "process.env.DOTENV": JSON.stringify(dotenv.parsed),
     })

@@ -29,6 +29,7 @@ export default function Matches() {
   const [events, setEvents] = useState([]);
 
   useEffect(getCompetitions, []);
+  useEffect(() => {setEvents(events_info)});
 
   function getCompetitions() {
     axios({
@@ -49,13 +50,12 @@ export default function Matches() {
   }
   if (!competitions) return null;
 
-  getEvents(competitions);
+ let events_info = getEvents(competitions);
 
   function getEvents(array){
    let arrN = array.map((item, index) => {
      return removeItem(item);
     })
-    console.log(arrN);
     return arrN;
   }
 
@@ -63,8 +63,7 @@ export default function Matches() {
    obj = Object.keys(obj).slice(0,3).filter(key=>(key)).map(key => ({[key]:obj[key]}));
     return obj;
   }
-  
-// setEvents(events.concat(new_i));
+
   return (
     <div className="app">
       <h1 className="text-center">React Calendar</h1>
