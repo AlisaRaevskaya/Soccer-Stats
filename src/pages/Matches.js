@@ -21,7 +21,7 @@ export default function Matches() {
   const baseUrl = "https://api.football-data.org/v2/competitions/{id}/matches";
   const apiKey = process.env.DOTENV.API_KEY;
 
-  const [competitions, setCompetitions] = useState([]);
+  const [competitions, setCompetitions] = useState(events_info);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -29,7 +29,6 @@ export default function Matches() {
   const [events, setEvents] = useState([]);
 
   useEffect(getCompetitions, []);
-  useEffect(() => {setEvents(events_info)});
 
   function getCompetitions() {
     axios({
@@ -40,7 +39,6 @@ export default function Matches() {
       .then(function (response) {
         setIsLoaded(true);
         setCompetitions(response.data.competitions);
-        // console.log(response.data.competitions);
       })
       .catch(function (error) {
         setIsLoaded(true);
@@ -48,20 +46,18 @@ export default function Matches() {
         // console.log(error);
       });
   }
-  if (!competitions) return null;
 
- let events_info = getEvents(competitions);
+  if (!competitions){
+    return null;
+}
 
-  function getEvents(array){
-   let arrN = array.map((item, index) => {
-     return removeItem(item);
-    })
-    return arrN;
-  }
+ let events_info = competitions.map((item, index) => {
+ return removeItem(item);
+  });
 
   function removeItem(obj){
-   obj = Object.keys(obj).slice(0,3).filter(key=>(key)).map(key => ({[key]:obj[key]}));
-    return obj;
+   let obj_new = Object.keys(obj).slice(0,3).filter(key=>(key)).map(key => ({[key]:obj[key]}));
+    return obj_new ;
   }
 
   return (
