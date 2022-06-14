@@ -4,9 +4,9 @@ export default function List(props) {
 
     return (
         <ul>
-             {/* {props.events.map((item) => (
-            <li key={item.key}>List ITem</li>
-             ))} */}
+             { props.events.map((item) => (
+            <li key={item.id}>League: {item.name}</li>
+             )) } 
         </ul>
     )
 }

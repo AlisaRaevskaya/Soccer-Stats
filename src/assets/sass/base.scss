@@ -1,0 +1,33 @@
+
+/* reset styles */
+* {
+  color: inherit;
+  margin: 0;
+}
+html, body{
+  height: 100% !important;
+}
+
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px dotted #efefef;
+}
+
+
+
+
+main.page-main{
+  flex: 1 1 auto !important;
+  padding-top: 7rem;
+}
+
