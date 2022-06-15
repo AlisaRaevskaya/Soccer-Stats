@@ -23,11 +23,34 @@ hr {
   border-top: 1px dotted #efefef;
 }
 
-
-
-
 main.page-main{
   flex: 1 1 auto !important;
   padding-top: 7rem;
 }
+// base layout classes
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 
+  // @include xl {
+  //   width: 1170px;
+  // }
+  // @include md {
+  //   width: 970px;
+  // }
+  // @include sm {
+  //   width: 750px;
+  // }
+}
+.container-fluid {
+  // margin: 0 auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.hero-image{
+  margin: 0 auto;
+}

@@ -1,4 +1,3 @@
-
 // theme colors
 $primary: white !default;
 $secondary: #f1f1f1 !default;
@@ -11,6 +10,7 @@ $colors: (
   "secondary": $secondary,
   "error": $error,
   "info": $info,
+  "active": #4AAE9B,
   "blue": #1919e6,
   "red": #e61919,
   "yellow": #e6e619,
@@ -31,7 +31,7 @@ $base-border-thickness: 1px !default;
 $base-border-radius: 20px !default;
 
 // box-shadow
-$base-box-shadow: 1px 3px 5px rgba(0,0,0,0.1) !default;
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1) !default;
 
 // font sizes
 $base-font-size: 1rem !default;

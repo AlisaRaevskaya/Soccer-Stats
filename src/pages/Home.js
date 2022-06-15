@@ -1,19 +1,14 @@
 import React from "react";
 
-import logo from "../assets/images/logo.png";
+import hero_home from "../assets/images/hero-home.jpeg";
 
 export default function Home() {
   return (
-    <div className="container mx-auto max-w-screen-xl px-3 box-border">
+    <div className="container text-center">
       <h2 className="my-3">
         «Приложение для просмотра спортивной статистики «SoccerSTATs»»
       </h2>
-
-      <img
-        src="../assets/images/logo.png"
-        alt="SoccerStats"
-        className="max-w-full h-auto block mx-auto"
-      />
+      <img src={hero_home} alt="SoccerStats" className="hero-image" />
     </div>
   );
 }

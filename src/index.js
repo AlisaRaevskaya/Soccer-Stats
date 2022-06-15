@@ -6,9 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 // import Layout from './layouts/Layout';
 import "../src/assets/sass/app.scss";
 
-//import "./styles/style.css";
-
-
 ReactDOM.render(
     <BrowserRouter>
       <App />

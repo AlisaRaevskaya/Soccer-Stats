@@ -6,6 +6,7 @@
 @import 'base';
 @import 'breakpoints';
 @import 'grid';
+@import 'typography';
 
 // colors
 @import "colors";
@@ -21,4 +22,4 @@
 @import 'components/pagination';
 @import 'components/breadcrumbs';
 @import 'resources';
-@import 'modal';
+@import 'components/modal';

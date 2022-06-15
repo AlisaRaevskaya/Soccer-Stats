@@ -16,7 +16,7 @@
     //     justify-content: center;
     // }
     .site-nav__logo {
-        padding-left: 2rem;
+        padding-left: 1.5rem;
 
         // @include md {
         // padding-top: 32px;
@@ -27,9 +27,13 @@
         justify-content: space-around;
 
         li{
-            flex: 1 1 0;
-            margin-left: 2rem;
+            // flex: 1 1 0;
+            margin-left: 1rem;
         }
     }
    
 }
+.active-nav-link {
+    background-color: #4AAE9B;
+    color: #ffffff;
+  }
