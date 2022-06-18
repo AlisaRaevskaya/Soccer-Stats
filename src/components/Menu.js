@@ -13,24 +13,24 @@ export default function Menu() {
             </NavLink>
           </div>
           <ul className="site-nav__list row">
-            <li className="ml-1 text-hover-blue display-block">
-              <NavLink activeclassNameName="active-nav-link" to="/teams">
-                Teams
-              </NavLink>
-            </li>
-            <li className="ml-1 text-hover-blue display-block">
-              <NavLink activeclassNameName="active-nav-link" to="/team_calendar">
-              Team Calendar
-              </NavLink>
-            </li>
-            <li className="ml-1 text-hover-blue display-block">
-              <NavLink activeclassNameName="active-nav-link" to="/competitions">
+          <li className="ml-1 text-hover-blue display-block">
+              <NavLink activeClassName="active-site-nav__link" to="/competitions">
                 Competitions
               </NavLink>
             </li>
             <li>
-              <NavLink activeclassNameName="active-nav-link" to="/matches">
+              <NavLink activeClassName="active-site-nav__link" to="/matches">
                Competition Calendar
+              </NavLink>
+            </li>
+            <li className="ml-1 text-hover-blue display-block">
+              <NavLink activeClassName="active-site-nav__link" to="/teams">
+                Teams
+              </NavLink>
+            </li>
+            <li className="ml-1 text-hover-blue display-block">
+              <NavLink activeClassName="active-site-nav__link" to="/team_calendar">
+              Team Calendar
               </NavLink>
             </li>
           </ul>

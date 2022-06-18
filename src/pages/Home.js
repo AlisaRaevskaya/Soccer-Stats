@@ -8,7 +8,7 @@ export default function Home() {
       <h2 className="my-3">
         «Приложение для просмотра спортивной статистики «SoccerSTATs»»
       </h2>
-      <img src={hero_home} alt="SoccerStats" className="hero-image" />
+      <img src={hero_home} alt="SoccerStats" className="responsive" />
     </div>
   );
 }

@@ -37,10 +37,10 @@ export default function MatchesTable(props) {
       </tbody>
       <tfoot>
         <tr>
-          <th scope="row" colspan="2">
+          <th scope="row" colSpan="2">
             Total albums
           </th>
-          <td colspan="2">77</td>
+          <td colSpan="2">77</td>
         </tr>
       </tfoot>
     </table>
