@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Table from "../components/tables/TeamTable";
+import Preloader from "../components/PreLoader";
+import { Link } from "react-router-dom";
 
 export default function Teams() {
   const teamsUrl = "http://api.football-data.org/v2/teams";
@@ -19,23 +20,52 @@ export default function Teams() {
       url: `${teamsUrl}`,
       headers: { "X-Auth-Token": `${apiKey}` },
     })
-      .then(function (response) {
-        setIsLoaded(true);
+      .then((response) => {
         setTeams(response.data.teams);
         console.log(teams);
       })
-      .catch(function (error) {
-        setIsLoaded(true);
+      .catch((error) => {
         setError(error);
-        // console.log(error);
+      })
+      .finally(() => {
+        setIsLoaded(true);
       });
   }
-  if (!teams) return null;
-  
-  return (
-    <div className="container">
-      <h1>Teams</h1>
-      <Table teams={teams} />
-    </div>
-  );
+
+  if (error) {
+    return <div className="container">Ошибка: {error.message}</div>;
+  } else if (!isLoaded) {
+    return (
+      <div className="container spinner-container">
+        <Preloader />
+      </div>
+    );
+  } else {
+    return (
+      <div className="container">
+        <h1>Teams</h1>
+
+        <div class="team-cards">
+          {teams &&
+            teams.map((team) => (
+              <div class="card" key={team.id}>
+                <Link to={`team/${team.id}/matches`}>
+                  <div class="card-content">
+                    <p class="card-title">League: {team.name}</p>
+                    <figure class="card-image">
+                      <img
+                        src={team.crestUrl}
+                        alt="{team.name}"
+                        width="96"
+                        height="96"
+                      />
+                    </figure>
+                  </div>
+                </Link>
+              </div>
+            ))}
+        </div>
+      </div>
+    );
+  }
 }

@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/Home";
 import Teams from "./pages/Teams";
 import TeamCalendar from "./pages/TeamCalendar";
-import Matches from "./pages/Matches";
+import CompetitionCalendar from "./pages/CompetitionCalendar";
 import Competitions from "./pages/Competitions";
 import NotFound from "./pages/NotFound";
 
@@ -18,8 +18,8 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/teams" component={Teams} />
-          <Route path="/team_calendar" component={TeamCalendar} />
-          <Route path="/matches" component={Matches} />
+          <Route path="/team/:id/matches/" component={TeamCalendar} />
+          <Route path="competition/:id/matches" component={CompetitionCalendar} />
           <Route path="/competitions" component={Competitions} />
           <Route path="*" component={NotFound} />
         </Switch>

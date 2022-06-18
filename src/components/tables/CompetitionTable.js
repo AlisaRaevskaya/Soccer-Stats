@@ -3,10 +3,15 @@
 import React from "react";
 
 export default function CompetitionTable(props) {
+
+  props.competitions.map((competition) => (
+  console.log(competition.area.name)
+  ));
+
   return (
     <div className="tab-wrapper">
       <table className="resp-tab">
-        <caption>Competitions table</caption>
+        <caption className="py-1">Competitions table</caption>
         <thead>
           <tr>
             <th scope="col">Competition</th>
@@ -16,11 +21,10 @@ export default function CompetitionTable(props) {
         </thead>
         <tbody>
           {props.competitions &&
-            props.competitions.map((item) => (
-              <tr key={item.id}>
-                <th scope="row">{item.name}</th>
-                <td>{item.area.name}</td>
-                <td>{item.plan}</td>
+            props.competitions.map((competition) => (
+              <tr key={competition.id}>
+                <th scope="row">{competition.name}</th>
+                <td>{competition.area.name}</td>
               </tr>
             ))}
         </tbody>

@@ -19,7 +19,7 @@ export default function Menu() {
               </NavLink>
             </li>
             <li>
-              <NavLink activeClassName="active-site-nav__link" to="/matches">
+              <NavLink activeClassName="active-site-nav__link" to="competition/:id/matches">
                Competition Calendar
               </NavLink>
             </li>
@@ -29,7 +29,7 @@ export default function Menu() {
               </NavLink>
             </li>
             <li className="ml-1 text-hover-blue display-block">
-              <NavLink activeClassName="active-site-nav__link" to="/team_calendar">
+              <NavLink activeClassName="active-site-nav__link" to="/team/:id/matches/">
               Team Calendar
               </NavLink>
             </li>

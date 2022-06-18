@@ -3,16 +3,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-import List from '../components/List';
-
-// render() {
-//   <MultipleDatePicker
-//     onSubmit={dates => console.log('selected date', dates)}
-//   />
-// }
-// import "react-calendar/dist/Calendar.css";
-
+import Table from "../components/tables/CompetitionTable";
 
 export default function Matches() {
   const competitionsUrl = "https://api.football-data.org/v2/competitions";
@@ -78,16 +69,11 @@ export default function Matches() {
 // console.log(competitions);
 
   return (
-    <div className="app">
+    <div className="container">
       <h1 className="text-center">React Calendar</h1>
-      <div className="calendar-container">
-        {/* <Calendar onChange={setDate} value={date} /> */}
-        {/* <MultipleDatePicker className="rmdp-prime" showOtherDays onSubmit={date => console.log('selected date', date)}/> */}
-      </div>
-      <p className="text-center">
-        <span className="bold">Selected Date:</span> {date.toDateString()}
-      </p>
-      <List events = {competitions}/>
+      <div className="teams-calendar">
+                {/* <Table competitions={competitions} /> */}
+    </div>
     </div>
   );
 }

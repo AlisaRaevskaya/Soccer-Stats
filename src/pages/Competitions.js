@@ -1,9 +1,8 @@
 // Список лиг/соревнований
 
 import React, { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Table from "../components/tables/CompetitionTable";
 import Preloader from "../components/PreLoader";
 
 export default function Competitions() {
@@ -17,7 +16,6 @@ export default function Competitions() {
   useEffect(getCompetitions, []);
 
   function getCompetitions() {
-
     axios({
       method: "get",
       url: `${competitionUrl}`,
@@ -50,7 +48,21 @@ export default function Competitions() {
     return (
       <div className="container">
         <h1>Competitions</h1>
-        <Table competitions={competitions} />
+        <div class="competition-cards">
+          {competitions &&
+            competitions.map((competition) => (
+              <div class="card" key={competition.id}>
+                <Link to={`competition/${competition.id}/matches`}>
+                  <div class="card-content">
+                    <p class="card-title">League: {competition.name}</p>
+                    <p class="card-subtitle">
+                      Country: {competition.area.name}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+        </div>
       </div>
     );
   }
