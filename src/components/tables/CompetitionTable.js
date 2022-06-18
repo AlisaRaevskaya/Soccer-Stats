@@ -23,7 +23,7 @@ export default function CompetitionTable(props) {
           {props.competitions &&
             props.competitions.map((competition) => (
               <tr key={competition.id}>
-                <th scope="row">{competition.name}</th>
+                <td scope="row">{competition.name}</td>
                 <td>{competition.area.name}</td>
               </tr>
             ))}

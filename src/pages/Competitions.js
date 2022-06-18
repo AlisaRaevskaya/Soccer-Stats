@@ -52,7 +52,7 @@ export default function Competitions() {
           {competitions &&
             competitions.map((competition) => (
               <div class="card" key={competition.id}>
-                <Link to={`competition/${competition.id}/matches`}>
+                <Link to={`/competition/${competition.id}/matches`}>
                   <div class="card-content">
                     <p class="card-title">League: {competition.name}</p>
                     <p class="card-subtitle">

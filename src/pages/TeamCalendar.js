@@ -1,11 +1,13 @@
-// - Календарь одной команды - список матчей команды
-///v2/teams/{id}/matches/
-//Show all matches for a particular team
-
 import React, { useEffect, useState } from "react";
-
+import {Route, Link, Routes, useParams} from 'react-router-dom';
 
 export default function TeamCalendar(props) {
+
+  let { id } = useParams(); 
+
+  useEffect(() => {
+     console.log(`/something/${id}`);
+  }, []);
 
     return (
         <div className="container">

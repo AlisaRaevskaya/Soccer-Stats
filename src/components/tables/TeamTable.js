@@ -3,46 +3,61 @@
 import React from "react";
 
 export default function TeamTable(props) {
+  
+  function setTime(dt) {
+    let d = new Date(dt);
+    let minutes =
+      d.getUTCMinutes() == "0" ? d.getUTCMinutes() + "0" : d.getUTCMinutes();
+    return d.getUTCHours() + " : " + minutes;
+  }
+  function setDate(dt) {
+    //console.log(dt);
+    let d = new Date(dt);
+    let month = d.getMonth() + 1;
+    let date = `${d.getDate()}-${month}-${d.getFullYear()}`;
+    return date;
+  }
+
   return (
     <table className="styled-table">
-      <caption>Matches table</caption>
+      <caption>Матчи</caption>
       <thead>
         <tr>
-          <th scope="col">Competition Name</th>
-          <th scope="col">AwayTeam Name </th>
-          <th scope="col">Area Name</th>
-          <th>homeTeam</th>
-          <th>Score Winner</th>
-          <th>Score Duration </th>
-          <th>Season startdate </th>
-          <th>Season endDate</th>
-          <th>Stage</th>
-          <th>Status</th>
+          <th scope="col">Дата</th>
+          <th scope="col">Время</th>
+          <th scope="col">Статус</th>
+          <th scope="col">Команды участников</th>
+          <th scope="col">Счёт в основное время</th>
+          <th scope="col">Cчёт в дополнительное время</th>
+          <th scope="col">Пенальти</th>
         </tr>
       </thead>
       <tbody>
-        {props.teams.map((item) => (
-          <tr key={item.id}>
-            <td scope="row">Competition Name -{item.name}</td>
-            <td>AwayTeam Name - {item.shortName}</td>
-            <td>homeTeam- {item.clubColors}</td>
-            <td>Score Winner - {item.founded}</td>
-            <td>Score Duration - {item.tla}</td>
-            <td>Season startdate - {item.area.name}</td>
-            <td>Season endDate - {item.email}</td>
-            <td>Stage-{item.phone}</td>
-            <td>Status - {item.website}</td>
-          </tr>
-        ))}
+        {props.teams &&
+          props.teams.map((item) => (
+            <tr key={item.id}>
+              <td scope="row">Дата -{setDate(match.utcDate)}</td>
+              <td>Время - {setTime(match.utcDate)}</td>
+              <td>Статус - {item.status}</td>
+              <td>
+                 Командный счет - {match.homeTeam.name} - {match.awayTeam.name}
+              </td>
+              <td>
+                Счёт в основное время - {match.score.fullTime.homeTeam} :
+                {match.score.fullTime.awayTeam}
+              </td>
+              <td>
+                Счет в дополнительное время - {match.score.extraTime.homeTeam} :
+                {match.score.extraTime.awayTeam}
+              </td>
+              <td>
+                Пенальти - {match.score.penalties.homeTeam} :
+                {match.score.penalties.awayTeam}
+              </td>
+            </tr>
+          ))}
       </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row" colspan="2">
-            Total albums
-          </th>
-          <td colspan="2">77</td>
-        </tr>
-      </tfoot>
+      <tfoot></tfoot>
     </table>
   );
 }

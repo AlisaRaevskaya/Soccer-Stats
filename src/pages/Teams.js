@@ -32,6 +32,7 @@ export default function Teams() {
       });
   }
 
+
   if (error) {
     return <div className="container">Ошибка: {error.message}</div>;
   } else if (!isLoaded) {
@@ -49,13 +50,13 @@ export default function Teams() {
           {teams &&
             teams.map((team) => (
               <div class="card" key={team.id}>
-                <Link to={`team/${team.id}/matches`}>
+                <Link to={`/team/${team.id}/matches`}>
                   <div class="card-content">
                     <p class="card-title">League: {team.name}</p>
                     <figure class="card-image">
                       <img
                         src={team.crestUrl}
-                        alt="{team.name}"
+                        alt={team.name}
                         width="96"
                         height="96"
                       />

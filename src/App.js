@@ -1,5 +1,6 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import ReactDOM from 'react-dom';
+import { Route,  Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -11,20 +12,21 @@ import Competitions from "./pages/Competitions";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
+
   return (
-    <>
-      <Header />
-      <main className="page-main">
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/teams" component={Teams} />
-          <Route path="/team/:id/matches/" component={TeamCalendar} />
-          <Route path="competition/:id/matches" component={CompetitionCalendar} />
-          <Route path="/competitions" component={Competitions} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </main>
-      <Footer />
-    </>
+    <div className="App">
+        <Header />
+        <main className="page-main">
+        <Routes>
+            <Route path="/" element={<HomePage/>} />
+            <Route path="teams" element={<Teams/>} />
+            <Route path="competitions" element={<Competitions/>} />
+            <Route path="team/:id/matches/" element={<TeamCalendar/>} />
+            <Route path="competition/:id/matches" element={<CompetitionCalendar/>} />
+            <Route path="*" element={<NotFound/>} />
+            </Routes>
+        </main>
+        <Footer />
+      </div>
   );
 }

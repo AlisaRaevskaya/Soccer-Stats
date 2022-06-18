@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "../components/tables/CompetitionTable";
 
-export default function Matches() {
+export default function CompetitionCalendar() {
   const competitionsUrl = "https://api.football-data.org/v2/competitions";
   const baseUrl = "https://api.football-data.org/v2/competitions/{id}/matches";
   const apiKey = process.env.DOTENV.API_KEY;
@@ -17,9 +17,9 @@ export default function Matches() {
   const [id, setCompetitionId] = useState([]);
   const [events, setEvents] = useState([]);
 
-  useEffect(getCompetitions, []);
+  useEffect(getMatches, []);
 
-  function getCompetitions() {
+  function getMatches() {
     axios({
       method: "get",
       url: `${competitionsUrl}`,
@@ -35,38 +35,6 @@ export default function Matches() {
         // console.log(error);
       });
   }
-
-  if (!competitions){
-    return null;
-}
-
- let events_info = competitions.map((item, index) => {
- return removeItem(item);
-  });
-
-  function removeItem(obj){
-   let obj_new = Object.keys(obj).slice(0,3).filter(key=>(key)).map(key => ({[key]:obj[key]}));
-    return obj_new ;
-  }
-
-  // function getMatches() {
-  //   axios({
-  //     method: "get",
-  //     url: `${baseUrl}`,
-  //     headers: { "X-Auth-Token": `${apiKey}` },
-  //   })
-  //     .then(function (response) {
-  //       setIsLoaded(true);
-  //       setCompetitions(response);
-  //     })
-  //     .catch(function (error) {
-  //       setIsLoaded(true);
-  //       setError(error);
-  //       // console.log(error);
-  //     });
-  // }
-
-// console.log(competitions);
 
   return (
     <div className="container">
