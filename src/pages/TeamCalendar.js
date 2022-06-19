@@ -6,7 +6,7 @@ export default function TeamCalendar(props) {
   let { id } = useParams(); 
 
   useEffect(() => {
-     console.log(`/something/${id}`);
+     console.log(id);
   }, []);
 
     return (
@@ -14,5 +14,4 @@ export default function TeamCalendar(props) {
             <h1>Team Calendar</h1>
         </div>
     )
-
 }

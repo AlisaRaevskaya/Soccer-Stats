@@ -4,13 +4,12 @@
     flex-direction:row;
     justify-content: center;
     padding-top: 2rem;
-  }
+  
   
   .pagination-item {
     display: inline-block;
   }
-  
-  // .active {
-  //   background-color: #4AAE9B;
-  //   color: #ffffff;
-  // }
+  button:hover{
+    background-color: #4AAE9B;
+  }
+}

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Preloader from "../components/PreLoader";
 import { Link } from "react-router-dom";
+import Pagination from "../components/Pagination";
 
 export default function Teams() {
   const teamsUrl = "http://api.football-data.org/v2/teams";
@@ -12,6 +13,9 @@ export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [totalRecords, setTotalRecords] = useState(null);
+
+  const paginationObject = { currentPage:1 , totalRecords: totalRecords, perPage: 9, posts: teams}
 
   useEffect(getTeams, []);
   function getTeams() {
@@ -22,6 +26,7 @@ export default function Teams() {
     })
       .then((response) => {
         setTeams(response.data.teams);
+        setTotalRecords(response.data.teams.length)
         console.log(teams);
       })
       .catch((error) => {
@@ -31,7 +36,6 @@ export default function Teams() {
         setIsLoaded(true);
       });
   }
-
 
   if (error) {
     return <div className="container">Ошибка: {error.message}</div>;
@@ -50,7 +54,7 @@ export default function Teams() {
           {teams &&
             teams.map((team) => (
               <div class="card" key={team.id}>
-                <Link to={`/team/${team.id}/matches`}>
+                <Link to={`/teams/${team.id}`}>
                   <div class="card-content">
                     <p class="card-title">League: {team.name}</p>
                     <figure class="card-image">
@@ -66,6 +70,7 @@ export default function Teams() {
               </div>
             ))}
         </div>
+        <Pagination paginationObject ={paginationObject}/>
       </div>
     );
   }
