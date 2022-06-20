@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function Pagination(props) {
-  const { currentPage, totalRecords, perPage, posts } = props.paginationObject;
+  const { currentPage, perPage, posts } = props.paginationObject;
+  let totalRecords = posts.length;
   let ButtonCount = Math.ceil(totalRecords / perPage);
 
   const getButtonsCount = (ButtonCount) => {
@@ -12,17 +13,13 @@ export default function Pagination(props) {
     return content;
   };
 
-function paginate(posts, page, perPage) {
-    let from = page * perPage - perPage;
-    let to = page * perPage;
-    return posts.slice(from, to);
-  };
-
- function onPageClick(event) {
-  currentPage = event;
-  };
-
-  console.log(getButtonsCount(ButtonCount));
+  function onPageClick(num){
+    console.log(num);
+    //currentPage = num;
+  }
+  
+//   currentPage = event.target.value;
+//   console.log(getButtonsCount(ButtonCount));
 
   return (
     <div class="pagination">
@@ -36,7 +33,7 @@ function paginate(posts, page, perPage) {
           <ul>
             {getButtonsCount(ButtonCount).map((num) => (
               <li class="pagination-item" key={num}>
-                <button type="button">{num}</button>
+                <button type="button" onClick={() => onPageClick(num)}>{num}</button>
               </li>
             ))}
           </ul>

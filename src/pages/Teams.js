@@ -13,9 +13,16 @@ export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [totalRecords, setTotalRecords] = useState(null);
 
-  const paginationObject = { currentPage:1 , totalRecords: totalRecords, perPage: 9, posts: teams}
+  const paginationObject = { currentPage:1 , perPage: 9, posts: teams}
+
+function paginate(posts, page, perPage) {
+  let from = page * perPage - perPage;
+  let to = page * perPage;
+  return posts.slice(from, to);
+};
+
+const displayedTeams = paginate(teams);
 
   useEffect(getTeams, []);
   function getTeams() {
@@ -26,8 +33,7 @@ export default function Teams() {
     })
       .then((response) => {
         setTeams(response.data.teams);
-        setTotalRecords(response.data.teams.length)
-        console.log(teams);
+        //console.log(teams);
       })
       .catch((error) => {
         setError(error);
