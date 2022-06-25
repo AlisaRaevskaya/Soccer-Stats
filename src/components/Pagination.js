@@ -1,9 +1,12 @@
-import React from "react";
+import React,  { useEffect, useState, useMemo} from "react";
 
 export default function Pagination(props) {
-  const { currentPage, perPage, posts } = props.paginationObject;
+  const { perPage, posts } = props.paginationObject;
+
   let totalRecords = posts.length;
   let ButtonCount = Math.ceil(totalRecords / perPage);
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getButtonsCount = (ButtonCount) => {
     let content = [];
@@ -14,11 +17,21 @@ export default function Pagination(props) {
   };
 
   function onPageClick(num){
-    console.log(num);
-    //currentPage = num;
+    setCurrentPage(num);
   }
-  
-//   currentPage = event.target.value;
+
+  function paginate(posts, page, perPage) {
+    let from = page * perPage - perPage;
+    let to = page * perPage;
+    return posts.slice(from, to);
+  };
+
+  const pages = useMemo(() => {
+    return paginate(posts, currentPage, perPage);
+  }, [posts, currentPage, perPage]);
+
+  props.onPageClicked(pages);
+
 //   console.log(getButtonsCount(ButtonCount));
 
   return (

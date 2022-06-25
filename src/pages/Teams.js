@@ -13,18 +13,17 @@ export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [displayedTeams, setDisplayedTeams] = useState([]);
+  const perPage = 9;
 
-  const paginationObject = { currentPage:1 , perPage: 9, posts: teams}
+  const pageClickHandler=(posts)=>{ setDisplayedTeams(posts)};
 
-function paginate(posts, page, perPage) {
-  let from = page * perPage - perPage;
-  let to = page * perPage;
-  return posts.slice(from, to);
-};
+  const paginationObject = { perPage: perPage, posts: teams }
 
-const displayedTeams = paginate(teams);
+  console.log(displayedTeams);
 
   useEffect(getTeams, []);
+
   function getTeams() {
     axios({
       method: "get",
@@ -33,7 +32,8 @@ const displayedTeams = paginate(teams);
     })
       .then((response) => {
         setTeams(response.data.teams);
-        //console.log(teams);
+        setDisplayedTeams(response.data.teams.slice(0, 9));
+        // console.log(displayedTeams);
       })
       .catch((error) => {
         setError(error);
@@ -57,8 +57,8 @@ const displayedTeams = paginate(teams);
         <h1>Teams</h1>
 
         <div class="team-cards">
-          {teams &&
-            teams.map((team) => (
+          {displayedTeams &&
+            displayedTeams.map((team) => (
               <div class="card" key={team.id}>
                 <Link to={`/teams/${team.id}`}>
                   <div class="card-content">
@@ -76,7 +76,7 @@ const displayedTeams = paginate(teams);
               </div>
             ))}
         </div>
-        <Pagination paginationObject ={paginationObject}/>
+        <Pagination paginationObject ={paginationObject} onPageClicked ={pageClickHandler}/>
       </div>
     );
   }
