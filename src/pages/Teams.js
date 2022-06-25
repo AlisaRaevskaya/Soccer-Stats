@@ -14,7 +14,7 @@ export default function Teams() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedTeams, setDisplayedTeams] = useState([]);
-  const perPage = 9;
+  const perPage = 10;
 
   const pageClickHandler=(posts)=>{ setDisplayedTeams(posts)};
 
