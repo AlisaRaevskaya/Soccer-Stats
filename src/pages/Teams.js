@@ -16,9 +16,11 @@ export default function Teams() {
   const [displayedTeams, setDisplayedTeams] = useState([]);
   const perPage = 10;
 
-  const pageClickHandler=(posts)=>{ setDisplayedTeams(posts)};
+  const pageClickHandler = (posts) => {
+    setDisplayedTeams(posts);
+  };
 
-  const paginationObject = { perPage: perPage, posts: teams }
+  const paginationObject = { perPage: perPage, posts: teams };
 
   // console.log(displayedTeams);
 
@@ -31,8 +33,13 @@ export default function Teams() {
       headers: { "X-Auth-Token": `${apiKey}` },
     })
       .then((response) => {
-        setTeams(response.data.teams);
-        setDisplayedTeams(response.data.teams.slice(0, perPage));
+        let teamsPosts = response.data?.teams.map((item) => {
+          const { id, name, crestUrl } = item;
+          return (item = { id: id, name: name, crestUrl: crestUrl });
+        });
+        console.log(teamsPosts);
+        setTeams(teamsPosts);
+        setDisplayedTeams(teamsPosts.slice(0, perPage));
       })
       .catch((error) => {
         setError(error);
@@ -75,7 +82,10 @@ export default function Teams() {
               </div>
             ))}
         </div>
-        <Pagination paginationObject ={paginationObject} onPageClicked ={pageClickHandler}/>
+        <Pagination
+          paginationObject={paginationObject}
+          onPageClicked={pageClickHandler}
+        />
       </div>
     );
   }

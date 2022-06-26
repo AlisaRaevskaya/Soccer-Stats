@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
+import Search from "../components/Search";
 
 export default function Competitions() {
   const competitionUrl = "http://api.football-data.org/v2/competitions";
@@ -16,9 +17,11 @@ export default function Competitions() {
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const perPage = 9;
 
-  const pageClickHandler=(posts)=>{ setDisplayedCompetitions(posts)};
+  const pageClickHandler = (posts) => {
+    setDisplayedCompetitions(posts);
+  };
 
-  const paginationObject = { perPage: perPage, posts: competitions }
+  const paginationObject = { perPage: perPage, posts: competitions };
 
   useEffect(getCompetitions, []);
 
@@ -30,8 +33,16 @@ export default function Competitions() {
       responseType: "json",
     })
       .then((response) => {
-        setCompetitions(response.data.competitions);
-        setDisplayedCompetitions(response.data.competitions.slice(0, perPage));
+        const competitionsPosts = response.data?.competitions.map(
+          (item) =>
+            (item = {
+              id: item.id,
+              name: item.name,
+              area: item.area.name,
+            })
+        );
+        setCompetitions(competitionsPosts);
+        setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
       })
       .catch((error) => {
         setError(error);
@@ -55,6 +66,7 @@ export default function Competitions() {
     return (
       <div className="container">
         <h1>Competitions</h1>
+        <Search />
         <div class="competition-cards">
           {displayedCompetitions &&
             displayedCompetitions.map((competition) => (
@@ -70,7 +82,10 @@ export default function Competitions() {
               </div>
             ))}
         </div>
-        <Pagination paginationObject ={paginationObject} onPageClicked ={pageClickHandler}/>
+        <Pagination
+          paginationObject={paginationObject}
+          onPageClicked={pageClickHandler}
+        />
       </div>
     );
   }
