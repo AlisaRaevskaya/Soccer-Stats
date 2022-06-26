@@ -20,7 +20,7 @@ export default function Teams() {
 
   const paginationObject = { perPage: perPage, posts: teams }
 
-  console.log(displayedTeams);
+  // console.log(displayedTeams);
 
   useEffect(getTeams, []);
 
@@ -32,8 +32,7 @@ export default function Teams() {
     })
       .then((response) => {
         setTeams(response.data.teams);
-        setDisplayedTeams(response.data.teams.slice(0, 9));
-        // console.log(displayedTeams);
+        setDisplayedTeams(response.data.teams.slice(0, perPage));
       })
       .catch((error) => {
         setError(error);

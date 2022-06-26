@@ -2,12 +2,10 @@ import React,  { useEffect, useState, useMemo} from "react";
 
 export default function Pagination(props) {
   const { perPage, posts } = props.paginationObject;
+  const [currentPage, setCurrentPage] = useState({ pageNumber: 1, isActive: false });
 
   let totalRecords = posts.length;
   let ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
-  console.log(ButtonCount);
-
-  const [currentPage, setCurrentPage] = useState(1);
 
   const getButtonsCount = (ButtonCount) => {
     let content = [];
@@ -18,23 +16,24 @@ export default function Pagination(props) {
   };
 
   function onPageClick(num){
-    setCurrentPage(num);
+    setCurrentPage({ pageNumber: num, isActive: true });
   }
 
   function paginate(posts, page, perPage) {
-    let from = page * perPage - perPage;
-    let to = page * perPage;
+    let from = page.pageNumber * perPage - perPage;
+    let to = page.pageNumber * perPage;
     return posts.slice(from, to);
   };
+
   function setPrevious(){
-    if (currentPage != 1){
-      setCurrentPage(currentPage - 1);
+    if (currentPage.pageNumber != 1){
+      setCurrentPage(currentPage.pageNumber - 1);
     }
   }
 
   function setNext(){
-    if (currentPage != ButtonCount){
-      setCurrentPage(currentPage + 1);
+    if (currentPage.pageNumber != ButtonCount){
+      setCurrentPage(currentPage.pageNumber + 1);
     }
   
   }
@@ -43,8 +42,6 @@ export default function Pagination(props) {
   }, [posts, currentPage, perPage]);
 
   props.onPageClicked(pages);
-
-//   console.log(getButtonsCount(ButtonCount));
 
   return (
     <div class="pagination">
@@ -58,7 +55,7 @@ export default function Pagination(props) {
           <ul>
             {getButtonsCount(ButtonCount).map((num) => (
               <li class="pagination-item" key={num}>
-                <button type="button" onClick={() => onPageClick(num)}>{num}</button>
+                <button type="button" className={currentPage.pageNumber == num && currentPage.isActive ? "page-active" : ""} onClick={() => onPageClick(num)}>{num}</button>
               </li>
             ))}
           </ul>
