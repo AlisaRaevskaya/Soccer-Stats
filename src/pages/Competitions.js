@@ -33,14 +33,10 @@ export default function Competitions() {
       responseType: "json",
     })
       .then((response) => {
-        const competitionsPosts = response.data?.competitions.map(
-          (item) =>
-            (item = {
-              id: item.id,
-              name: item.name,
-              area: item.area.name,
-            })
-        );
+        let competitionsPosts= response.data?.teams.map((item) => {
+          const { id, name, area } = item;
+          return (item = { id: id, name: name, area: area.name });
+        });
         setCompetitions(competitionsPosts);
         setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
       })
