@@ -13,7 +13,7 @@ export default function CompetitionCalendar() {
     <div className="container">
       <h1 className="text-center">React Calendar</h1>
       <div className="teams-calendar">
-                {/* <Table competitions={competitions} /> */}
+      <Table competitions={competitions} /> 
     </div>
     </div>
   );
