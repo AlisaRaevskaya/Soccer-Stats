@@ -5,8 +5,8 @@ export default function Footer() {
     <>
     <footer className="page-footer bg-secondary">
       <div className="container-fluid">
-        <div class="page-footer__content">
-          <div class="page-footer__inner"></div>
+        <div className="page-footer__content">
+          <div className="page-footer__inner"></div>
         </div>
         <div className="page-footer__copyright">
           <p className="mb-2">

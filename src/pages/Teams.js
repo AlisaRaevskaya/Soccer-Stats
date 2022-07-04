@@ -37,7 +37,6 @@ export default function Teams() {
           const { id, name, crestUrl } = item;
           return (item = { id: id, name: name, crestUrl: crestUrl });
         });
-        console.log(teamsPosts);
         setTeams(teamsPosts);
         setDisplayedTeams(teamsPosts.slice(0, perPage));
       })
@@ -62,14 +61,14 @@ export default function Teams() {
       <div className="container">
         <h1>Teams</h1>
 
-        <div class="team-cards">
+        <div className="team-cards">
           {displayedTeams &&
             displayedTeams.map((team) => (
-              <div class="card" key={team.id}>
+              <div className="card" key={team.id}>
                 <Link to={`/teams/${team.id}`}>
-                  <div class="card-content">
-                    <p class="card-title">League: {team.name}</p>
-                    <figure class="card-image">
+                  <div className="card-content">
+                    <p className="card-title">League: {team.name}</p>
+                    <figure className="card-image">
                       <img
                         src={team.crestUrl}
                         alt={team.name}

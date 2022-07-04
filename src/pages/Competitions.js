@@ -11,7 +11,7 @@ export default function Competitions() {
   const competitionUrl = "http://api.football-data.org/v2/competitions";
   const apiKey = process.env.DOTENV.API_KEY;
 
-  const [competitions, setCompetitions] = React.useState([]);
+  const [competitions, setCompetitions] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
@@ -21,6 +21,26 @@ export default function Competitions() {
     setDisplayedCompetitions(posts);
   };
 
+  const searchSubmitHandler = (postObj)=>{
+   // console.log(postObj);
+    let search_results = [];
+    
+   postObj.result_posts.forEach((el, index, arr) => {
+      search_results[index] = {
+        id: arr[index][0],
+        name: arr[index][1],
+        area: arr[index][2],
+      };
+    });
+
+    // this.posts = search_results;
+    // this.total = this.posts.length;
+    // this.$refs.not_found.innerText = obj.no_results_text;
+
+  }
+  const handleClearInput = (postObj)=>{
+
+  }
   const paginationObject = { perPage: perPage, posts: competitions };
 
   useEffect(getCompetitions, []);
@@ -33,7 +53,7 @@ export default function Competitions() {
       responseType: "json",
     })
       .then((response) => {
-        let competitionsPosts= response.data?.teams.map((item) => {
+        let competitionsPosts= response.data?.competitions.map((item) => {
           const { id, name, area } = item;
           return (item = { id: id, name: name, area: area.name });
         });
@@ -62,15 +82,15 @@ export default function Competitions() {
     return (
       <div className="container">
         <h1>Competitions</h1>
-        <Search />
-        <div class="competition-cards">
+        <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} handleClearInput={handleClearInput}/>
+        <div className="competition-cards">
           {displayedCompetitions &&
             displayedCompetitions.map((competition) => (
-              <div class="card" key={competition.id}>
+              <div className="card" key={competition.id}>
                 <Link to={`/competitions/${competition.id}`}>
-                  <div class="card-content">
-                    <p class="card-title">League: {competition.name}</p>
-                    <p class="card-subtitle">
+                  <div className="card-content">
+                    <p className="card-title">League: {competition.name}</p>
+                    <p className="card-subtitle">
                       Country: {competition.area.name}
                     </p>
                   </div>
