@@ -1,15 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import searchIcon from "../assets/svg/search.svg";
 
 export default function Search(props) {
-  const [searchString, setSearchString] = React.useState("");
-  const [searchPosts, setSearchPosts] = useState([]);
-  const [noResultText, setNoResultText] = useState("");
-  const inputRef = useRef(null);
+  const [searchString, setSearchString] = useState("");
 
   function createObjectForFilter(arr) {
-    let result_array = arr.map((item) => (item = Object.values(item)));
-    result_array = result_array.map((item) => (item = String(item)));
+    let result_array = arr.map((item) => (item = String(Object.values(item))));
+   // console.log('result_array', result_array);
     return result_array;
   }
 
@@ -22,59 +19,38 @@ export default function Search(props) {
 
     let result_array = createObjectForFilter(arr);
 
-    let results = result_array.filter((post) => {
-      return post.toLowerCase().includes(strLowCase);
-    });
-    //  console.log(`filter ${splitArr(results)}`);
+    let results = result_array.filter((post) => (post.toLowerCase().includes(strLowCase)));
+   
     return splitArr(results);
-  }
-
-  function handleClearInput(value) {
-    setSearchString(value);
-    //console.log(value);
-
-    if (!value) {
-      return {
-        result_posts: props.posts,
-        no_results_text: " ",
-      };
-    }
   }
 
   function handleSearchSubmit(event) {
     event.preventDefault();
-    setSearchString(inputRef.current.value);
-    //nputRef.current.value = 'New value';
 
     // 👇️ access input value
-    console.log('string' + searchString);
+   // console.log(`string + ${searchString}`);
 
     let searchResults = filterPosts(props.posts);
-    console.log(searchResults);
+    let noResultText = " ";
+    
+    //console.log('searchResults' + searchResults);
 
     if (searchString) {
-      setSearchPosts(searchResults);
-
-      // if (!searchPosts.length) {
-      //   setNoResultText("No posts found");
-      // }
-      console.log(searchPosts);
+      if (!searchResults.length) {
+        noResultText = "No posts found";
+      }
+     // console.log(searchPosts);
     } else {
-      setSearchPosts(splitArr(createObjectForFilter(props.posts)));
-      setNoResultText(" ");
+      searchResults = splitArr(createObjectForFilter(props.posts));
     }
 
-    let nn = {
-      result_posts: searchPosts,
+    let postObj = {
+      result_posts: searchResults,
       no_results_text: noResultText,
     };
 
-    console.log(nn);
-
-    return {
-      result_posts: searchPosts,
-      no_results_text: noResultText,
-    };
+    console.log(postObj);
+   props.handleSearchSubmit(postObj);
   }
 
   return (
@@ -89,10 +65,9 @@ export default function Search(props) {
           type="text"
           className="site-search__input"
           value={searchString}
-          ref={inputRef}
           name="searchString"
           placeholder="Search..."
-          onChange={(e) => handleClearInput(e.target.value)}
+          onChange={(e) =>  setSearchString(e.target.value)}
         />
         <button type="submit" className="site-search__btn" value="Submit">
           <img src={searchIcon} className="site-search__icon" />

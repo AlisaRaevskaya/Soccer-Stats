@@ -21,11 +21,10 @@ export default function Competitions() {
     setDisplayedCompetitions(posts);
   };
 
-  const searchSubmitHandler = (postObj)=>{
-   // console.log(postObj);
+  const searchSubmitHandler = (postObj) => {
     let search_results = [];
-    
-   postObj.result_posts.forEach((el, index, arr) => {
+
+    postObj.result_posts.forEach((el, index, arr) => {
       search_results[index] = {
         id: arr[index][0],
         name: arr[index][1],
@@ -33,15 +32,11 @@ export default function Competitions() {
       };
     });
 
-    // this.posts = search_results;
-    // this.total = this.posts.length;
-    // this.$refs.not_found.innerText = obj.no_results_text;
+    setDisplayedCompetitions(search_results);
 
-  }
-  const handleClearInput = (postObj)=>{
+  };
 
-  }
-  const paginationObject = { perPage: perPage, posts: competitions };
+  const paginationObject = { perPage: perPage, posts: displayedCompetitions };
 
   useEffect(getCompetitions, []);
 
@@ -53,7 +48,7 @@ export default function Competitions() {
       responseType: "json",
     })
       .then((response) => {
-        let competitionsPosts= response.data?.competitions.map((item) => {
+        let competitionsPosts = response.data?.competitions.map((item) => {
           const { id, name, area } = item;
           return (item = { id: id, name: name, area: area.name });
         });
@@ -67,7 +62,6 @@ export default function Competitions() {
       .finally(() => {
         setIsLoaded(true);
       });
-    // return () => cleanupFunction = true;
   }
 
   if (error) {
@@ -82,7 +76,7 @@ export default function Competitions() {
     return (
       <div className="container">
         <h1>Competitions</h1>
-        <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} handleClearInput={handleClearInput}/>
+        <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
         <div className="competition-cards">
           {displayedCompetitions &&
             displayedCompetitions.map((competition) => (
@@ -91,7 +85,7 @@ export default function Competitions() {
                   <div className="card-content">
                     <p className="card-title">League: {competition.name}</p>
                     <p className="card-subtitle">
-                      Country: {competition.area.name}
+                      Country: {competition.area}
                     </p>
                   </div>
                 </Link>

@@ -1,10 +1,15 @@
-import React,  { useEffect, useState, useMemo} from "react";
+import React, { useEffect, useState, useMemo } from "react";
+
+const defaultPage = {
+  pageNumber: 1,
+  isActive: true,
+};
 
 export default function Pagination(props) {
   const { perPage, posts } = props.paginationObject;
-  const [currentPage, setCurrentPage] = useState({ pageNumber: 1, isActive: false });
+  const [currentPage, setCurrentPage] = useState(defaultPage);
 
-  let totalRecords = posts.length;
+  const totalRecords = posts.length;
   let ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
 
   const getButtonsCount = (ButtonCount) => {
@@ -15,54 +20,73 @@ export default function Pagination(props) {
     return content;
   };
 
-  function onPageClick(num){
+  const onPageClick = (num) => {
     setCurrentPage({ pageNumber: num, isActive: true });
-  }
+  };
 
-  function paginate(posts, page, perPage) {
+  const paginate = (posts, page, perPage) => {
     let from = page.pageNumber * perPage - perPage;
     let to = page.pageNumber * perPage;
     return posts.slice(from, to);
   };
 
-  function setPrevious(){
-    if (currentPage.pageNumber != 1){
+  const setPrevious = () => {
+    if (currentPage.pageNumber != 1) {
       setCurrentPage(currentPage.pageNumber - 1);
     }
-  }
+  };
 
-  function setNext(){
-    if (currentPage.pageNumber != ButtonCount){
+  const setNext = () => {
+    if (currentPage.pageNumber != ButtonCount) {
       setCurrentPage(currentPage.pageNumber + 1);
     }
-  
-  }
+  };
   const pages = useMemo(() => {
     return paginate(posts, currentPage, perPage);
   }, [posts, currentPage, perPage]);
 
-  props.onPageClicked(pages);
+  useEffect(() => {
+    props.onPageClicked(pages);
+  }, [currentPage]);
+
+  // useEffect(()=>{
+  //   setCurrentPage(defaultPage);
+  // }, [totalRecords]);
 
   return (
-    <div class="pagination">
-      <ul class="pagination-list row">
+    <div className="pagination">
+      <ul className="pagination-list row">
         <li>
           <span class="pagination-button">
-            <button type="button" onClick={setPrevious}>Previous</button>
+            <button type="button" onClick={setPrevious}>
+              Previous
+            </button>
           </span>
         </li>
         <li>
           <ul>
             {getButtonsCount(ButtonCount).map((num) => (
               <li class="pagination-item" key={num}>
-                <button type="button" className={currentPage.pageNumber == num && currentPage.isActive ? "page-active" : ""} onClick={() => onPageClick(num)}>{num}</button>
+                <button
+                  type="button"
+                  className={
+                    currentPage.pageNumber == num && currentPage.isActive
+                      ? "page-active"
+                      : ""
+                  }
+                  onClick={() => onPageClick(num)}
+                >
+                  {num}
+                </button>
               </li>
             ))}
           </ul>
         </li>
         <li>
           <span class="pagination-button">
-            <button type="button" onClick={setNext}>Next</button>
+            <button type="button" onClick={setNext}>
+              Next
+            </button>
           </span>
         </li>
       </ul>
