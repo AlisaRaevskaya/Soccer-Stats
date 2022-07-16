@@ -6,11 +6,11 @@ export default function Search(props) {
 
   function createObjectForFilter(arr) {
     let result_array = arr.map((item) => (item = String(Object.values(item))));
-   // console.log('result_array', result_array);
     return result_array;
   }
 
   function splitArr(arr) {
+
     return arr.map((element) => element.split(","));
   }
 
@@ -20,11 +20,11 @@ export default function Search(props) {
     let result_array = createObjectForFilter(arr);
 
     let results = result_array.filter((post) => (post.toLowerCase().includes(strLowCase)));
-   
-    return splitArr(results);
+ 
+  return splitArr(results);
   }
 
-  function handleSearchSubmit(event) {
+  function submitHandler(event) {
     event.preventDefault();
 
     // 👇️ access input value
@@ -41,15 +41,17 @@ export default function Search(props) {
       }
      // console.log(searchPosts);
     } else {
-      searchResults = splitArr(createObjectForFilter(props.posts));
+      searchResults = props.posts.filter((el)=> el.id ).map((el)=> parseInt(el.slice(0,1)));
     }
+
+    searchResults = searchResults.map((el)=> parseInt(el.slice(0,1)));
 
     let postObj = {
       result_posts: searchResults,
       no_results_text: noResultText,
     };
 
-    console.log(postObj);
+  console.log(props.posts.filter((el)=> el.id ).map((el)=> parseInt(el.slice(0,1))));
    props.handleSearchSubmit(postObj);
   }
 
@@ -58,7 +60,7 @@ export default function Search(props) {
       <form
         className="site-search__form"
         onSubmit={(e) => {
-          handleSearchSubmit(e);
+          submitHandler(e);
         }}
       >
         <input
