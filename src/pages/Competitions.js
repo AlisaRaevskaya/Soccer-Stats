@@ -1,6 +1,6 @@
 // Список лиг/соревнований
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Preloader from "../components/PreLoader";
@@ -58,8 +58,6 @@ export default function Competitions() {
   };
 
   useEffect(getCompetitions, []);
-
-  // useEffect(setTotalRecords(), [displayedCompetitions])
 
   function getCompetitions() {
     axios({
