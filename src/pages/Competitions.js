@@ -16,7 +16,7 @@ export default function Competitions() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
+  const [displayedCompetitions, setDisplayedCompetitions] = useState(competitions.slice(0, perPage));
   const [totalRecords, setTotalRecords] = useState(competitions.length);
 
   const pageClickHandler = (page) => {
@@ -36,14 +36,19 @@ export default function Competitions() {
 
   const searchSubmitHandler = (postObj) => {
     let search_results = [];
-    console.log(postObj.result_posts);
-    postObj.result_posts.forEach((item_id) => {
-      search_results = competitions.filter((el) => el.id == item_id);
-    });
 
-    console.log(search_results);
-    setDisplayedCompetitions(search_results);
-    setTotalRecords(search_results.length)
+    postObj.result_posts.forEach((item_id, index) => {
+      competitions.forEach((item) => {
+        if (item.id == item_id) {
+          search_results.push(item);
+        }
+      });
+
+      // search_results.push(competitions.filter((el) => el.id == item_id));
+    });
+    
+    setDisplayedCompetitions(search_results.slice(0, perPage));
+    setTotalRecords(search_results.length);
   };
 
   const paginationObject = {
@@ -53,6 +58,8 @@ export default function Competitions() {
   };
 
   useEffect(getCompetitions, []);
+
+  // useEffect(setTotalRecords(), [displayedCompetitions])
 
   function getCompetitions() {
     axios({
@@ -68,7 +75,7 @@ export default function Competitions() {
         });
         setCompetitions(competitionsPosts);
         //console.log(competitionsPosts);
-        setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
+        // setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
       })
       .catch((error) => {
         setError(error);

@@ -30,7 +30,7 @@ export default function Search(props) {
     // 👇️ access input value
    // console.log(`string + ${searchString}`);
 
-    let searchResults = filterPosts(props.posts);
+    let searchResults = filterPosts(props.posts).map((el)=> parseInt(el.slice(0,1)));
     let noResultText = " ";
     
     //console.log('searchResults' + searchResults);
@@ -41,17 +41,14 @@ export default function Search(props) {
       }
      // console.log(searchPosts);
     } else {
-      searchResults = props.posts.filter((el)=> el.id ).map((el)=> parseInt(el.slice(0,1)));
+      searchResults = props.posts.map((el)=> el = el.id);
     }
-
-    searchResults = searchResults.map((el)=> parseInt(el.slice(0,1)));
 
     let postObj = {
       result_posts: searchResults,
       no_results_text: noResultText,
     };
 
-  console.log(props.posts.filter((el)=> el.id ).map((el)=> parseInt(el.slice(0,1))));
    props.handleSearchSubmit(postObj);
   }
 
