@@ -12,12 +12,19 @@ export default function Competitions() {
   const apiKey = process.env.DOTENV.API_KEY;
   const defaultPage = { pageNumber: 1, isActive: true };
   const perPage = 9;
+
   const [competitions, setCompetitions] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [displayedCompetitions, setDisplayedCompetitions] = useState(competitions.slice(0, perPage));
+  const [displayedCompetitions, setDisplayedCompetitions] = useState(
+    competitions.slice(0, perPage)
+  );
   const [totalRecords, setTotalRecords] = useState(competitions.length);
+
+  useEffect(getCompetitions, []);
+
+  // useEffect(, [displayedCompetitions]);
 
   const pageClickHandler = (page) => {
     setCurrentPage(page);
@@ -35,6 +42,8 @@ export default function Competitions() {
   }, [competitions, currentPage, perPage]);
 
   const searchSubmitHandler = (postObj) => {
+    setError(null);
+
     let search_results = [];
 
     postObj.result_posts.forEach((item_id, index) => {
@@ -43,10 +52,13 @@ export default function Competitions() {
           search_results.push(item);
         }
       });
-
       // search_results.push(competitions.filter((el) => el.id == item_id));
     });
-    
+
+    if (postObj.no_results_text) {
+      setError(postObj.no_results_text);
+    }
+
     setDisplayedCompetitions(search_results.slice(0, perPage));
     setTotalRecords(search_results.length);
   };
@@ -56,8 +68,6 @@ export default function Competitions() {
     currentPage: currentPage,
     totalRecords: totalRecords,
   };
-
-  useEffect(getCompetitions, []);
 
   function getCompetitions() {
     axios({
@@ -76,7 +86,7 @@ export default function Competitions() {
         // setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
       })
       .catch((error) => {
-        setError(error);
+        setError("Error Occured");
         console.log(error);
       })
       .finally(() => {
@@ -85,7 +95,17 @@ export default function Competitions() {
   }
 
   if (error) {
-    return <div className="container">Ошибка: {error.message}</div>;
+    return (
+      <div className="container">
+        <h1>Competitions</h1>
+        <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
+        <div className="container text-center"><h4> Ошибка: {error} </h4>  </div>
+        <Pagination
+          paginationObject={paginationObject}
+          onPageClicked={pageClickHandler}
+        />
+      </div>
+    );
   } else if (!isLoaded) {
     return (
       <div className="container spinner-container">

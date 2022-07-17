@@ -26,22 +26,18 @@ export default function Search(props) {
 
   function submitHandler(event) {
     event.preventDefault();
-
-    // 👇️ access input value
-   // console.log(`string + ${searchString}`);
+    let noResultText = null;
 
     let searchResults = filterPosts(props.posts).map((el)=> parseInt(el.slice(0,1)));
-    let noResultText = " ";
     
-    //console.log('searchResults' + searchResults);
-
     if (searchString) {
       if (!searchResults.length) {
         noResultText = "No posts found";
+      console.log(noResultText);
       }
-     // console.log(searchPosts);
     } else {
       searchResults = props.posts.map((el)=> el = el.id);
+      noResultText = null;
     }
 
     let postObj = {
