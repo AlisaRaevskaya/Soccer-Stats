@@ -99,11 +99,9 @@ export default function Competitions() {
       <div className="container">
         <h1>Competitions</h1>
         <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
-        <div className="container text-center"><h4> Ошибка: {error} </h4>  </div>
-        <Pagination
-          paginationObject={paginationObject}
-          onPageClicked={pageClickHandler}
-        />
+        <div className="container text-center">
+          <h4> Error: {error} </h4>{" "}
+        </div>
       </div>
     );
   } else if (!isLoaded) {

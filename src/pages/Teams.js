@@ -25,6 +25,8 @@ export default function Teams() {
   const searchSubmitHandler = (postObj) => {
     let search_results = [];
 
+    setError(null);
+
     postObj.result_posts.forEach((item_id, index) => {
       teams.forEach((item) => {
         if (item.id == item_id) {
@@ -32,6 +34,11 @@ export default function Teams() {
         }
       });
     });
+
+    if (postObj.no_results_text) {
+      setError(postObj.no_results_text);
+    }
+
     setDisplayedTeams(search_results.slice(0, perPage));
     setTotalRecords(search_results.length);
   };
@@ -48,16 +55,17 @@ export default function Teams() {
     totalRecords: totalRecords,
   };
 
-  const pages = useMemo(() => {
-    return paginate(teams, currentPage, perPage);
-  }, [teams, currentPage, perPage]);
-
-
   const paginate = (teams, currentPage, perPage) => {
     let from = currentPage.pageNumber * perPage - perPage;
     let to = currentPage.pageNumber * perPage;
     return teams.slice(from, to);
   };
+
+  const pages = useMemo(() => {
+    return paginate(teams, currentPage, perPage);
+  }, [teams, currentPage, perPage]);
+
+
 
   function getTeams() {
     axios({
@@ -74,7 +82,8 @@ export default function Teams() {
         setDisplayedTeams(teamsPosts.slice(0, perPage));
       })
       .catch((error) => {
-        setError(error);
+        setError("Error Occured");
+        console.log(error);
       })
       .finally(() => {
         setIsLoaded(true);
@@ -82,7 +91,15 @@ export default function Teams() {
   }
 
   if (error) {
-    return <div className="container">Ошибка: {error.message}</div>;
+    return (
+      <div className="container">
+        <h1>Teams</h1>
+        <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
+        <div className="container text-center">
+          <h4> Error: {error} </h4>{" "}
+        </div>
+      </div>
+    );
   } else if (!isLoaded) {
     return (
       <div className="container spinner-container">
