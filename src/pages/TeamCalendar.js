@@ -7,13 +7,15 @@ import DateFilter from "../components/DateFilter";
 
 export default function TeamCalendar(props) {
   let { id } = useParams();
-  const defaultMatches = localStorage.getItem('savedMatches')? localStorage.getItem('savedMatches'): [];
+  const defaultMatches = localStorage.getItem('savedMatches')? JSON.parse(localStorage.getItem('savedMatches')): [];
   const [team, setTeam] = useState("");
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(getMatches, []);
+  
+  useEffect(setMatches(defaultMatches), [matches]);
   // useEffect(getTeamName, []);
   
 console.log(defaultMatches);
@@ -26,8 +28,7 @@ console.log(defaultMatches);
       headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
     })
       .then((response) => {
-        localStorage.setItem('savedMatches', ...response.data.matches )
-        console.log(localStorage.getItem('savedMatches'));
+        localStorage.setItem('savedMatches', JSON.stringify(response.data.matches));
         setMatches(response.data.matches);
       })
       .catch((err) => {
