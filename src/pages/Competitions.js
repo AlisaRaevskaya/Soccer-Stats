@@ -14,7 +14,7 @@ export default function Competitions() {
   const perPage = 9;
 
   const [competitions, setCompetitions] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [displayedCompetitions, setDisplayedCompetitions] = useState(
@@ -42,9 +42,10 @@ export default function Competitions() {
   }, [competitions, currentPage, perPage]);
 
   const searchSubmitHandler = (postObj) => {
-    setError(null);
 
     let search_results = [];
+
+    setError(null);
 
     postObj.result_posts.forEach((item_id, index) => {
       competitions.forEach((item) => {

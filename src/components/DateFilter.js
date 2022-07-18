@@ -17,7 +17,7 @@ const DateFilter = () => {
 
   return (
     <div className="mt-1 mb-3">
-      <div date-rangepicker className="row justify-center">
+      <div className="row justify-center">
         <span className="ml-1">Матчи</span>
         <span className="mr-2"> с</span>
         <input
