@@ -1,34 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { Route, Link, Routes, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Table from "../components/tables/MatchesTable";
 import BreadCrumbs from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
 
 export default function TeamCalendar(props) {
-  let { id } = useParams();
+const { id } = useParams();
   const defaultMatches = localStorage.getItem('savedMatches')? JSON.parse(localStorage.getItem('savedMatches')): [];
   const [team, setTeam] = useState("");
   const [breadCrumbs, setBreadCrumbs] = useState([]);
-  const [matches, setMatches] = useState([]);
+  const [matches, setMatches] = useState(defaultMatches);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [matchId, setMatchId] = useState(id);
+
 
   useEffect(getMatches, []);
   
-  useEffect(setMatches(defaultMatches), [matches]);
+  // useEffect(setMatches(defaultMatches), [matches]);
   // useEffect(getTeamName, []);
-  
+
 console.log(defaultMatches);
 
   function getMatches() {
     axios({
       method: "get",
       url:
-        "https://api.football-data.org/v2/teams/" + parseInt(id) + "/matches",
+        "https://api.football-data.org/v2/teams/" + parseInt(matchId) + "/matches",
       headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
     })
       .then((response) => {
         localStorage.setItem('savedMatches', JSON.stringify(response.data.matches));
+        setMatchId(id);
         setMatches(response.data.matches);
       })
       .catch((err) => {

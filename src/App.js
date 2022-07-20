@@ -17,11 +17,12 @@ export default function App() {
       <Header />
       <main className="page-main">
         <Routes>
-          <Route path="/" exact={true} element={<HomePage />} />
+          <Route index element={<HomePage />} />
+          <Route exact path="/" element={<HomePage />} />
           <Route path="teams/:id" element={<TeamCalendar />} />
-          <Route path="teams" element={<Teams />}/>
+          <Route exact path="teams" element={<Teams />}/>
           <Route path="competitions/:id" element={<CompetitionCalendar />} />
-          <Route path="competitions" element={<Competitions />}/>
+          <Route path="competitions" element={<Competitions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -29,3 +30,8 @@ export default function App() {
     </div>
   );
 }
+
+
+{/* <Route path="teams" element={<Teams />}>
+<Route path=":id" element={<TeamCalendar />} />
+</Route> */}
