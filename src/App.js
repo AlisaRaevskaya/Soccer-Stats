@@ -1,9 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-
+import Layout from './layouts/Layout';
 import HomePage from "./pages/Home";
 import Teams from "./pages/Teams";
 import TeamCalendar from "./pages/TeamCalendar";
@@ -14,19 +12,16 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   return (
     <div className="App">
-      <Header />
-      <main className="page-main">
         <Routes>
+          <Route path="/" element={<Layout/>}>
           <Route index element={<HomePage />} />
-          <Route exact path="/" element={<HomePage />} />
           <Route path="teams/:id" element={<TeamCalendar />} />
-          <Route exact path="teams" element={<Teams />}/>
+          <Route path="teams" element={<Teams />}/>
           <Route path="competitions/:id" element={<CompetitionCalendar />} />
           <Route path="competitions" element={<Competitions />} />
           <Route path="*" element={<NotFound />} />
+          </Route>
         </Routes>
-      </main>
-      <Footer />
     </div>
   );
 }

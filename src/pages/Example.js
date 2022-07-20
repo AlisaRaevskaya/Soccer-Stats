@@ -5,12 +5,13 @@ class Example extends React.Component {
   }
 
   componentDidMount(){
-
+    document.title = `Вы нажали ${this.state.count} раз`;
   }
   componentDidUpdate(){
 
+    document.title = `Вы нажали ${this.state.count} раз`;
   }
-  
+
   render() {
     return <div>
           <p>Вы нажали {this.state.count} раз</p>
