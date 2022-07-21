@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Breadcrumbs(props) {
+const Breadcrumbs = (props) =>{
+  const navigate = useNavigate();
+  
   return (
     <div className="breadcrumbs">
       <ul className="breadcrumbs__list">
@@ -17,3 +20,4 @@ export default function Breadcrumbs(props) {
     </div>
   );
 }
+export default Breadcrumbs;

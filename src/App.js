@@ -11,18 +11,18 @@ import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
-    <div className="App">
+    <>
         <Routes>
           <Route path="/" element={<Layout/>}>
           <Route index element={<HomePage />} />
-          <Route path="teams/:id" element={<TeamCalendar />} />
           <Route path="teams" element={<Teams />}/>
-          <Route path="competitions/:id" element={<CompetitionCalendar />} />
+          <Route path="teams/:id" element={<TeamCalendar />} />
           <Route path="competitions" element={<Competitions />} />
+          <Route path="competitions/:id" element={<CompetitionCalendar />} />
           <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-    </div>
+    </>
   );
 }
 

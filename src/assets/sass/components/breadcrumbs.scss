@@ -4,5 +4,9 @@
   .breadcrumbs__list {
     display: flex;
     flex-direction: row;
+  
+     li:not(:first-child)::before {
+      content: "→";
+    }
   }
 }
