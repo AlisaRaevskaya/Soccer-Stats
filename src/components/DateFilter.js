@@ -16,17 +16,17 @@ const DateFilter = () => {
   };
 
   return (
-    <div className="mt-1 mb-3">
-      <div className="row justify-center">
-        <span className="ml-1">Матчи</span>
-        <span className="mr-2"> с</span>
+    <div className="mt-1 mb-1">
+      <div className="row justify-start">
+        <span>Матчи</span>
+        <span className="ml-1 mr-1"> с</span>
         <input
           type="date"
           name="From"
           placeholder="Select date start"
           onChange={dateFromChangeHandler}
         />
-        <span className="ml-2 mr-2">до</span>
+        <span className="ml-1 mr-1">до</span>
         <input
           type="date"
           placeholder="Select date end"
