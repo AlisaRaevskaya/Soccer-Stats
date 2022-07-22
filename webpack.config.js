@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 var dotenv = require("dotenv").config({ path: __dirname + "/.env" });
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
   // the output bundle won't be optimized for production but suitable for development
@@ -15,7 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     // the filename of the JS bundle will be bundle.js
     filename: "bundle.js",
-    publicPath: '/'
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -29,7 +28,6 @@ module.exports = {
         options: {
           // attach the presets to the loader (most projects use .babelrc file instead)
           presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: ['react-refresh/babel'],
         },
       },
       {
@@ -55,8 +53,6 @@ module.exports = {
     ],
   },
   devServer: {
-
-    hot: true,
     historyApiFallback: true,
   },
   // add a custom index.html as the template
@@ -67,6 +63,5 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env.DOTENV": JSON.stringify(dotenv.parsed),
     }),
-    new ReactRefreshWebpackPlugin(),
-  ],
+  ]
 };

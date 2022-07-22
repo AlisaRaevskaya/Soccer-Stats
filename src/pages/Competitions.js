@@ -17,14 +17,46 @@ export default function Competitions() {
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [displayedCompetitions, setDisplayedCompetitions] = useState(
-    competitions.slice(0, perPage)
-  );
+  const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(competitions.length);
+
+  const paginationObject = {
+    perPage: perPage,
+    currentPage: currentPage,
+    totalRecords: totalRecords,
+  };
+  
 
   useEffect(getCompetitions, []);
 
-  // useEffect(, [displayedCompetitions]);
+  function getCompetitions() {
+    axios({
+      method: "get",
+      url: `${competitionUrl}`,
+      headers: { "X-Auth-Token": `${apiKey}` },
+      responseType: "json",
+    })
+      .then((response) => {
+
+        let competitionsPosts = response.data?.competitions.map((item) => {
+          const { id, name, area } = item;
+          return (item = { id: id, name: name, area: area.name });
+        });
+
+        setCompetitions(competitionsPosts);
+        setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
+        setTotalRecords(competitionsPosts.length);
+      })
+      .catch((error) => {
+        setError("Error Occured");
+        //console.log(error);
+      })
+      .finally(() => {
+        setIsLoaded(true);
+      });
+  }
+
+  //  Pagination
 
   const pageClickHandler = (page) => {
     setCurrentPage(page);
@@ -41,6 +73,7 @@ export default function Competitions() {
     return paginate(competitions, currentPage, perPage);
   }, [competitions, currentPage, perPage]);
 
+  // Search
   const searchSubmitHandler = (postObj) => {
 
     let search_results = [];
@@ -53,7 +86,6 @@ export default function Competitions() {
           search_results.push(item);
         }
       });
-      // search_results.push(competitions.filter((el) => el.id == item_id));
     });
 
     if (postObj.no_results_text) {
@@ -64,36 +96,6 @@ export default function Competitions() {
     setTotalRecords(search_results.length);
   };
 
-  const paginationObject = {
-    perPage: perPage,
-    currentPage: currentPage,
-    totalRecords: totalRecords,
-  };
-
-  function getCompetitions() {
-    axios({
-      method: "get",
-      url: `${competitionUrl}`,
-      headers: { "X-Auth-Token": `${apiKey}` },
-      responseType: "json",
-    })
-      .then((response) => {
-        let competitionsPosts = response.data?.competitions.map((item) => {
-          const { id, name, area } = item;
-          return (item = { id: id, name: name, area: area.name });
-        });
-        setCompetitions(competitionsPosts);
-        //console.log(competitionsPosts);
-        // setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
-      })
-      .catch((error) => {
-        setError("Error Occured");
-        console.log(error);
-      })
-      .finally(() => {
-        setIsLoaded(true);
-      });
-  }
 
   if (error) {
     return (

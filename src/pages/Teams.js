@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 
-export default function Teams() {
+const Teams = () => {
   const teamsUrl = "http://api.football-data.org/v2/teams";
   const apiKey = process.env.DOTENV.API_KEY;
   const perPage = 10;
@@ -22,6 +22,31 @@ export default function Teams() {
 
   useEffect(getTeams, []);
 
+  function getTeams() {
+    axios({
+      method: "get",
+      url: `${teamsUrl}`,
+      headers: { "X-Auth-Token": `${apiKey}` },
+    })
+      .then((response) => {
+        let teamsPosts = response.data?.teams.map((item) => {
+          const { id, name, crestUrl } = item;
+          return (item = { id: id, name: name, crestUrl: crestUrl });
+        });
+        setTeams(teamsPosts);
+        setDisplayedTeams(teamsPosts.slice(0, perPage));
+        setTotalRecords(teamsPosts.length);
+      })
+      .catch((error) => {
+        setError("Error Occured");
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoaded(true);
+      });
+  }
+
+  // Search
   const searchSubmitHandler = (postObj) => {
     let search_results = [];
 
@@ -43,7 +68,7 @@ export default function Teams() {
     setTotalRecords(search_results.length);
   };
 
-
+// Pagination
   const pageClickHandler = (page) => {
     setDisplayedTeams(pages);
     setCurrentPage(page);
@@ -66,29 +91,6 @@ export default function Teams() {
   }, [teams, currentPage, perPage]);
 
 
-
-  function getTeams() {
-    axios({
-      method: "get",
-      url: `${teamsUrl}`,
-      headers: { "X-Auth-Token": `${apiKey}` },
-    })
-      .then((response) => {
-        let teamsPosts = response.data?.teams.map((item) => {
-          const { id, name, crestUrl } = item;
-          return (item = { id: id, name: name, crestUrl: crestUrl });
-        });
-        setTeams(teamsPosts);
-        setDisplayedTeams(teamsPosts.slice(0, perPage));
-      })
-      .catch((error) => {
-        setError("Error Occured");
-        console.log(error);
-      })
-      .finally(() => {
-        setIsLoaded(true);
-      });
-  }
 
   if (error) {
     return (
@@ -140,3 +142,5 @@ export default function Teams() {
     );
   }
 }
+
+export default Teams;
