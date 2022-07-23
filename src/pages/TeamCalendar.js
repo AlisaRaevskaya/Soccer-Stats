@@ -12,10 +12,12 @@ const TeamCalendar = (props) => {
   const defaultPage = { pageNumber: 1, isActive: true };
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
-  const[displayedMatches, setDisplayedMatches] = useState();
+  const [displayedMatches, setDisplayedMatches] = useState();
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [dateTo, setDateTo] = useState('');
+  const [dateFrom, setDateFrom] = useState('');
 
   useEffect(getMatches, [id]);
 
@@ -27,13 +29,9 @@ const TeamCalendar = (props) => {
       headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
     })
       .then((response) => {
-        localStorage.setItem(
-          "savedMatches",
-          JSON.stringify(response.data.matches)
-        );
         setMatches(response.data.matches);
         setDisplayedMatches(response.data.matches.slice(0, perPage));
-        setTotalRecords(response.data.matches.length)
+        setTotalRecords(response.data.matches.length);
       })
       .catch((err) => {
         if (err.response) {
@@ -53,7 +51,8 @@ const TeamCalendar = (props) => {
         setIsLoaded(true);
       });
   }
-//Pagination
+
+  //Pagination
   const pageClickHandler = (page) => {
     setDisplayedMatches(pages);
     setCurrentPage(page);
@@ -75,37 +74,71 @@ const TeamCalendar = (props) => {
     return paginate(matches, currentPage, perPage);
   }, [matches, currentPage, perPage]);
 
-
-//Breadcrumbs
+  //Breadcrumbs
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
-  axios({
-    method: "get",
-    url: "http://api.football-data.org/v2/teams/" + parseInt(id),
-    headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
-  })
-    .then((response) => {
-      setBreadCrumbs([{ name: "Teams", id: 'id' }, { name: response.data.name, id: id }]);
+    axios({
+      method: "get",
+      url: "http://api.football-data.org/v2/teams/" + parseInt(id),
+      headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
     })
-    .catch(() => {
-      console.log(error);
-    });
-}
+      .then((response) => {
+        setBreadCrumbs([
+          { name: "Teams", id: "id" },
+          { name: response.data.name, id: id },
+        ]);
+      })
+      .catch(() => {
+        console.log(error);
+      });
+  }
+
+
+  //Date Filter Handler
+  const handleDateFilterSubmit = (date) => {
+    setDateFrom(date.dateFrom);
+    setDateTo(date.dateTo);
+  };
+
+  useEffect(handleFromTo, [dateFrom, dateTo]);
+
+  function handleFromTo() {
+    axios({
+      method: "get",
+      url:
+        "https://api.football-data.org/v2/teams/" +
+        parseInt(id) +
+        "/matches?dateFrom=" +
+        dateFrom +
+        "&dateTo=" +
+        dateTo,
+      headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
+    })
+      .then((response) => {
+        setDisplayedMatches(response.data?.matches.slice(0, perPage));
+        setTotalRecords(response.data?.matches.length);
+
+        // if (!this.matches) {
+        //   this.$refs.not_found.innerText = "No results found";
+        // }
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  }
 
   return (
     <div className="container">
-      <DateFilter />
-      <Breadcrumbs breadCrumbs = {breadCrumbs} />
+      <DateFilter onDateFilterSubmit={handleDateFilterSubmit} />
+      <Breadcrumbs breadCrumbs={breadCrumbs} />
       <h1>Team Calendar</h1>
       <Table matches={displayedMatches} />
       <Pagination
-          paginationObject={paginationObject}
-          onPageClicked={pageClickHandler}
-        />
+        paginationObject={paginationObject}
+        onPageClicked={pageClickHandler}
+      />
     </div>
   );
 };
 export default TeamCalendar;
-
-
