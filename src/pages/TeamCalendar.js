@@ -5,6 +5,7 @@ import Table from "../components/tables/MatchesTable";
 import Breadcrumbs from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
+import DateHandler from "../utils/DateHandler";
 
 const TeamCalendar = (props) => {
   const { id } = useParams();
@@ -16,10 +17,13 @@ const TeamCalendar = (props) => {
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [dateTo, setDateTo] = useState('');
-  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dates, setDates] = useState([]);
 
+  //Matches
   useEffect(getMatches, [id]);
+  // useEffect(() => { setDates([matches[0], matches[matches.length - 1]])}, [matches]);
 
   function getMatches() {
     axios({
@@ -30,6 +34,7 @@ const TeamCalendar = (props) => {
     })
       .then((response) => {
         setMatches(response.data.matches);
+        setDates([response.data.matches[0], response.data.matches[response.data.matches.length - 1]]);
         setDisplayedMatches(response.data.matches.slice(0, perPage));
         setTotalRecords(response.data.matches.length);
       })
@@ -94,8 +99,8 @@ const TeamCalendar = (props) => {
       });
   }
 
-
   //Date Filter Handler
+
   const handleDateFilterSubmit = (date) => {
     setDateFrom(date.dateFrom);
     setDateTo(date.dateTo);
@@ -104,36 +109,46 @@ const TeamCalendar = (props) => {
   useEffect(handleFromTo, [dateFrom, dateTo]);
 
   function handleFromTo() {
-    axios({
-      method: "get",
-      url:
-        "https://api.football-data.org/v2/teams/" +
-        parseInt(id) +
-        "/matches?dateFrom=" +
-        dateFrom +
-        "&dateTo=" +
-        dateTo,
-      headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
-    })
-      .then((response) => {
-        setDisplayedMatches(response.data?.matches.slice(0, perPage));
-        setTotalRecords(response.data?.matches.length);
-
-        // if (!this.matches) {
-        //   this.$refs.not_found.innerText = "No results found";
-        // }
+    if (dateFrom && dateTo) {
+      axios({
+        method: "get",
+        url:
+          "https://api.football-data.org/v2/teams/" +
+          parseInt(id) +
+          "/matches?dateFrom=" +
+          dateFrom +
+          "&dateTo=" +
+          dateTo,
+        headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
       })
-      .catch((err) => {
-        console.log(err.response);
-      });
+        .then((response) => {
+          console.log("to + from" + dateFrom, dateTo);
+          setDisplayedMatches(response.data?.matches.slice(0, perPage));
+          setTotalRecords(response.data?.matches.length);
+
+          // if (!displayedMatches) {
+          //   this.$refs.not_found.innerText = "No results found";
+          // }
+        })
+        .catch((err) => {
+          console.log(err.response);
+        })
+        .finally(() => {
+          setIsLoaded(true);
+        });
+    }
   }
 
   return (
     <div className="container">
-      <DateFilter onDateFilterSubmit={handleDateFilterSubmit} />
+      <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
       <Breadcrumbs breadCrumbs={breadCrumbs} />
       <h1>Team Calendar</h1>
-      <Table matches={displayedMatches} />
+      {displayedMatches ? (
+        <Table matches={displayedMatches} />
+      ) : (
+        <div className="not_found"></div>
+      )}
       <Pagination
         paginationObject={paginationObject}
         onPageClicked={pageClickHandler}

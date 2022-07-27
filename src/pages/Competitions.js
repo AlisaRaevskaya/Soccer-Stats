@@ -6,6 +6,7 @@ import axios from "axios";
 import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
+import ApiFootballData from "../utils/ApiFootballData";
 
 export default function Competitions() {
   const competitionUrl = "http://api.football-data.org/v2/competitions";
@@ -28,6 +29,7 @@ export default function Competitions() {
   
 
   useEffect(getCompetitions, []);
+  let teamsPosts = ApiFootballData.competitions('list');
 
   function getCompetitions() {
     axios({

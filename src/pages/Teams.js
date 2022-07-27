@@ -6,6 +6,7 @@ import Preloader from "../components/PreLoader";
 import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
+import ApiFootballData from "../utils/ApiFootballData";
 
 const Teams = () => {
   const teamsUrl = "http://api.football-data.org/v2/teams";
@@ -15,7 +16,7 @@ const Teams = () => {
 
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [displayedTeams, setDisplayedTeams] = useState(teams.slice(0, perPage));
   const [totalRecords, setTotalRecords] = useState(teams.length);

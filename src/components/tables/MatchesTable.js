@@ -1,24 +1,12 @@
 // Список лиг/соревнований
 
 import React from "react";
+import DateHandler from "../../utils/DateHandler";
 
 const MatchesTable = (props) => {
-  const setTime = (dt) => {
-    let d = new Date(dt);
-    let minutes =
-      d.getUTCMinutes() == "0" ? d.getUTCMinutes() + "0" : d.getUTCMinutes();
-    return d.getUTCHours() + " : " + minutes;
-  };
-
-  const setDate = (dt) => {
-    let d = new Date(dt);
-    let month = d.getMonth() + 1;
-    let date = `${d.getDate()}-${month}-${d.getFullYear()}`;
-    return date;
-  };
-
+  
+   //Отображаются значения только отличные от null
   const outputScoreIfNotNull = (score1, score2) => {
-    //Отображаются значения только отличные от null
 
     if (score1 != null || score2 != null) {
       return (
@@ -67,8 +55,8 @@ const MatchesTable = (props) => {
         {props.matches &&
           props.matches.map((item) => (
             <tr key={item.id}>
-              <td scope="row">{setDate(item.utcDate)}</td>
-              <td scope="row">{setTime(item.utcDate)}</td>
+              <td scope="row">{DateHandler.setDate(item.utcDate)}</td>
+              <td scope="row">{DateHandler.setTime(item.utcDate)}</td>
               <td>{item.status}</td>
               <td>
                 {item.awayTeam.name} - {item.homeTeam.name}
