@@ -13,7 +13,7 @@ const TeamCalendar = (props) => {
   const defaultPage = { pageNumber: 1, isActive: true };
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
-  const [displayedMatches, setDisplayedMatches] = useState();
+  const [displayedMatches, setDisplayedMatches] = useState([]);
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -106,9 +106,9 @@ const TeamCalendar = (props) => {
     setDateTo(date.dateTo);
   };
 
-  useEffect(handleFromTo, [dateFrom, dateTo]);
+  useEffect(handleDateFilter, [dateFrom, dateTo]);
 
-  function handleFromTo() {
+  function handleDateFilter() {
     if (dateFrom && dateTo) {
       axios({
         method: "get",
@@ -122,13 +122,8 @@ const TeamCalendar = (props) => {
         headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
       })
         .then((response) => {
-          console.log("to + from" + dateFrom, dateTo);
           setDisplayedMatches(response.data?.matches.slice(0, perPage));
           setTotalRecords(response.data?.matches.length);
-
-          // if (!displayedMatches) {
-          //   this.$refs.not_found.innerText = "No results found";
-          // }
         })
         .catch((err) => {
           console.log(err.response);
@@ -144,11 +139,7 @@ const TeamCalendar = (props) => {
       <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
       <Breadcrumbs breadCrumbs={breadCrumbs} />
       <h1>Team Calendar</h1>
-      {displayedMatches ? (
-        <Table matches={displayedMatches} />
-      ) : (
-        <div className="not_found"></div>
-      )}
+      {displayedMatches.length > 0 ? (<Table matches={displayedMatches} />) : (<div className="container text-center">No matches found</div>)}
       <Pagination
         paginationObject={paginationObject}
         onPageClicked={pageClickHandler}

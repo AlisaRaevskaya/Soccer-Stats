@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import DateHandler from "../utils/DateHandler";
 
 const DateFilter = (props) => {
-  // const [dateFrom, setDateFrom] = useState();
-  // const [dateTo, setDateTo] = useSate();
-
-
   const [firstDate, lastDate] = props.dates;
-
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
 
   useEffect(() => {
@@ -17,18 +12,18 @@ const DateFilter = (props) => {
   const handleDateInputFrom = (from) => {
     if (from) {
       return DateHandler.covertToUTCdate(from);
-    } else {
+    } 
+    else {
+      // console.log(DateHandler.getFirstOrLastDate(firstDate));
       return DateHandler.getFirstOrLastDate(firstDate);
     }
   };
 
   const handleDateInputTo = (to) => {
     if (to) {
-      console.log('to ' + DateHandler.covertToUTCdate(to));
       return DateHandler.covertToUTCdate(to);
-
-    } else {
-      console.log('to out' + DateHandler.covertToUTCdate(to));
+    }
+    else {
       return DateHandler.getFirstOrLastDate(lastDate);
     }
   };

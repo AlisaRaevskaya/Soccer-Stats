@@ -29,7 +29,7 @@ class DateHandler {
   };
 
   getFirstOrLastDate = (item) => {
-    let fdate = this.setDateForOutput(item.utcDate);
+    let fdate = this.setDate(item.utcDate);
     const [dd, mm, yyyy] = fdate.split("-");
 
     let month = this.setZerosForDates(mm);
