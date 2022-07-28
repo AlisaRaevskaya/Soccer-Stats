@@ -14,8 +14,8 @@ const DateFilter = (props) => {
       return DateHandler.covertToUTCdate(from);
     } 
     else {
-      // console.log(DateHandler.getFirstOrLastDate(firstDate));
-      return DateHandler.getFirstOrLastDate(firstDate);
+      let firstDateItem = firstDate.utcDate;
+      return DateHandler.covertToUTCdate(firstDateItem);
     }
   };
 
@@ -24,7 +24,8 @@ const DateFilter = (props) => {
       return DateHandler.covertToUTCdate(to);
     }
     else {
-      return DateHandler.getFirstOrLastDate(lastDate);
+     let lastDateItem = lastDate.utcDate;
+      return DateHandler.covertToUTCdate(lastDateItem);
     }
   };
 
