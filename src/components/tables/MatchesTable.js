@@ -55,8 +55,8 @@ const MatchesTable = (props) => {
         {props.matches &&
           props.matches.map((item) => (
             <tr key={item.id}>
-              <td scope="row">{DateHandler.setDate(item.utcDate)}</td>
-              <td scope="row">{DateHandler.setTime(item.utcDate)}</td>
+              <td scope="row">{DateHandler.setDateForOutput(item.utcDate)}</td>
+              <td scope="row">{DateHandler.setTimeForOutput(item.utcDate)}</td>
               <td>{item.status}</td>
               <td>
                 {item.awayTeam.name} - {item.homeTeam.name}

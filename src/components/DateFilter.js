@@ -5,13 +5,18 @@ const DateFilter = (props) => {
   // const [dateFrom, setDateFrom] = useState();
   // const [dateTo, setDateTo] = useSate();
 
+
   const [firstDate, lastDate] = props.dates;
 
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
 
+  useEffect(() => {
+    props.onDateFilterSubmit(userInput);
+  }, [userInput]);
+
   const handleDateInputFrom = (from) => {
     if (from) {
-      return from;
+      return DateHandler.covertToUTCdate(from);
     } else {
       return DateHandler.getFirstOrLastDate(firstDate);
     }
@@ -19,34 +24,28 @@ const DateFilter = (props) => {
 
   const handleDateInputTo = (to) => {
     if (to) {
-      console.log(to);
-      return to;
+      console.log('to ' + DateHandler.covertToUTCdate(to));
+      return DateHandler.covertToUTCdate(to);
+
     } else {
+      console.log('to out' + DateHandler.covertToUTCdate(to));
       return DateHandler.getFirstOrLastDate(lastDate);
     }
   };
 
   const dateFromChangeHandler = (event) => {
-    event.preventDefault();
-
     setUserInput((prevState) => {
       return {
         ...prevState,
         dateFrom: handleDateInputFrom(event.target.value),
       };
     });
-
-    props.onDateFilterSubmit(userInput);
   };
 
   const dateToChangeHandler = (event) => {
-    event.preventDefault();
-
     setUserInput((prevState) => {
       return { ...prevState, dateTo: handleDateInputTo(event.target.value) };
     });
-
-    props.onDateFilterSubmit(userInput);
   };
 
   return (
