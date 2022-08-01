@@ -1,16 +1,15 @@
+.team-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  gap: 1rem;
+}
 .competition-cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  .card {
-    border:1px solid black;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .team-cards {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(200px, 1fr));
-    gap: 1rem;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.card {
+  border: 1px solid black;
+  padding: 3rem 0;
+  text-align: center;
+}

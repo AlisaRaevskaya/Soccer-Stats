@@ -21,7 +21,7 @@ class DateHandler {
     return `${d.getUTCHours()} : ${minutes}` ;
   };
 
-  covertToUTCdate(dt){
+  convertToUTCdate(dt){
     let date =  new Date(dt);
     let mm = this.setZerosForDates(date.getUTCMonth()+1);
     let dd = this.setZerosForDates(date.getUTCDate());
@@ -29,26 +29,7 @@ class DateHandler {
      return `${yyyy}-${mm}-${dd}`;
     }
 
-    setDate = (dt) => {
-    let d = new Date(dt);
-    let month = d.getMonth() + 1;
-    let date = `${d.getDate()}-${month}-${d.getFullYear()}`;
-    return date;
-  };
 
-  getFirstOrLastDate = (item) => {
-
-    // let fdate = this.setDate(item.utcDate);
-
-    // const [dd, mm, yyyy] = fdate.split("-");
-
-    // let month = this.setZerosForDates(mm);
-    // let date = this.setZerosForDates(dd);
-
-    // return `${yyyy}-${month}-${date}`;
-    return this.covertToUTCdate(item);
-  };
-  
 
 //
  

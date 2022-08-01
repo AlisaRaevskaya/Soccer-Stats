@@ -3,7 +3,9 @@ import axios from "axios";
 
 class ApiFootballData {
   constructor() {
-    (this.endpoints = {
+    this.apiKey = process.env.DOTENV.API_KEY,
+
+    this.endpoints = {
       teams: {
         list: (options = {}) => {
           return {
@@ -27,8 +29,7 @@ class ApiFootballData {
           return { method: "GET", resource: "competitions", body: null };
         },
       },
-    }),
-      (this.apiKey = process.env.DOTENV.API_KEY);
+    }
   }
 
   request(endpoint = {}) {
@@ -49,6 +50,7 @@ class ApiFootballData {
     //   setIsLoaded(true);
     // });
   }
+
 
   teams(method = "", options = {}) {
     const existingEndpoint = this.endpoints.teams[method];

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import searchIcon from "../assets/svg/search.svg";
 
-export default function Search(props) {
+const Search = (props)=> {
   const [searchString, setSearchString] = useState("");
 
   function createObjectForFilter(arr) {
@@ -71,3 +71,4 @@ export default function Search(props) {
     </div>
   );
 }
+export default Search;

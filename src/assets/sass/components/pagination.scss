@@ -1,16 +1,14 @@
 .pagination {
-    list-style-type: none;
-    display:flex;
-    flex-direction:row;
-    justify-content: center;
-    padding-top: 2rem;
-  
-  
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 2rem;
+
   .pagination-item {
     display: inline-block;
   }
- 
 }
-.page-active{
-  background-color: #4AAE9B;
+.page-active {
+  background-color: #4aae9b;
 }

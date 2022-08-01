@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function Pagination(props) {
+const Pagination = (props) =>{
   const { perPage, currentPage, totalRecords } = props.paginationObject;
   const [page, setPage] = useState(currentPage);
 
@@ -69,3 +69,4 @@ export default function Pagination(props) {
     </div>
   );
 }
+ export default Pagination;

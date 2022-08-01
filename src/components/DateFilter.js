@@ -11,21 +11,17 @@ const DateFilter = (props) => {
 
   const handleDateInputFrom = (from) => {
     if (from) {
-      return DateHandler.covertToUTCdate(from);
-    } 
-    else {
-      let firstDateItem = firstDate.utcDate;
-      return DateHandler.covertToUTCdate(firstDateItem);
+      return DateHandler.convertToUTCdate(from);
+    } else {
+      return DateHandler.convertToUTCdate(firstDate);
     }
   };
 
   const handleDateInputTo = (to) => {
     if (to) {
-      return DateHandler.covertToUTCdate(to);
-    }
-    else {
-     let lastDateItem = lastDate.utcDate;
-      return DateHandler.covertToUTCdate(lastDateItem);
+      return DateHandler.convertToUTCdate(to);
+    } else {
+      return DateHandler.convertToUTCdate(lastDate);
     }
   };
 

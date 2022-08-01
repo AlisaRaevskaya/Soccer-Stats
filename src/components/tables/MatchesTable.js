@@ -4,10 +4,8 @@ import React from "react";
 import DateHandler from "../../utils/DateHandler";
 
 const MatchesTable = (props) => {
-  
-   //Отображаются значения только отличные от null
+  //Отображаются значения только отличные от null
   const outputScoreIfNotNull = (score1, score2) => {
-
     if (score1 != null || score2 != null) {
       return (
         <td>

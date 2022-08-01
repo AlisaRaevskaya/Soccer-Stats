@@ -5,7 +5,7 @@ import Table from "../components/tables/MatchesTable";
 import Breadcrumbs from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
-import DateHandler from "../utils/DateHandler";
+import Preloader from "../components/PreLoader";
 
 const TeamCalendar = (props) => {
   const { id } = useParams();
@@ -14,16 +14,15 @@ const TeamCalendar = (props) => {
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
+  const [error, setError] = useState("");
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
   const [dateTo, setDateTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
-
   //Matches
   useEffect(getMatches, [id]);
-  // useEffect(() => { setDates([matches[0], matches[matches.length - 1]])}, [matches]);
 
   function getMatches() {
     axios({
@@ -34,28 +33,28 @@ const TeamCalendar = (props) => {
     })
       .then((response) => {
         setMatches(response.data.matches);
-        setDates([response.data.matches[0], response.data.matches[response.data.matches.length - 1]]);
         setDisplayedMatches(response.data.matches.slice(0, perPage));
         setTotalRecords(response.data.matches.length);
+        setDates([
+          response.data.matches[0].utcDate,
+          response.data.matches[response.data.matches.length - 1].utcDate,
+        ]);
       })
-      .catch((err) => {
-        if (err.response) {
-          let errorMessage = "Не удалось загрузить данные из-за ошибки доступа";
-          // client received an error response (5xx, 4xx)
-          console.log(err.response);
-        } else if (err.request) {
-          // client never received a response, or request never left
-          //let errorMessage = "Ошибка сети";
-          console.log(err.request);
-        } else {
-          console.log("app mistake");
-          // anything else
-        }
+      .catch((error) => {
+        setError("Error Occured");
+        console.log(error);
       })
       .finally(() => {
         setIsLoaded(true);
       });
   }
+
+  // useEffect(() => {
+  //   if (matches.length > 0) {
+  //     setDates([matches[0].utcDate, matches[matches.length - 1].utcDate]);
+  //     console.log(matches[0].utcDate)
+  //   }
+  // }, [matches]);
 
   //Pagination
   const pageClickHandler = (page) => {
@@ -100,7 +99,6 @@ const TeamCalendar = (props) => {
   }
 
   //Date Filter Handler
-
   const handleDateFilterSubmit = (date) => {
     setDateFrom(date.dateFrom);
     setDateTo(date.dateTo);
@@ -134,17 +132,36 @@ const TeamCalendar = (props) => {
     }
   }
 
-  return (
-    <div className="container">
-      <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
-      <Breadcrumbs breadCrumbs={breadCrumbs} />
-      <h1>Team Calendar</h1>
-      {displayedMatches.length > 0 ? (<Table matches={displayedMatches} />) : (<div className="container text-center">No matches found</div>)}
-      <Pagination
-        paginationObject={paginationObject}
-        onPageClicked={pageClickHandler}
-      />
-    </div>
-  );
+  if (error) {
+    return (
+      <div className="container text-center">
+        <h4> Error: {error} </h4>{" "}
+      </div>
+    );
+  } else if (!isLoaded) {
+    return (
+      <div className="spinner-container">
+        <Preloader />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
+        <Breadcrumbs breadCrumbs={breadCrumbs} />
+        <h1>Team Calendar</h1>
+        {displayedMatches.length > 0 ? (
+          <Table matches={displayedMatches} />
+        ) : (
+          <div className="container text-center">No matches found</div>
+        )}
+        <Pagination
+          paginationObject={paginationObject}
+          onPageClicked={pageClickHandler}
+        />
+      </div>
+    );
+  }
 };
+
 export default TeamCalendar;

@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "../components/Menu";
 
-export default function Header() {
+const Header = ()=> {
   return (
     <>
       <header className="page-head">
@@ -10,3 +10,5 @@ export default function Header() {
      </>
   );
 }
+
+export default Header;

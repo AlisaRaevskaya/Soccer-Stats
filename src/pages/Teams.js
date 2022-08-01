@@ -95,7 +95,7 @@ const Teams = () => {
 
   if (error) {
     return (
-      <div className="container">
+      <div>
         <h1>Teams</h1>
         <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
         <div className="container text-center">
@@ -105,13 +105,13 @@ const Teams = () => {
     );
   } else if (!isLoaded) {
     return (
-      <div className="container spinner-container">
+      <div className="spinner-container">
         <Preloader />
       </div>
     );
   } else {
     return (
-      <div className="container">
+      <div>
         <h1>Teams</h1>
         <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PreLoader() {
+const PreLoader=()=> {
   return (
       <div className="spinner">
         <span className="spinner-inner-1"></span>
@@ -10,3 +10,5 @@ export default function PreLoader() {
       
   );
 }
+
+export default PreLoader;

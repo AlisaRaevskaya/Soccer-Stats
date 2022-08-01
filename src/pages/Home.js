@@ -1,8 +1,7 @@
 import React from "react";
-
 import hero_home from "../assets/images/hero-home.jpeg";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="container text-center">
       <h2 className="my-3">
@@ -11,4 +10,5 @@ export default function Home() {
       <img src={hero_home} alt="SoccerStats" className="responsive" />
     </div>
   );
-}
+};
+export default Home;

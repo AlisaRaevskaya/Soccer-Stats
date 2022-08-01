@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
 
-export default function Competitions() {
+const Competitions = () => {
   const competitionUrl = "http://api.football-data.org/v2/competitions";
   const apiKey = process.env.DOTENV.API_KEY;
   const defaultPage = { pageNumber: 1, isActive: true };
@@ -26,10 +26,9 @@ export default function Competitions() {
     currentPage: currentPage,
     totalRecords: totalRecords,
   };
-  
 
   useEffect(getCompetitions, []);
-  let teamsPosts = ApiFootballData.competitions('list');
+  let teamsPosts = ApiFootballData.competitions("list");
 
   function getCompetitions() {
     axios({
@@ -39,7 +38,6 @@ export default function Competitions() {
       responseType: "json",
     })
       .then((response) => {
-
         let competitionsPosts = response.data?.competitions.map((item) => {
           const { id, name, area } = item;
           return (item = { id: id, name: name, area: area.name });
@@ -77,7 +75,6 @@ export default function Competitions() {
 
   // Search
   const searchSubmitHandler = (postObj) => {
-
     let search_results = [];
 
     setError(null);
@@ -98,10 +95,9 @@ export default function Competitions() {
     setTotalRecords(search_results.length);
   };
 
-
   if (error) {
     return (
-      <div className="container">
+      <div>
         <h1>Competitions</h1>
         <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
         <div className="container text-center">
@@ -111,13 +107,13 @@ export default function Competitions() {
     );
   } else if (!isLoaded) {
     return (
-      <div className="container spinner-container">
+      <div className="spinner-container">
         <Preloader />
       </div>
     );
   } else {
     return (
-      <div className="container">
+      <div>
         <h1>Competitions</h1>
         <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
         <div className="competition-cards">
@@ -140,4 +136,5 @@ export default function Competitions() {
       </div>
     );
   }
-}
+};
+export default Competitions;
