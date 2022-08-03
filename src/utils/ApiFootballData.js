@@ -33,6 +33,7 @@ class ApiFootballData {
   }
 
   request(endpoint = {}) {
+    let result = "";
     axios({
       method: endpoint?.method,
       url: `http://api.football-data.org/v2/${endpoint.resource}`,
@@ -40,8 +41,9 @@ class ApiFootballData {
       body: endpoint?.body ? JSON.stringify(endpoint.body) : null,
     })
       .then((response) => {
+        result =  response.data;
         console.log(response.data);
-        return response.data;
+        // return response.data;
       })
       .catch((error) => {
         return error;
@@ -49,11 +51,24 @@ class ApiFootballData {
     // .finally(() => {
     //   setIsLoaded(true);
     // });
+    return result;
   }
+
 
 
   teams(method = "", options = {}) {
     const existingEndpoint = this.endpoints.teams[method];
+
+    if (existingEndpoint) {
+      const endpoint = existingEndpoint(options);
+      console.log(endpoint);
+
+      console.log(this.request(endpoint));
+      return this.request(endpoint);
+    }
+  }
+  competitions(method = "", options = {}) {
+    const existingEndpoint = this.endpoints.competitions[method];
 
     if (existingEndpoint) {
       const endpoint = existingEndpoint(options);
