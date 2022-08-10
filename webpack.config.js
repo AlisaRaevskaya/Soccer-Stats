@@ -4,6 +4,7 @@ const webpack = require("webpack");
 var dotenv = require("dotenv").config({ path: __dirname + "/.env" });
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
 module.exports = {
   // the output bundle won't be optimized for production but suitable for development
   mode: "development",

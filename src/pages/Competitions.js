@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
@@ -28,17 +27,11 @@ const Competitions = () => {
   };
 
   useEffect(getCompetitions, []);
-  let teamsPosts = ApiFootballData.competitions("list");
 
   function getCompetitions() {
-    axios({
-      method: "get",
-      url: `${competitionUrl}`,
-      headers: { "X-Auth-Token": `${apiKey}` },
-      responseType: "json",
-    })
+    ApiFootballData.competitions("list")
       .then((response) => {
-        let competitionsPosts = response.data?.competitions.map((item) => {
+        let competitionsPosts = response?.competitions.map((item) => {
           const { id, name, area } = item;
           return (item = { id: id, name: name, area: area.name });
         });
