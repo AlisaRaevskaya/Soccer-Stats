@@ -16,16 +16,23 @@ class ApiFootballData {
           matches: (options = {}) => {
             return {
               method: "GET",
-              resource: `${
-                options.team_id ? options.team_id : ""
-              }/matches?dateFrom=${options.dateFrom}&dateTo=${options.dateTo}`,
+              resource: `teams/${parseInt(options.team_id)}/matches`,
+              body: null,
+            };
+          },
+          dates: (options = {}) => {
+            return {
+              method: "GET",
+              resource: `teams/${options.team_id}/matches?dateFrom=${options.dateFrom}&dateTo=${options.dateTo}`,
               body: null,
             };
           },
         },
         competitions: {
           list: (options = {}) => {
-            return { method: "GET", resource: "competitions", body: null };
+            return { method: "GET",
+            resource: "competitions",
+            body: null };
           },
         },
       });
@@ -46,7 +53,6 @@ class ApiFootballData {
         throw new Error("Ответ сети был не ok.");
       }
       return await response.json();
-      
     } catch (err) {
       // Handle Error Here
       console.error(err);

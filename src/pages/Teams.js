@@ -16,7 +16,7 @@ const Teams = () => {
 
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [displayedTeams, setDisplayedTeams] = useState(teams.slice(0, perPage));
   const [totalRecords, setTotalRecords] = useState(teams.length);
@@ -24,16 +24,14 @@ const Teams = () => {
   useEffect(getTeams, []);
 
   function getTeams() {
-    axios({
-      method: "get",
-      url: `${teamsUrl}`,
-      headers: { "X-Auth-Token": `${apiKey}` },
-    })
+
+    ApiFootballData.teams("list")
       .then((response) => {
-        let teamsPosts = response.data?.teams.map((item) => {
+        let teamsPosts = response?.teams.map((item) => {
           const { id, name, crestUrl } = item;
           return (item = { id: id, name: name, crestUrl: crestUrl });
         });
+        
         setTeams(teamsPosts);
         setDisplayedTeams(teamsPosts.slice(0, perPage));
         setTotalRecords(teamsPosts.length);

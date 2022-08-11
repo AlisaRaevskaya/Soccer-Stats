@@ -8,8 +8,6 @@ import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
 
 const Competitions = () => {
-  const competitionUrl = "http://api.football-data.org/v2/competitions";
-  const apiKey = process.env.DOTENV.API_KEY;
   const defaultPage = { pageNumber: 1, isActive: true };
   const perPage = 9;
 

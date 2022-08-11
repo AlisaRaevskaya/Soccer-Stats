@@ -6,6 +6,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
+import ApiFootballData from "../utils/ApiFootballData";
 
 const TeamCalendar = (props) => {
   const { id } = useParams();
@@ -26,19 +27,14 @@ const TeamCalendar = (props) => {
   useEffect(getMatches, [id]);
 
   function getMatches() {
-    axios({
-      method: "get",
-      url:
-        "https://api.football-data.org/v2/teams/" + parseInt(id) + "/matches",
-      headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
-    })
+   ApiFootballData.teams("matches", { team_id: id })
       .then((response) => {
-        setMatches(response.data.matches);
-        setDisplayedMatches(response.data.matches.slice(0, perPage));
-        setTotalRecords(response.data.matches.length);
+        setMatches(response.matches);
+        setDisplayedMatches(response.matches.slice(0, perPage));
+        setTotalRecords(response.matches.length);
         setDates([
-          response.data.matches[0].utcDate,
-          response.data.matches[response.data.matches.length - 1].utcDate,
+          response?.matches[0].utcDate,
+          response?.matches[response.matches.length - 1].utcDate,
         ]);
       })
       .catch((error) => {
@@ -109,20 +105,10 @@ const TeamCalendar = (props) => {
 
   function handleDateFilter() {
     if (dateFrom && dateTo) {
-      axios({
-        method: "get",
-        url:
-          "https://api.football-data.org/v2/teams/" +
-          parseInt(id) +
-          "/matches?dateFrom=" +
-          dateFrom +
-          "&dateTo=" +
-          dateTo,
-        headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
-      })
-        .then((response) => {
-          setDisplayedMatches(response.data?.matches.slice(0, perPage));
-          setTotalRecords(response.data?.matches.length);
+      ApiFootballData.teams("dates", { team_id: id, dateFrom: dateFrom, dateTo: dateTo})
+      .then((response) => {
+          setDisplayedMatches(response?.matches.slice(0, perPage));
+          setTotalRecords(response?.matches.length);
         })
         .catch((err) => {
           console.log(err.response);
