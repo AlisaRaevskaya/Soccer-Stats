@@ -8,7 +8,7 @@ const TeamCard = (props) => {
     <div className="card" key={team.id}>
       <Link to={`/teams/${team.id}`}>
         <div className="card-content">
-          <p className="card-title pb-1">League: {team.name}</p>
+          <p className="card-title pb-1">Лига: {team.name}</p>
           {team.crestUrl &&
           <figure className="card-image">
             <img src={team.crestUrl} alt={team.name} width="96" height="96" />

@@ -61,7 +61,7 @@ const Search = (props)=> {
           className="site-search__input"
           value={searchString}
           name="searchString"
-          placeholder="Search..."
+          placeholder="Поиск.."
           onChange={(e) =>  setSearchString(e.target.value)}
         />
         <button type="submit" className="site-search__btn" value="Submit">

@@ -75,7 +75,7 @@ const TeamCalendar = (props) => {
    ApiFootballData.teams("breadcrumbs", { id: id })
       .then((response) => {
         setBreadCrumbs([
-          { name: "Teams", id: "id" },
+          { name: "Команды", id: "id" },
           { name: response.name, id: id },
         ]);
       })
@@ -108,7 +108,6 @@ const TeamCalendar = (props) => {
     }
   }
 
-  
   if (error) {
     return (
       <div className="error text-center">
@@ -130,16 +129,17 @@ const TeamCalendar = (props) => {
       <div>
         <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
-        <h1>Team Calendar</h1>
+        <h1>Календарь Команды</h1>
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
-          <div className="container text-center">No matches found</div>
+          <div className="text-center">Матчей на заданные даты не найдено. </div>
         )}
-        <Pagination
+
+        {displayedMatches.length > 0 && <Pagination
           paginationObject={paginationObject}
           onPageClicked={pageClickHandler}
-        />
+        />}
       </div>
     );
   }

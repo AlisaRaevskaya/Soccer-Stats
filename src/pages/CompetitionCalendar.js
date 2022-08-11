@@ -48,6 +48,7 @@ const CompetitionCalendar = () => {
         setIsLoaded(true);
       });
   }
+  
   //Pagination
   const pageClickHandler = (page) => {
     setDisplayedMatches(pages);
@@ -135,11 +136,11 @@ const CompetitionCalendar = () => {
       <div>
         <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
-        <h1>Competiiton Calendar</h1>
+        <h1>Календарь Лиги</h1>
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
-          <div className="container text-center">No matches found</div>
+          <div className="container text-center">Матчей н заданные даты не найдено.</div>
         )}
         <Pagination
           paginationObject={paginationObject}

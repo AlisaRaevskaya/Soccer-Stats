@@ -104,7 +104,7 @@ const Competitions = () => {
   } else {
     return (
       <div>
-        <h1>Competitions</h1>
+        <h1>Лиги</h1>
         <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
         <div className="competition-cards">
           {displayedCompetitions &&

@@ -16,12 +16,12 @@ const Menu = () => {
           <ul className="site-nav__list row">
           <li className="ml-1 text-hover-blue display-block">
               <NavLink className={setActive} to="/competitions">
-                Competitions
+                Лиги
               </NavLink>
             </li>
             <li className="ml-1 text-hover-blue display-block">
               <NavLink className={setActive} to="/teams">
-                Teams
+                Команды
               </NavLink>
             </li>
           </ul>

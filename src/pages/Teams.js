@@ -104,9 +104,8 @@ const Teams = () => {
   } else {
     return (
       <div>
-        <h1>Teams</h1>
+        <h1>Команды</h1>
         <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
-
         <div className="team-cards">
           {displayedTeams &&
             displayedTeams.map((team) => (<TeamCard team={team} />))}

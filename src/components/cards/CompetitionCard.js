@@ -8,8 +8,8 @@ const CompetitionCard = (props) => {
     <div className="card" key={competition.id}>
       <Link to={`/competitions/${competition.id}`}>
         <div className="card-content">
-          <p className="card-title">League: {competition.name}</p>
-          <p className="card-subtitle">Country: {competition.area}</p>
+          <p className="card-title">Лига: {competition.name}</p>
+          <p className="card-subtitle">Страна: {competition.area}</p>
         </div>
       </Link>
     </div>
