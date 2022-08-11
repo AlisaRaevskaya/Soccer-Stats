@@ -33,7 +33,7 @@ const Teams = () => {
         setTotalRecords(teamsPosts.length);
       })
       .catch((error) => {
-        setError("Error Occured");
+        setError("Повторите попытку позже.");
         console.log(error);
       })
       .finally(() => {
@@ -90,8 +90,8 @@ const Teams = () => {
       <div>
         <h1>Teams</h1>
         <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
-        <div className="container text-center">
-          <h4> Error: {error} </h4>{" "}
+        <div className="text-center">
+          <h4>{error} </h4>{" "}
         </div>
       </div>
     );

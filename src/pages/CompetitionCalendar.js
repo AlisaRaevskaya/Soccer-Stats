@@ -1,13 +1,15 @@
 // - Календарь лиги - список матчей лиги/соревнования
 //	List matches across (a set of) competitions.
 
-import React, { useEffect, useState, useParams } from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import Table from "../components/tables/MatchesTable";
 import Breadcrumbs from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
+import error_image from "../assets/images/error.png";
 
 const CompetitionCalendar = () => {
   const { id } = useParams();
@@ -24,28 +26,28 @@ const CompetitionCalendar = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
 
-   //Matches
-   useEffect(getMatches, [id]);
+  //Matches
+  useEffect(getMatches, [id]);
 
-   function getMatches() {
+  function getMatches() {
     ApiFootballData.competitions("matches", { competition_id: id })
-       .then((response) => {
-         setMatches(response.matches);
-         setDisplayedMatches(response.matches.slice(0, perPage));
-         setTotalRecords(response.matches.length);
-         setDates([
-           response?.matches[0].utcDate,
-           response?.matches[response.matches.length - 1].utcDate,
-         ]);
-       })
-       .catch((error) => {
-         setError("Error Occured");
-         console.log(error);
-       })
-       .finally(() => {
-         setIsLoaded(true);
-       });
-   }
+      .then((response) => {
+        setMatches(response.matches);
+        setDisplayedMatches(response.matches.slice(0, perPage));
+        setTotalRecords(response.matches.length);
+        setDates([
+          response?.matches[0].utcDate,
+          response?.matches[response.matches.length - 1].utcDate,
+        ]);
+      })
+      .catch((error) => {
+        setError("Повторите попытку позже.");
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoaded(true);
+      });
+  }
   //Pagination
   const pageClickHandler = (page) => {
     setDisplayedMatches(pages);
@@ -73,12 +75,12 @@ const CompetitionCalendar = () => {
 
   function getBreadCrumbs() {
     ApiFootballData.competitions("breadcrumbs", { id: id })
-    .then((response) => {
-      setBreadCrumbs([
-        { name: "Competitions", id: "id" },
-        { name: response.name, id: id },
-      ]);
-    })
+      .then((response) => {
+        setBreadCrumbs([
+          { name: "Competitions", id: "id" },
+          { name: response.name, id: id },
+        ]);
+      })
       .catch(() => {
         console.log(error);
       });
@@ -94,8 +96,12 @@ const CompetitionCalendar = () => {
 
   function handleDateFilter() {
     if (dateFrom && dateTo) {
-      ApiFootballData.teams("dates", { team_id: id, dateFrom: dateFrom, dateTo: dateTo})
-      .then((response) => {
+      ApiFootballData.teams("dates", {
+        team_id: id,
+        dateFrom: dateFrom,
+        dateTo: dateTo,
+      })
+        .then((response) => {
           setDisplayedMatches(response?.matches.slice(0, perPage));
           setTotalRecords(response?.matches.length);
         })
@@ -110,8 +116,12 @@ const CompetitionCalendar = () => {
 
   if (error) {
     return (
-      <div className="container text-center">
-        <h4> Error: {error} </h4>{" "}
+      <div className="error text-center">
+        <img src={error_image} alt="error" className="responsive error-image" />
+        <div className="error-message">
+          <h3>Упсс..ошибка</h3>
+          <h4> {error} </h4>
+        </div>
       </div>
     );
   } else if (!isLoaded) {

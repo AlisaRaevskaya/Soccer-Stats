@@ -6,6 +6,7 @@ import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
+import error_image from "../assets/images/error.png";
 
 const TeamCalendar = (props) => {
   const { id } = useParams();
@@ -37,7 +38,7 @@ const TeamCalendar = (props) => {
         ]);
       })
       .catch((error) => {
-        setError("Error Occured");
+        setError("Повторите попытку позже.");
         console.log(error);
       })
       .finally(() => {
@@ -107,10 +108,15 @@ const TeamCalendar = (props) => {
     }
   }
 
+  
   if (error) {
     return (
-      <div className="container text-center">
-        <h4> Error: {error} </h4>{" "}
+      <div className="error text-center">
+        <img src={error_image} alt="error" className="responsive error-image" />
+        <div className="error-message">
+          <h3>Упсс..ошибка</h3>
+          <h4> {error} </h4>
+        </div>
       </div>
     );
   } else if (!isLoaded) {

@@ -7,7 +7,7 @@ const Breadcrumbs = (props) => {
         {props.breadCrumbs &&
           props.breadCrumbs.map((breadcrumb) => (
             <li key={breadcrumb.id}>
-              <span>{breadcrumb.name}</span>
+              <span> {breadcrumb.name } </span>
             </li>
           ))}
       </ul>

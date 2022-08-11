@@ -7,3 +7,19 @@
   border-style: solid;
   padding: 15px 45px;
 }
+
+.hero-image {
+  margin: 0 auto;
+}
+
+.error {
+  .error-image {
+    position: relative;
+  }
+  .error-message {
+    position: absolute;
+    top: 30%;
+    left:30%;
+    color: black;
+  }
+}

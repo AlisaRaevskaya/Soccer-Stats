@@ -1,7 +1,6 @@
 // Список лиг/соревнований
 
-import React, { useEffect, useState, useMemo, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useMemo} from "react";
 import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
@@ -40,8 +39,7 @@ const Competitions = () => {
         setTotalRecords(competitionsPosts.length);
       })
       .catch((error) => {
-        setError("Error Occured");
-        //console.log(error);
+        setError("Повторите попытку позже.");
       })
       .finally(() => {
         setIsLoaded(true);
@@ -92,8 +90,8 @@ const Competitions = () => {
       <div>
         <h1>Competitions</h1>
         <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
-        <div className="container text-center">
-          <h4> Error: {error} </h4>{" "}
+        <div className="text-center">
+          <h4>{error} </h4>{" "}
         </div>
       </div>
     );
