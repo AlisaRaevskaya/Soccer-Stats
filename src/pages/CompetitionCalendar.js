@@ -9,7 +9,6 @@ import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 
-
 const CompetitionCalendar = () => {
   const { id } = useParams();
   const perPage = 10;
@@ -73,17 +72,13 @@ const CompetitionCalendar = () => {
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
-    axios({
-      method: "get",
-      url: "http://api.football-data.org/v2/teams/" + parseInt(id),
-      headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
+    ApiFootballData.competitions("breadcrumbs", { id: id })
+    .then((response) => {
+      setBreadCrumbs([
+        { name: "Competitions", id: "id" },
+        { name: response.data.name, id: id },
+      ]);
     })
-      .then((response) => {
-        setBreadCrumbs([
-          { name: "Teams", id: "id" },
-          { name: response.data.name, id: id },
-        ]);
-      })
       .catch(() => {
         console.log(error);
       });

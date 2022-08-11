@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Table from "../components/tables/MatchesTable";
 import Breadcrumbs from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
@@ -72,11 +71,7 @@ const TeamCalendar = (props) => {
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
-    axios({
-      method: "get",
-      url: "http://api.football-data.org/v2/teams/" + parseInt(id),
-      headers: { "X-Auth-Token": "1e76ed510bd246519dedbf03833e5322" },
-    })
+   ApiFootballData.teams("breadcrumbs", { id: id })
       .then((response) => {
         setBreadCrumbs([
           { name: "Teams", id: "id" },

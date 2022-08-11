@@ -1,5 +1,4 @@
 //https://cheatcode.co/tutorials/how-to-write-an-api-wrapper-using-javascript-classes-and-fetch
-import axios from "axios";
 
 class ApiFootballData {
   constructor() {
@@ -27,19 +26,33 @@ class ApiFootballData {
               body: null,
             };
           },
+          breadcrumbs: (options = {}) => {
+            return {
+              method: "GET",
+              resource: `teams/${parseInt(options.id)}`,
+              body: null,
+            };
+          },
         },
         competitions: {
           list: (options = {}) => {
-            return { 
-            method: "GET", 
-            resource: "competitions",
-            body: null 
-          };
+            return {
+              method: "GET",
+              resource: "competitions",
+              body: null,
+            };
           },
           matches: (options = {}) => {
             return {
               method: "GET",
-              resource: `/competitions/${options.competition_id}/matches`,
+              resource: `competitions/${options.competition_id}/matches`,
+              body: null,
+            };
+          },
+          breadcrumbs: (options = {}) => {
+            return {
+              method: "GET",
+              resource: `competitions/${parseInt(options.id)}`,
               body: null,
             };
           },

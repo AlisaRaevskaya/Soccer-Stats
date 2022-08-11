@@ -1,7 +1,6 @@
 // - Список команд
 
 import React, { useEffect, useState, useMemo } from "react";
-import axios from "axios";
 import Preloader from "../components/PreLoader";
 import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
