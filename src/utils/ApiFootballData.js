@@ -30,9 +30,18 @@ class ApiFootballData {
         },
         competitions: {
           list: (options = {}) => {
-            return { method: "GET",
+            return { 
+            method: "GET", 
             resource: "competitions",
-            body: null };
+            body: null 
+          };
+          },
+          matches: (options = {}) => {
+            return {
+              method: "GET",
+              resource: `/competitions/${options.competition_id}/matches`,
+              body: null,
+            };
           },
         },
       });
@@ -79,35 +88,3 @@ class ApiFootballData {
 }
 
 export default new ApiFootballData();
-
-// request(){
-//   const fetchPromise = fetch('https://jsonplaceholder.typicode.com/posts/1');
-//   fetchPromise.then((r)=>r.json()).then((post) => {
-//     console.log(post.id); //3
-//   });
-// }
-
-// request() {
-//   axios({
-//     method: "get",
-//     url: `https://jsonplaceholder.typicode.com/posts/1`,
-//   })
-//     .then((r) => console.log(r.data));
-// }
-
-// request(endpoint = {}) {
-//   return fetch(
-//     `http://api.football-data.org/v2/${endpoint.resource}`,
-//     {
-//       method: endpoint?.method,
-//       headers: { "X-Auth-Token": `${this.apiKey}` },
-//       body: endpoint?.body ? JSON.stringify(endpoint.body) : null,
-//     }
-//   ).then(async (response) => {
-//     const data = await response.json();
-//     console.log(data);
-//     return data;
-//   }).catch((error) => {
-//     return error;
-//   });
-// }

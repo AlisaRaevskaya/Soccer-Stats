@@ -46,13 +46,6 @@ const TeamCalendar = (props) => {
       });
   }
 
-  // useEffect(() => {
-  //   if (matches.length > 0) {
-  //     setDates([matches[0].utcDate, matches[matches.length - 1].utcDate]);
-  //     console.log(matches[0].utcDate)
-  //   }
-  // }, [matches]);
-
   //Pagination
   const pageClickHandler = (page) => {
     setDisplayedMatches(pages);
