@@ -76,7 +76,7 @@ const CompetitionCalendar = () => {
     .then((response) => {
       setBreadCrumbs([
         { name: "Competitions", id: "id" },
-        { name: response.data.name, id: id },
+        { name: response.name, id: id },
       ]);
     })
       .catch(() => {

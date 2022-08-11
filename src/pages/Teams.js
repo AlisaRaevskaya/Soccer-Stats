@@ -2,14 +2,12 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import Preloader from "../components/PreLoader";
-import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
+import TeamCard from "../components/cards/TeamCard";
 
 const Teams = () => {
-  const teamsUrl = "http://api.football-data.org/v2/teams";
-  const apiKey = process.env.DOTENV.API_KEY;
   const perPage = 10;
   const defaultPage = { pageNumber: 1, isActive: true };
 
@@ -23,14 +21,13 @@ const Teams = () => {
   useEffect(getTeams, []);
 
   function getTeams() {
-
     ApiFootballData.teams("list")
       .then((response) => {
         let teamsPosts = response?.teams.map((item) => {
           const { id, name, crestUrl } = item;
           return (item = { id: id, name: name, crestUrl: crestUrl });
         });
-        
+
         setTeams(teamsPosts);
         setDisplayedTeams(teamsPosts.slice(0, perPage));
         setTotalRecords(teamsPosts.length);
@@ -66,7 +63,7 @@ const Teams = () => {
     setTotalRecords(search_results.length);
   };
 
-// Pagination
+  // Pagination
   const pageClickHandler = (page) => {
     setDisplayedTeams(pages);
     setCurrentPage(page);
@@ -87,8 +84,6 @@ const Teams = () => {
   const pages = useMemo(() => {
     return paginate(teams, currentPage, perPage);
   }, [teams, currentPage, perPage]);
-
-
 
   if (error) {
     return (
@@ -114,23 +109,7 @@ const Teams = () => {
 
         <div className="team-cards">
           {displayedTeams &&
-            displayedTeams.map((team) => (
-              <div className="card" key={team.id}>
-                <Link to={`/teams/${team.id}`}>
-                  <div className="card-content">
-                    <p className="card-title">League: {team.name}</p>
-                    <figure className="card-image">
-                      <img
-                        src={team.crestUrl}
-                        alt={team.name}
-                        width="96"
-                        height="96"
-                      />
-                    </figure>
-                  </div>
-                </Link>
-              </div>
-            ))}
+            displayedTeams.map((team) => (<TeamCard team={team} />))}
         </div>
         <Pagination
           paginationObject={paginationObject}
@@ -139,6 +118,6 @@ const Teams = () => {
       </div>
     );
   }
-}
+};
 
 export default Teams;

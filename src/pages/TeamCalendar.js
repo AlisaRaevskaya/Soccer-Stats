@@ -75,7 +75,7 @@ const TeamCalendar = (props) => {
       .then((response) => {
         setBreadCrumbs([
           { name: "Teams", id: "id" },
-          { name: response.data.name, id: id },
+          { name: response.name, id: id },
         ]);
       })
       .catch(() => {

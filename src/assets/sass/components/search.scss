@@ -5,9 +5,10 @@
   border: 1px solid #ffffff;
   border-radius: 5px;
   position: relative;
-  width: 200px;
+  width: 220px;
   height: 45px;
   padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
 
   @include xl {
     width: 180px;

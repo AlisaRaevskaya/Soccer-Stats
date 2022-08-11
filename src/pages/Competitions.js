@@ -6,6 +6,7 @@ import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
+import CompetitionCard from "../components/cards/CompetitionCard";
 
 const Competitions = () => {
   const defaultPage = { pageNumber: 1, isActive: true };
@@ -110,14 +111,7 @@ const Competitions = () => {
         <div className="competition-cards">
           {displayedCompetitions &&
             displayedCompetitions.map((competition) => (
-              <div className="card" key={competition.id}>
-                <Link to={`/competitions/${competition.id}`}>
-                  <div className="card-content">
-                    <p className="card-title">League: {competition.name}</p>
-                    <p className="card-subtitle">Country: {competition.area}</p>
-                  </div>
-                </Link>
-              </div>
+              <CompetitionCard competition={competition}/>
             ))}
         </div>
         <Pagination
