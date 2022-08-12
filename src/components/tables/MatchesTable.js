@@ -18,7 +18,6 @@ const MatchesTable = (props) => {
 
   return (
     <table>
-      <caption>Matches table</caption>
       <thead>
         <tr>
           <th className="colored" rowSpan="2">

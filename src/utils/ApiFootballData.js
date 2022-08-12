@@ -72,7 +72,8 @@ class ApiFootballData {
       );
 
       if (!response.ok) {
-        throw new Error("Ответ сети был не ok.");
+       throw new Error("Ответ сети был не ok.");
+        // return Promise.reject(error);
       }
       return await response.json();
     } catch (err) {

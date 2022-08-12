@@ -6,6 +6,7 @@ import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
+import DateHandler from "../utils/DateHandler";
 import error_image from "../assets/images/error.png";
 
 const TeamCalendar = (props) => {
@@ -27,7 +28,7 @@ const TeamCalendar = (props) => {
   useEffect(getMatches, [id]);
 
   function getMatches() {
-   ApiFootballData.teams("matches", { team_id: id })
+    ApiFootballData.teams("matches", { team_id: id })
       .then((response) => {
         setMatches(response.matches);
         setDisplayedMatches(response.matches.slice(0, perPage));
@@ -72,7 +73,7 @@ const TeamCalendar = (props) => {
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
-   ApiFootballData.teams("breadcrumbs", { id: id })
+    ApiFootballData.teams("breadcrumbs", { id: id })
       .then((response) => {
         setBreadCrumbs([
           { name: "Команды", id: "id" },
@@ -93,17 +94,25 @@ const TeamCalendar = (props) => {
   useEffect(handleDateFilter, [dateFrom, dateTo]);
 
   function handleDateFilter() {
-    if (dateFrom && dateTo) {
-      ApiFootballData.teams("dates", { team_id: id, dateFrom: dateFrom, dateTo: dateTo})
-      .then((response) => {
+    if (dateFrom && !dateTo) {
+      setDateTo(
+        DateHandler.convertToUTCdate(matches[matches.length - 1].utcDate)
+      );
+    }
+
+    if (dateTo && dateFrom) {
+      ApiFootballData.teams("dates", {
+        team_id: id,
+        dateFrom: dateFrom,
+        dateTo: dateTo,
+      })
+        .then((response) => {
           setDisplayedMatches(response?.matches.slice(0, perPage));
           setTotalRecords(response?.matches.length);
         })
-        .catch((err) => {
-          console.log(err.response);
-        })
-        .finally(() => {
-          setIsLoaded(true);
+        .catch((error) => {
+          setError("Повторите попытку позже.");
+          console.log(error);
         });
     }
   }
@@ -133,13 +142,17 @@ const TeamCalendar = (props) => {
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
-          <div className="text-center">Матчей на заданные даты не найдено. </div>
+          <div className="text-center">
+            Матчей на заданные даты не найдено.{" "}
+          </div>
         )}
 
-        {displayedMatches.length > 0 && <Pagination
-          paginationObject={paginationObject}
-          onPageClicked={pageClickHandler}
-        />}
+        {displayedMatches.length > 0 && (
+          <Pagination
+            paginationObject={paginationObject}
+            onPageClicked={pageClickHandler}
+          />
+        )}
       </div>
     );
   }
