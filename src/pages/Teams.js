@@ -16,6 +16,7 @@ const Teams = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [displayedTeams, setDisplayedTeams] = useState(teams.slice(0, perPage));
+  const [resultTeams, setResultTeams]= useState([]);
   const [totalRecords, setTotalRecords] = useState(teams.length);
 
   useEffect(getTeams, []);
@@ -29,7 +30,8 @@ const Teams = () => {
         });
 
         setTeams(teamsPosts);
-        setDisplayedTeams(teamsPosts.slice(0, perPage));
+        setResultTeams(teamsPosts);
+        setDisplayedTeams(paginate(teamsPosts, currentPage, perPage));
         setTotalRecords(teamsPosts.length);
       })
       .catch((error) => {
@@ -42,31 +44,46 @@ const Teams = () => {
   }
 
   // Search
-  const searchSubmitHandler = (postObj) => {
-    let search_results = [];
+  function filterPosts(arr, str) {
+    let strLowCase = str.toLowerCase();
 
-    setError(null);
+    let stringArray = arr.map((item) => (item = Object.values(item).join(",")));
 
-    postObj.result_posts.forEach((item_id, index) => {
-      teams.forEach((item) => {
-        if (item.id == item_id) {
-          search_results.push(item);
-        }
-      });
-    });
+    let results = stringArray.filter((post) =>
+      post.toLowerCase().includes(strLowCase)
+    );
 
-    if (postObj.no_results_text) {
-      setError(postObj.no_results_text);
+    return results.map((element) => element.split(","));
+  }
+
+  const onSearchSubmit = (str) => {
+
+    let searchResults = filterPosts(teams, str);
+
+    if (str) {
+      if (!searchResults.length) {
+        setError("No posts found");
+      }
+    } else {
+      searchResults = teams.map((item) => (Object.values(item).join(",").split(",")));
+      setError(null);
     }
 
-    setDisplayedTeams(search_results.slice(0, perPage));
+    let search_results = [];
+
+    search_results = searchResults.map(
+      (item) => ({ id: item[0], name: item[1], crestUrl: item[2] })
+    );
+
+    setResultTeams(search_results);
+    setDisplayedTeams(paginate(search_results, currentPage, perPage));
     setTotalRecords(search_results.length);
   };
 
   // Pagination
   const pageClickHandler = (page) => {
-    setDisplayedTeams(pages);
     setCurrentPage(page);
+    setDisplayedTeams(pages);
   };
 
   const paginationObject = {
@@ -82,14 +99,14 @@ const Teams = () => {
   };
 
   const pages = useMemo(() => {
-    return paginate(teams, currentPage, perPage);
-  }, [teams, currentPage, perPage]);
+    return paginate(resultTeams, currentPage, perPage);
+  }, [resultTeams, currentPage, perPage]);
 
   if (error) {
     return (
       <div>
         <h1>Teams</h1>
-        <Search items={teams} handleSearchSubmit={searchSubmitHandler} />
+        <Search onSearchSubmit={onSearchSubmit} />
         <div className="text-center">
           <h4>{error} </h4>{" "}
         </div>
@@ -105,10 +122,10 @@ const Teams = () => {
     return (
       <div>
         <h1>Команды</h1>
-        <Search items={teams} handleSearchSubmit={searchSubmitHandler} />
+        <Search onSearchSubmit={onSearchSubmit} />
         <div className="team-cards">
           {displayedTeams &&
-            displayedTeams.map((team) => (<TeamCard team={team} />))}
+            displayedTeams.map((team) => (<TeamCard team={team} key={team.id}/>))}
         </div>
         <Pagination
           paginationObject={paginationObject}

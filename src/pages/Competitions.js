@@ -15,10 +15,10 @@ const Competitions = () => {
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [resultCompetitions, setResultCompetitions]= useState([]);
+  const [resultCompetitions, setResultCompetitions] = useState([]);
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(competitions.length);
-  const [searchString, setSearchString] = useState("");
+  // const [searchString, setSearchString] = useState("");
 
   const paginationObject = {
     perPage: perPage,
@@ -27,10 +27,6 @@ const Competitions = () => {
   };
 
   useEffect(getCompetitions, []);
-
-  // useEffect(setDisplayedCompetitions(pages), []);
-
-  console.log(displayedCompetitions);
 
   function getCompetitions() {
     ApiFootballData.competitions("list")
@@ -42,7 +38,9 @@ const Competitions = () => {
 
         setCompetitions(competitionsPosts);
         setResultCompetitions(competitionsPosts);
-        setDisplayedCompetitions(paginate(competitionsPosts, currentPage, perPage));
+        setDisplayedCompetitions(
+          paginate(competitionsPosts, currentPage, perPage)
+        );
         setTotalRecords(competitionsPosts.length);
       })
       .catch((error) => {
@@ -66,14 +64,17 @@ const Competitions = () => {
     return competitions.slice(from, to);
   };
 
-  const pages = useMemo(() => paginate(resultCompetitions, currentPage, perPage), [resultCompetitions, currentPage, perPage]);
+  const pages = useMemo(
+    () => paginate(resultCompetitions, currentPage, perPage),
+    [resultCompetitions, currentPage, perPage]
+  );
 
   // Search
 
-  function filterPosts(arr, searchString) {
-    let strLowCase = searchString.toLowerCase();
+  function filterPosts(arr, str) {
+    let strLowCase = str.toLowerCase();
 
-    let stringArray = arr.map((item) => (item = Object.values(item).join(",")));
+    let stringArray = arr.map((item) => (Object.values(item).join(",")));
 
     let results = stringArray.filter((post) =>
       post.toLowerCase().includes(strLowCase)
@@ -83,39 +84,30 @@ const Competitions = () => {
   }
 
   const onSearchSubmit = (str) => {
+    let searchResults = filterPosts(competitions, str);
 
-    setSearchString(str);
-    let searchResults = filterPosts(competitions, str).map((el) =>
-      parseInt(el.slice(0, 1))
-    );
+    console.log( searchResults );
 
     if (str) {
       if (!searchResults.length) {
         setError("No posts found");
       }
     } else {
-      searchResults = competitions.map((el) => (el = el.id));
+      searchResults = competitions.map((item) => (Object.values(item).join(",").split(",")));
       setError(null);
     }
 
     let search_results = [];
 
-    searchResults.forEach((item_id) => {
-      competitions.forEach((item) => {
-        if (item.id == item_id) {
-          search_results.push(item);
-        }
-      });
-    });
-
-    console.log(search_results);
+    search_results = searchResults.map(
+      (item) => ( { id: parseInt(item[0]), name: item[1], area: item[2] })
+    );
 
     setResultCompetitions(search_results);
     setDisplayedCompetitions(paginate(search_results, currentPage, perPage));
     setTotalRecords(search_results.length);
   };
 
- 
   if (error) {
     return (
       <div>
@@ -140,7 +132,7 @@ const Competitions = () => {
         <div className="competition-cards">
           {displayedCompetitions &&
             displayedCompetitions.map((competition) => (
-              <CompetitionCard competition={competition}  key={competition.id}/>
+              <CompetitionCard competition={competition} key={competition.id} />
             ))}
         </div>
         <Pagination
