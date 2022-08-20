@@ -2,7 +2,9 @@
 
 class ApiFootballData {
   constructor() {
-    (this.apiKey = process.env.DOTENV.API_KEY),
+    (
+      this.apiKey = process.env.DOTENV.API_KEY),
+      // this.apiKey = '1e76ed510bd246519dedbf03833e5322'),
       (this.endpoints = {
         teams: {
           list: (options = {}) => {

@@ -19,7 +19,7 @@ export default function App() {
           <Route path="teams/:id" element={<TeamCalendar />} />
           <Route path="competitions" element={<Competitions />} />
           <Route path="competitions/:id" element={<CompetitionCalendar />} />
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
           </Route>
         </Routes>
     </>

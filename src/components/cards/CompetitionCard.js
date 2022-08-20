@@ -10,6 +10,7 @@ const CompetitionCard = (props) => {
         <div className="card-content">
           <p className="card-title">Лига: {competition.name}</p>
           <p className="card-subtitle">Страна: {competition.area}</p>
+          <p>{competition.id}</p>
         </div>
       </Link>
     </div>

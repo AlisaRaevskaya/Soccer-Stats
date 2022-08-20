@@ -1,6 +1,6 @@
 // Список лиг/соревнований
 
-import React, { useEffect, useState, useMemo} from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
@@ -15,8 +15,10 @@ const Competitions = () => {
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
+  const [resultCompetitions, setResultCompetitions]= useState([]);
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(competitions.length);
+  const [searchString, setSearchString] = useState("");
 
   const paginationObject = {
     perPage: perPage,
@@ -25,6 +27,10 @@ const Competitions = () => {
   };
 
   useEffect(getCompetitions, []);
+
+  // useEffect(setDisplayedCompetitions(pages), []);
+
+  console.log(displayedCompetitions);
 
   function getCompetitions() {
     ApiFootballData.competitions("list")
@@ -35,7 +41,8 @@ const Competitions = () => {
         });
 
         setCompetitions(competitionsPosts);
-        setDisplayedCompetitions(competitionsPosts.slice(0, perPage));
+        setResultCompetitions(competitionsPosts);
+        setDisplayedCompetitions(paginate(competitionsPosts, currentPage, perPage));
         setTotalRecords(competitionsPosts.length);
       })
       .catch((error) => {
@@ -59,17 +66,41 @@ const Competitions = () => {
     return competitions.slice(from, to);
   };
 
-  const pages = useMemo(() => {
-    return paginate(competitions, currentPage, perPage);
-  }, [competitions, currentPage, perPage]);
+  const pages = useMemo(() => paginate(resultCompetitions, currentPage, perPage), [resultCompetitions, currentPage, perPage]);
 
   // Search
-  const searchSubmitHandler = (postObj) => {
+
+  function filterPosts(arr, searchString) {
+    let strLowCase = searchString.toLowerCase();
+
+    let stringArray = arr.map((item) => (item = Object.values(item).join(",")));
+
+    let results = stringArray.filter((post) =>
+      post.toLowerCase().includes(strLowCase)
+    );
+
+    return results.map((element) => element.split(","));
+  }
+
+  const onSearchSubmit = (str) => {
+
+    setSearchString(str);
+    let searchResults = filterPosts(competitions, str).map((el) =>
+      parseInt(el.slice(0, 1))
+    );
+
+    if (str) {
+      if (!searchResults.length) {
+        setError("No posts found");
+      }
+    } else {
+      searchResults = competitions.map((el) => (el = el.id));
+      setError(null);
+    }
+
     let search_results = [];
 
-    setError(null);
-
-    postObj.result_posts.forEach((item_id, index) => {
+    searchResults.forEach((item_id) => {
       competitions.forEach((item) => {
         if (item.id == item_id) {
           search_results.push(item);
@@ -77,19 +108,19 @@ const Competitions = () => {
       });
     });
 
-    if (postObj.no_results_text) {
-      setError(postObj.no_results_text);
-    }
+    console.log(search_results);
 
-    setDisplayedCompetitions(search_results.slice(0, perPage));
+    setResultCompetitions(search_results);
+    setDisplayedCompetitions(paginate(search_results, currentPage, perPage));
     setTotalRecords(search_results.length);
   };
 
+ 
   if (error) {
     return (
       <div>
-        <h1>Competitions</h1>
-        <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
+        <h1>Лиги</h1>
+        <Search onSearchSubmit={onSearchSubmit} />
         <div className="text-center">
           <h4>{error} </h4>{" "}
         </div>
@@ -105,11 +136,11 @@ const Competitions = () => {
     return (
       <div>
         <h1>Лиги</h1>
-        <Search posts={competitions} handleSearchSubmit={searchSubmitHandler} />
+        <Search onSearchSubmit={onSearchSubmit} />
         <div className="competition-cards">
           {displayedCompetitions &&
             displayedCompetitions.map((competition) => (
-              <CompetitionCard competition={competition}/>
+              <CompetitionCard competition={competition}  key={competition.id}/>
             ))}
         </div>
         <Pagination

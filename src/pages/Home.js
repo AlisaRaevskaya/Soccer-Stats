@@ -3,7 +3,7 @@ import hero_home from "../assets/images/hero-home.jpeg";
 const Home = () => {
   return (
     <div className="container text-center">
-      <h2 className="mt-3 mb-1">SoccerStats: Football Stats, Tables & Results</h2>
+      <h2 className="mt-2 mb-1">SoccerStats: Football Stats, Tables & Results</h2>
       <p className="mt-1 mb-1">
       «Приложение для просмотра спортивной статистики «SoccerStat»
       </p>

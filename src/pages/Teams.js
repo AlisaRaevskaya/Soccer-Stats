@@ -89,7 +89,7 @@ const Teams = () => {
     return (
       <div>
         <h1>Teams</h1>
-        <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
+        <Search items={teams} handleSearchSubmit={searchSubmitHandler} />
         <div className="text-center">
           <h4>{error} </h4>{" "}
         </div>
@@ -105,7 +105,7 @@ const Teams = () => {
     return (
       <div>
         <h1>Команды</h1>
-        <Search posts={teams} handleSearchSubmit={searchSubmitHandler} />
+        <Search items={teams} handleSearchSubmit={searchSubmitHandler} />
         <div className="team-cards">
           {displayedTeams &&
             displayedTeams.map((team) => (<TeamCard team={team} />))}
