@@ -16,6 +16,7 @@ const TeamCalendar = (props) => {
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
+  const [resultMatches, setResultMatches]= useState([]);
   const [error, setError] = useState("");
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
@@ -31,6 +32,7 @@ const TeamCalendar = (props) => {
     ApiFootballData.teams("matches", { team_id: id })
       .then((response) => {
         setMatches(response.matches);
+        setResultMatches(response.matches);
         setDisplayedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
         setDates([
@@ -66,8 +68,8 @@ const TeamCalendar = (props) => {
   };
 
   const pages = useMemo(() => {
-    return paginate(matches, currentPage, perPage);
-  }, [matches, currentPage, perPage]);
+    return paginate(resultMatches, currentPage, perPage);
+  }, [resultMatches, currentPage, perPage]);
 
   //Breadcrumbs
   useEffect(getBreadCrumbs, [id]);
@@ -107,6 +109,7 @@ const TeamCalendar = (props) => {
         dateTo: dateTo,
       })
         .then((response) => {
+          setResultMatches(response.matches);
           setDisplayedMatches(response?.matches.slice(0, perPage));
           setTotalRecords(response?.matches.length);
         })

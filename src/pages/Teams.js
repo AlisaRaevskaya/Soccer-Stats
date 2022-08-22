@@ -57,21 +57,20 @@ const Teams = () => {
   }
 
   const onSearchSubmit = (str) => {
+    setError(null);
 
     let searchResults = filterPosts(teams, str);
 
-    if (str) {
-      if (!searchResults.length) {
-        setError("No posts found");
-      }
-    } else {
+    if (!str) {
       searchResults = teams.map((item) => (Object.values(item).join(",").split(",")));
       setError(null);
     }
 
-    let search_results = [];
+    if (!searchResults.length) {
+      setError("No posts found");
+    }
 
-    search_results = searchResults.map(
+    let search_results = searchResults.map(
       (item) => ({ id: item[0], name: item[1], crestUrl: item[2] })
     );
 

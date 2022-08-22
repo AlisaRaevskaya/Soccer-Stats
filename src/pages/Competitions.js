@@ -18,7 +18,6 @@ const Competitions = () => {
   const [resultCompetitions, setResultCompetitions] = useState([]);
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(competitions.length);
-  // const [searchString, setSearchString] = useState("");
 
   const paginationObject = {
     perPage: perPage,
@@ -74,7 +73,7 @@ const Competitions = () => {
   function filterPosts(arr, str) {
     let strLowCase = str.toLowerCase();
 
-    let stringArray = arr.map((item) => (Object.values(item).join(",")));
+    let stringArray = arr.map((item) => Object.values(item).join(","));
 
     let results = stringArray.filter((post) =>
       post.toLowerCase().includes(strLowCase)
@@ -84,24 +83,26 @@ const Competitions = () => {
   }
 
   const onSearchSubmit = (str) => {
+    setError(null);
+    
     let searchResults = filterPosts(competitions, str);
 
-    console.log( searchResults );
-
-    if (str) {
-      if (!searchResults.length) {
-        setError("No posts found");
-      }
-    } else {
-      searchResults = competitions.map((item) => (Object.values(item).join(",").split(",")));
+    if (!str) {
+      searchResults = competitions.map((item) =>
+        Object.values(item).join(",").split(",")
+      );
       setError(null);
     }
 
-    let search_results = [];
+    if (!searchResults.length) {
+      setError("No posts found");
+    }
 
-    search_results = searchResults.map(
-      (item) => ( { id: parseInt(item[0]), name: item[1], area: item[2] })
-    );
+    let search_results = searchResults.map((item) => ({
+      id: parseInt(item[0]),
+      name: item[1],
+      area: item[2],
+    }));
 
     setResultCompetitions(search_results);
     setDisplayedCompetitions(paginate(search_results, currentPage, perPage));
