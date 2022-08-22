@@ -18,6 +18,7 @@ const CompetitionCalendar = () => {
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
+  const [resultMatches, setResultMatches]= useState([]);
   const [error, setError] = useState("");
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
@@ -39,6 +40,7 @@ const CompetitionCalendar = () => {
           response?.matches[0].utcDate,
           response?.matches[response.matches.length - 1].utcDate,
         ]);
+        setResultMatches(response.matches);
       })
       .catch((error) => {
         setError("Повторите попытку позже.");

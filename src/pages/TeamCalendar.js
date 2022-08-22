@@ -78,8 +78,8 @@ const TeamCalendar = (props) => {
     ApiFootballData.teams("breadcrumbs", { id: id })
       .then((response) => {
         setBreadCrumbs([
-          { name: "Команды", id: "id" },
-          { name: response.name, id: id },
+          { name: "Команды", id: new Date().toISOString(), url: "/teams" },
+          { name: response.name, id: id, url: false },
         ]);
       })
       .catch(() => {
@@ -98,7 +98,7 @@ const TeamCalendar = (props) => {
   function handleDateFilter() {
     if (dateFrom && !dateTo) {
       setDateTo(
-        DateHandler.convertToUTCdate(matches[matches.length - 1].utcDate)
+        DateHandler.convertToUTCdate(dates[1])
       );
     }
 
