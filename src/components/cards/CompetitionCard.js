@@ -5,7 +5,7 @@ const CompetitionCard = (props) => {
   const competition = props.competition;
   
   return (
-    <div className="card">
+    <div className="card competition-card">
       <Link to={`/competitions/${competition.id}`}>
         <div className="card-content">
           <p className="card-title">Лига: {competition.name}</p>

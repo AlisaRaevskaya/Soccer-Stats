@@ -1,14 +1,5 @@
 .page-footer {
-  padding: 10px 0;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-
-  .page-footer__content {
-    display: flex;
-    padding-left: 2rem;
-  }
+flex-shrink: 0;
 
   .page-footer__copyright {
     display: flex;

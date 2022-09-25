@@ -1,6 +1,3 @@
-// - Календарь лиги - список матчей лиги/соревнования
-//	List matches across (a set of) competitions.
-
 import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import Table from "../components/tables/MatchesTable";
@@ -18,7 +15,7 @@ const CompetitionCalendar = () => {
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
-  const [resultMatches, setResultMatches]= useState([]);
+  const [resultMatches, setResultMatches] = useState([]);
   const [error, setError] = useState("");
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
@@ -27,7 +24,6 @@ const CompetitionCalendar = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
 
-  //Matches
   useEffect(getMatches, [id]);
 
   function getMatches() {
@@ -50,8 +46,8 @@ const CompetitionCalendar = () => {
         setIsLoaded(true);
       });
   }
-  
-  //Pagination
+
+  /* Pagination */
   const pageClickHandler = (page) => {
     setDisplayedMatches(pages);
     setCurrentPage(page);
@@ -73,7 +69,8 @@ const CompetitionCalendar = () => {
     return paginate(matches, currentPage, perPage);
   }, [matches, currentPage, perPage]);
 
-  //Breadcrumbs
+  /* Breadcrumbs */
+
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
@@ -89,7 +86,8 @@ const CompetitionCalendar = () => {
       });
   }
 
-  //Date Filter Handler
+  /* Date Filter Handler */
+
   const handleDateFilterSubmit = (date) => {
     setDateFrom(date.dateFrom);
     setDateTo(date.dateTo);
@@ -138,11 +136,13 @@ const CompetitionCalendar = () => {
       <div>
         <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
-        <h1>Календарь Лиги</h1>
+        <h1 className="pt-1">Календарь Лиги</h1>
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
-          <div className="container text-center">Матчей н заданные даты не найдено.</div>
+          <div className="container text-center">
+            Матчей н заданные даты не найдено.
+          </div>
         )}
         <Pagination
           paginationObject={paginationObject}
@@ -154,3 +154,5 @@ const CompetitionCalendar = () => {
 };
 
 export default CompetitionCalendar;
+
+//Страница возвращает ошибку поскольку платный ресурс.

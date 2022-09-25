@@ -2,7 +2,10 @@
 // variables & functions
 @import 'variables';
 @import 'utilities';
+
 // base & layout
+@import 'reset';
+@import 'fonts';
 @import 'base';
 @import 'breakpoints';
 @import 'grid';
@@ -20,5 +23,4 @@
 @import 'components/cards';
 @import 'components/pagination';
 @import 'components/breadcrumbs';
-@import 'resources';
 @import 'components/spinner';

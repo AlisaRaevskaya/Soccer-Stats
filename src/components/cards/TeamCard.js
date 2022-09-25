@@ -5,7 +5,7 @@ const TeamCard = (props) => {
   const team = props.team;
 
   return (
-    <div className="card" >
+    <div className="card team-card" >
       <Link to={`/teams/${team.id}`}>
         <div className="card-content">
           <p className="card-title pb-1">Лига: {team.name}</p>

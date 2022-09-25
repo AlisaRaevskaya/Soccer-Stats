@@ -8,11 +8,13 @@ const Breadcrumbs = (props) => {
         {props.breadCrumbs &&
           props.breadCrumbs.map((breadcrumb) => (
             <li key={breadcrumb.id}>
-              { breadcrumb.url ? 
+              {breadcrumb.url ? (
                 <Link to={breadcrumb.url} className="breadcrumbs-link">
                   <span>{breadcrumb.name}</span>
                 </Link>
-              : <span> {breadcrumb.name} </span>}
+              ) : (
+                <span> {breadcrumb.name} </span>
+              )}
             </li>
           ))}
       </ul>

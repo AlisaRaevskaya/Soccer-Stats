@@ -9,14 +9,14 @@ import ApiFootballData from "../utils/ApiFootballData";
 import DateHandler from "../utils/DateHandler";
 import error_image from "../assets/images/error.png";
 
-const TeamCalendar = (props) => {
+const TeamCalendar = () => {
   const { id } = useParams();
   const perPage = 10;
   const defaultPage = { pageNumber: 1, isActive: true };
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
-  const [resultMatches, setResultMatches]= useState([]);
+  const [resultMatches, setResultMatches] = useState([]);
   const [error, setError] = useState("");
   const [totalRecords, setTotalRecords] = useState(matches.length);
   const [currentPage, setCurrentPage] = useState(defaultPage);
@@ -25,7 +25,6 @@ const TeamCalendar = (props) => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
 
-  //Matches
   useEffect(getMatches, [id]);
 
   function getMatches() {
@@ -49,7 +48,8 @@ const TeamCalendar = (props) => {
       });
   }
 
-  //Pagination
+  /* Pagination Logic */
+
   const pageClickHandler = (page) => {
     setDisplayedMatches(pages);
     setCurrentPage(page);
@@ -71,7 +71,8 @@ const TeamCalendar = (props) => {
     return paginate(resultMatches, currentPage, perPage);
   }, [resultMatches, currentPage, perPage]);
 
-  //Breadcrumbs
+  /* Breadcrumbs */
+
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
@@ -87,7 +88,8 @@ const TeamCalendar = (props) => {
       });
   }
 
-  //Date Filter Handler
+  /* Date Filter Handler */
+
   const handleDateFilterSubmit = (date) => {
     setDateFrom(date.dateFrom);
     setDateTo(date.dateTo);
@@ -97,11 +99,8 @@ const TeamCalendar = (props) => {
 
   function handleDateFilter() {
     if (dateFrom && !dateTo) {
-      setDateTo(
-        DateHandler.convertToUTCdate(dates[1])
-      );
+      setDateTo(DateHandler.convertToUTCdate(dates[1]));
     }
-
     if (dateTo && dateFrom) {
       ApiFootballData.teams("dates", {
         team_id: id,
@@ -141,7 +140,7 @@ const TeamCalendar = (props) => {
       <div>
         <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
-        <h1>Календарь Команды</h1>
+        <h1 className="pt-1">Календарь Команды</h1>
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (

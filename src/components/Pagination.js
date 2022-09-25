@@ -36,11 +36,11 @@ const Pagination = (props) =>{
 
   return (
     <div className="pagination">
-      <ul className="pagination-list row">
+      <ul className="pagination-list">
         <li>
           <span className="pagination-button">
             <button type="button" onClick={setPrevious}>
-              Previous
+            &#60;&#60;
             </button>
           </span>
         </li>
@@ -61,7 +61,7 @@ const Pagination = (props) =>{
         <li>
           <span className="pagination-button">
             <button type="button" onClick={setNext}>
-              Next
+            &#62;	&#62;
             </button>
           </span>
         </li>

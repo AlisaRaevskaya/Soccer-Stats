@@ -68,7 +68,7 @@ class ApiFootballData {
         `http://api.football-data.org/v2/${endpoint.resource}`,
         {
           method: endpoint?.method,
-          headers: { "X-Auth-Token": `${this.apiKey}` },
+          headers: { "X-Auth-Token": `${this.apiKey}`},
           body: endpoint?.body ? JSON.stringify(endpoint.body) : null,
         }
       );

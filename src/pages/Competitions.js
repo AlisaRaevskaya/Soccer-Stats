@@ -50,7 +50,7 @@ const Competitions = () => {
       });
   }
 
-  //  Pagination
+  /* Pagination */
 
   const pageClickHandler = (page) => {
     setCurrentPage(page);
@@ -68,7 +68,7 @@ const Competitions = () => {
     [resultCompetitions, currentPage, perPage]
   );
 
-  // Search
+  /* Search */
 
   function filterPosts(arr, str) {
     let strLowCase = str.toLowerCase();
@@ -84,7 +84,7 @@ const Competitions = () => {
 
   const onSearchSubmit = (str) => {
     setError(null);
-    
+
     let searchResults = filterPosts(competitions, str);
 
     if (!str) {
@@ -111,7 +111,7 @@ const Competitions = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="pt-3">
         <h1>Лиги</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="text-center">
@@ -127,7 +127,7 @@ const Competitions = () => {
     );
   } else {
     return (
-      <div>
+      <div className="pt-3">
         <h1>Лиги</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="competition-cards">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import searchIcon from "../assets/svg/search.svg";
 
-const Search = ({ onSearchSubmit })=> {
+const Search = ({ onSearchSubmit }) => {
   const [searchString, setSearchString] = useState("");
 
   function submitHandler(event) {
@@ -23,13 +23,13 @@ const Search = ({ onSearchSubmit })=> {
           value={searchString}
           name="searchString"
           placeholder="Поиск.."
-          onChange={(e) =>  setSearchString(e.target.value)}
+          onChange={(e) => setSearchString(e.target.value)}
         />
-        <button type="submit" className="site-search__btn" value="Submit">
+        <button type="submit" className="site-search__btn btn" value="Submit">
           <img src={searchIcon} className="site-search__icon" />
         </button>
       </form>
     </div>
   );
-}
+};
 export default Search;

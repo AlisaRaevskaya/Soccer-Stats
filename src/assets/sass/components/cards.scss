@@ -1,15 +1,18 @@
 .team-cards {
   display: grid;
-  grid-template-columns: repeat(5, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(5,  1fr);
+  gap: 0.5rem;
 }
 .competition-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  //the screen size is larger than or equal to 700px min-width
 }
+
 .card {
   border: 1px solid black;
-  padding: 3rem 0;
+  padding: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }

@@ -1,5 +1,4 @@
 // - Список команд
-
 import React, { useEffect, useState, useMemo } from "react";
 import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
@@ -16,7 +15,7 @@ const Teams = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [displayedTeams, setDisplayedTeams] = useState(teams.slice(0, perPage));
-  const [resultTeams, setResultTeams]= useState([]);
+  const [resultTeams, setResultTeams] = useState([]);
   const [totalRecords, setTotalRecords] = useState(teams.length);
 
   useEffect(getTeams, []);
@@ -43,7 +42,8 @@ const Teams = () => {
       });
   }
 
-  // Search
+  /* Search Logic */
+
   function filterPosts(arr, str) {
     let strLowCase = str.toLowerCase();
 
@@ -62,7 +62,9 @@ const Teams = () => {
     let searchResults = filterPosts(teams, str);
 
     if (!str) {
-      searchResults = teams.map((item) => (Object.values(item).join(",").split(",")));
+      searchResults = teams.map((item) =>
+        Object.values(item).join(",").split(",")
+      );
       setError(null);
     }
 
@@ -70,16 +72,19 @@ const Teams = () => {
       setError("No posts found");
     }
 
-    let search_results = searchResults.map(
-      (item) => ({ id: item[0], name: item[1], crestUrl: item[2] })
-    );
+    let search_results = searchResults.map((item) => ({
+      id: item[0],
+      name: item[1],
+      crestUrl: item[2],
+    }));
 
     setResultTeams(search_results);
     setDisplayedTeams(paginate(search_results, currentPage, perPage));
     setTotalRecords(search_results.length);
   };
 
-  // Pagination
+  /* Pagination Logic */
+  
   const pageClickHandler = (page) => {
     setCurrentPage(page);
     setDisplayedTeams(pages);
@@ -103,7 +108,7 @@ const Teams = () => {
 
   if (error) {
     return (
-      <div>
+      <div className="pt-3">
         <h1>Teams</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="text-center">
@@ -119,12 +124,14 @@ const Teams = () => {
     );
   } else {
     return (
-      <div>
+      <div className="pt-3">
         <h1>Команды</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="team-cards">
           {displayedTeams &&
-            displayedTeams.map((team) => (<TeamCard team={team} key={team.id}/>))}
+            displayedTeams.map((team) => (
+              <TeamCard team={team} key={team.id} />
+            ))}
         </div>
         <Pagination
           paginationObject={paginationObject}
