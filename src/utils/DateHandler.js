@@ -1,5 +1,4 @@
 class DateHandler {
-  constructor() {}
   
   setZerosForDates(dateNumber) {
     if (dateNumber < 10) return "0" + dateNumber;

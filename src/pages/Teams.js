@@ -112,7 +112,7 @@ const Teams = () => {
         <h1>Teams</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="text-center">
-          <h4>{error} </h4>{" "}
+          <h4>{error} </h4>
         </div>
       </div>
     );

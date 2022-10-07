@@ -6,7 +6,7 @@ import DateFilter from "../components/DateFilter";
 import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
-import error_image from "../assets/images/error.png";
+import errorImage from "../assets/images/error.png";
 
 const CompetitionCalendar = () => {
   const { id } = useParams();
@@ -118,7 +118,7 @@ const CompetitionCalendar = () => {
   if (error) {
     return (
       <div className="error text-center">
-        <img src={error_image} alt="error" className="responsive error-image" />
+        <img src={errorImage} alt="error" className="responsive error-image" />
         <div className="error-message">
           <h3>Упсс..ошибка</h3>
           <h4> {error} </h4>
@@ -136,12 +136,12 @@ const CompetitionCalendar = () => {
       <div>
         <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
-        <h1 className="pt-1">Календарь Лиги</h1>
+        <h1 className="pt-1 pb-1">Календарь Лиги</h1>
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
           <div className="container text-center">
-            Матчей н заданные даты не найдено.
+            Матчей на заданные даты не найдено.
           </div>
         )}
         <Pagination

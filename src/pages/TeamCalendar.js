@@ -7,7 +7,7 @@ import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import DateHandler from "../utils/DateHandler";
-import error_image from "../assets/images/error.png";
+import errorImage from "../assets/images/error.png";
 
 const TeamCalendar = () => {
   const { id } = useParams();
@@ -23,7 +23,7 @@ const TeamCalendar = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [dateTo, setDateTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
-  const [dates, setDates] = useState([]);
+  const [dates, setDates] = useState({});
 
   useEffect(getMatches, [id]);
 
@@ -34,10 +34,10 @@ const TeamCalendar = () => {
         setResultMatches(response.matches);
         setDisplayedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
-        setDates([
-          response?.matches[0].utcDate,
-          response?.matches[response.matches.length - 1].utcDate,
-        ]);
+        setDates({
+          lastDate: response?.matches[0].utcDate,
+          firstDate: response?.matches[response.matches.length - 1].utcDate,
+        });
       })
       .catch((error) => {
         setError("Повторите попытку позже.");
@@ -99,7 +99,7 @@ const TeamCalendar = () => {
 
   function handleDateFilter() {
     if (dateFrom && !dateTo) {
-      setDateTo(DateHandler.convertToUTCdate(dates[1]));
+      setDateTo(DateHandler.convertToUTCdate(dates.firstDate));
     }
     if (dateTo && dateFrom) {
       ApiFootballData.teams("dates", {
@@ -122,7 +122,7 @@ const TeamCalendar = () => {
   if (error) {
     return (
       <div className="error text-center">
-        <img src={error_image} alt="error" className="responsive error-image" />
+        <img src={errorImage} alt="error" className="responsive error-image" />
         <div className="error-message">
           <h3>Упсс..ошибка</h3>
           <h4> {error} </h4>
@@ -140,12 +140,12 @@ const TeamCalendar = () => {
       <div>
         <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
-        <h1 className="pt-1">Календарь Команды</h1>
+        <h1 className="pt-1 pb-1">Календарь Команды</h1>
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
           <div className="text-center">
-            Матчей на заданные даты не найдено.{" "}
+            Матчей на заданные даты не найдено.
           </div>
         )}
 

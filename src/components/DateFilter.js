@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DateHandler from "../utils/DateHandler";
 
 const DateFilter = (props) => {
-  const [firstDate, lastDate] = props.dates;
+  const {lastDate, firstDate} = props.dates;
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const DateFilter = (props) => {
     if (from) {
       return DateHandler.convertToUTCdate(from);
     } else {
-      return DateHandler.convertToUTCdate(firstDate);
+      return DateHandler.convertToUTCdate(lastDate);
     }
   };
 
@@ -21,7 +21,7 @@ const DateFilter = (props) => {
     if (to) {
       return DateHandler.convertToUTCdate(to);
     } else {
-      return DateHandler.convertToUTCdate(lastDate);
+      return DateHandler.convertToUTCdate(firstDate);
     }
   };
 
