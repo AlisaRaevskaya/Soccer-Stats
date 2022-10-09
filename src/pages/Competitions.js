@@ -7,15 +7,20 @@ import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
 import CompetitionCard from "../components/cards/CompetitionCard";
 
-const Competitions = () => {
-  const defaultPage = { pageNumber: 1, isActive: true };
-  const perPage = 9;
+const paginate = (competitions_items, currentPage, perPage) => {
+  let from = currentPage.pageNumber * perPage - perPage;
+  let to = currentPage.pageNumber * perPage;
+  return competitions_items.slice(from, to);
+};
+const defaultPage = { pageNumber: 1, isActive: true };
+const perPage = 9;
 
-  const [competitions, setCompetitions] = useState([]);
+const Competitions = () => {
+  const [competitions, setCompetitions] = useState([]); // initial posts - used in search also
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [resultCompetitions, setResultCompetitions] = useState([]);
+  const [resultCompetitions, setResultCompetitions] = useState([]); //all found by search
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(competitions.length);
 
@@ -24,6 +29,11 @@ const Competitions = () => {
     currentPage: currentPage,
     totalRecords: totalRecords,
   };
+
+  const pages = useMemo(
+    () => paginate(resultCompetitions, currentPage, perPage),
+    [resultCompetitions, currentPage, perPage]
+  );
 
   useEffect(getCompetitions, []);
 
@@ -38,7 +48,7 @@ const Competitions = () => {
         setCompetitions(competitionsPosts);
         setResultCompetitions(competitionsPosts);
         setDisplayedCompetitions(
-          paginate(competitionsPosts, currentPage, perPage)
+          paginate(resultCompetitions, currentPage, perPage)
         );
         setTotalRecords(competitionsPosts.length);
       })
@@ -57,20 +67,9 @@ const Competitions = () => {
     setDisplayedCompetitions(pages);
   };
 
-  const paginate = (competitions, currentPage, perPage) => {
-    let from = currentPage.pageNumber * perPage - perPage;
-    let to = currentPage.pageNumber * perPage;
-    return competitions.slice(from, to);
-  };
-
-  const pages = useMemo(
-    () => paginate(resultCompetitions, currentPage, perPage),
-    [resultCompetitions, currentPage, perPage]
-  );
-
   /* Search */
 
-  function filterPosts(arr, str) {
+  const filterPosts = (arr, str) => {
     let strLowCase = str.toLowerCase();
 
     let stringArray = arr.map((item) => Object.values(item).join(","));
@@ -80,7 +79,7 @@ const Competitions = () => {
     );
 
     return results.map((element) => element.split(","));
-  }
+  };
 
   const onSearchSubmit = (str) => {
     setError(null);
@@ -98,15 +97,15 @@ const Competitions = () => {
       setError("No posts found");
     }
 
-    let search_results = searchResults.map((item) => ({
+    const resultItems = searchResults.map((item) => ({
       id: parseInt(item[0]),
       name: item[1],
       area: item[2],
     }));
 
-    setResultCompetitions(search_results);
-    setDisplayedCompetitions(paginate(search_results, currentPage, perPage));
-    setTotalRecords(search_results.length);
+    setResultCompetitions(resultItems);
+    setDisplayedCompetitions(paginate(resultItems, defaultPage, perPage));
+    setTotalRecords(resultItems.length);
   };
 
   if (error) {

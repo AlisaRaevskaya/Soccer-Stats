@@ -6,17 +6,43 @@ import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
 import TeamCard from "../components/cards/TeamCard";
 
-const Teams = () => {
-  const perPage = 10;
-  const defaultPage = { pageNumber: 1, isActive: true };
+const paginate = (teams, currentPage, perPage) => {
+  let from = currentPage.pageNumber * perPage - perPage;
+  let to = currentPage.pageNumber * perPage;
+  return teams.slice(from, to);
+};
+const defaultPage = { pageNumber: 1, isActive: true };
+const perPage = 10;
 
+const filterPosts = (arr, str) => {
+  let strLowCase = str.toLowerCase();
+
+  let stringArray = arr.map((item) => (item = Object.values(item).join(",")));
+
+  let results = stringArray.filter((post) =>
+    post.toLowerCase().includes(strLowCase)
+  );
+  return results.map((element) => element.split(","));
+};
+
+const Teams = () => {
   const [teams, setTeams] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [displayedTeams, setDisplayedTeams] = useState(teams.slice(0, perPage));
+  const [displayedTeams, setDisplayedTeams] = useState([]);
   const [resultTeams, setResultTeams] = useState([]);
   const [totalRecords, setTotalRecords] = useState(teams.length);
+
+  const paginationObject = {
+    perPage: perPage,
+    currentPage: currentPage,
+    totalRecords: totalRecords,
+  };
+
+  const pages = useMemo(() => {
+    return paginate(resultTeams, currentPage, perPage);
+  }, [resultTeams, currentPage, perPage]);
 
   useEffect(getTeams, []);
 
@@ -30,7 +56,7 @@ const Teams = () => {
 
         setTeams(teamsPosts);
         setResultTeams(teamsPosts);
-        setDisplayedTeams(paginate(teamsPosts, currentPage, perPage));
+        setDisplayedTeams(paginate(resultTeams, currentPage, perPage));
         setTotalRecords(teamsPosts.length);
       })
       .catch((error) => {
@@ -43,18 +69,6 @@ const Teams = () => {
   }
 
   /* Search Logic */
-
-  function filterPosts(arr, str) {
-    let strLowCase = str.toLowerCase();
-
-    let stringArray = arr.map((item) => (item = Object.values(item).join(",")));
-
-    let results = stringArray.filter((post) =>
-      post.toLowerCase().includes(strLowCase)
-    );
-
-    return results.map((element) => element.split(","));
-  }
 
   const onSearchSubmit = (str) => {
     setError(null);
@@ -72,39 +86,23 @@ const Teams = () => {
       setError("No posts found");
     }
 
-    let search_results = searchResults.map((item) => ({
+    let resultItems = searchResults.map((item) => ({
       id: item[0],
       name: item[1],
       crestUrl: item[2],
     }));
 
-    setResultTeams(search_results);
-    setDisplayedTeams(paginate(search_results, currentPage, perPage));
-    setTotalRecords(search_results.length);
+    setResultTeams(resultItems);
+    setDisplayedTeams(paginate(resultItems, defaultPage, perPage));
+    setTotalRecords(resultItems.length);
   };
 
   /* Pagination Logic */
-  
+
   const pageClickHandler = (page) => {
     setCurrentPage(page);
     setDisplayedTeams(pages);
   };
-
-  const paginationObject = {
-    perPage: perPage,
-    currentPage: currentPage,
-    totalRecords: totalRecords,
-  };
-
-  const paginate = (teams, currentPage, perPage) => {
-    let from = currentPage.pageNumber * perPage - perPage;
-    let to = currentPage.pageNumber * perPage;
-    return teams.slice(from, to);
-  };
-
-  const pages = useMemo(() => {
-    return paginate(resultTeams, currentPage, perPage);
-  }, [resultTeams, currentPage, perPage]);
 
   if (error) {
     return (

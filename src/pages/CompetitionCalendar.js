@@ -8,10 +8,16 @@ import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";
 
+const paginate = (matches, currentPage, perPage) => {
+  let from = currentPage.pageNumber * perPage - perPage;
+  let to = currentPage.pageNumber * perPage;
+  return matches.slice(from, to);
+};
+const perPage = 10;
+const defaultPage = { pageNumber: 1, isActive: true };
+
 const CompetitionCalendar = () => {
   const { id } = useParams();
-  const perPage = 10;
-  const defaultPage = { pageNumber: 1, isActive: true };
   const [breadCrumbs, setBreadCrumbs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
@@ -23,6 +29,17 @@ const CompetitionCalendar = () => {
   const [dateTo, setDateTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
+
+  const paginationObject = {
+    perPage: perPage,
+    currentPage: currentPage,
+    totalRecords: totalRecords,
+  };
+
+  const pages = useMemo(() => {
+    return paginate(resultMatches, currentPage, perPage);
+  }, [resultMatches, currentPage, perPage]);
+
 
   useEffect(getMatches, [id]);
 
@@ -52,22 +69,6 @@ const CompetitionCalendar = () => {
     setDisplayedMatches(pages);
     setCurrentPage(page);
   };
-
-  const paginationObject = {
-    perPage: perPage,
-    currentPage: currentPage,
-    totalRecords: totalRecords,
-  };
-
-  const paginate = (matches, currentPage, perPage) => {
-    let from = currentPage.pageNumber * perPage - perPage;
-    let to = currentPage.pageNumber * perPage;
-    return matches.slice(from, to);
-  };
-
-  const pages = useMemo(() => {
-    return paginate(matches, currentPage, perPage);
-  }, [matches, currentPage, perPage]);
 
   /* Breadcrumbs */
 
