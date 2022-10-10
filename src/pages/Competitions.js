@@ -87,7 +87,7 @@ const Competitions = () => {
     }));
 
     setResultCompetitions(resultItems);
-    setDisplayedCompetitions(paginate(resultItems, defaultPage, perPage));
+    setDisplayedCompetitions(resultItems.slice(0, perPage));
     setTotalRecords(resultItems.length);
   };
 

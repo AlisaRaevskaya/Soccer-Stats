@@ -41,7 +41,7 @@ const Teams = () => {
 
         setTeams(teamsPosts);
         setResultTeams(teamsPosts);
-        setDisplayedTeams(paginate(resultTeams, currentPage, perPage));
+        setDisplayedTeams(resultTeams.slice(0, perPage));
         setTotalRecords(teamsPosts.length);
       })
       .catch((error) => {
