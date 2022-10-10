@@ -8,14 +8,10 @@ import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import DateHandler from "../utils/DateHandler";
 import errorImage from "../assets/images/error.png";
-
-const paginate = (matches, currentPage, perPage) => {
-  let from = currentPage.pageNumber * perPage - perPage;
-  let to = currentPage.pageNumber * perPage;
-  return matches.slice(from, to);
-};
+import { paginate } from "../utils/functions";
+import { defaultPage } from "../utils/variables";
 const perPage = 10;
-const defaultPage = { pageNumber: 1, isActive: true };
+
 
 const TeamCalendar = () => {
   const { id } = useParams();
@@ -24,7 +20,7 @@ const TeamCalendar = () => {
   const [displayedMatches, setDisplayedMatches] = useState([]);
   const [resultMatches, setResultMatches] = useState([]);
   const [error, setError] = useState("");
-  const [totalRecords, setTotalRecords] = useState(matches.length);
+  const [totalRecords, setTotalRecords] = useState(null);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
   const [dateTo, setDateTo] = useState("");

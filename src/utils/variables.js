@@ -1,0 +1,1 @@
+export const defaultPage = { pageNumber: 1, isActive: true };

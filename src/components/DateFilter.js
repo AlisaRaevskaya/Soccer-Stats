@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DateHandler from "../utils/DateHandler";
 
 const DateFilter = (props) => {
-  const {lastDate, firstDate} = props.dates;
+  const {lastDate, firstDate } = props.dates;
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
 
   useEffect(() => {
@@ -40,6 +40,8 @@ const DateFilter = (props) => {
     });
   };
 
+  console.log(userInput);
+
   return (
     <div className="mt-1 mb-1">
       <div className="row justify-start">
@@ -50,6 +52,7 @@ const DateFilter = (props) => {
           name="From"
           placeholder="Select date start"
           onChange={dateFromChangeHandler}
+          max={userInput.dateTo}
         />
         <span className="ml-1 mr-1">до</span>
         <input
@@ -57,6 +60,7 @@ const DateFilter = (props) => {
           placeholder="Select date end"
           name="To"
           onChange={dateToChangeHandler}
+          min={userInput.dateFrom}
         />
       </div>
     </div>

@@ -4,26 +4,11 @@ import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
-import TeamCard from "../components/cards/TeamCard";
+import { TeamCard } from "../components/cards/TeamCard";
+import { paginate, filterPosts } from "../utils/functions";
+import { defaultPage } from "../utils/variables";
 
-const paginate = (teams, currentPage, perPage) => {
-  let from = currentPage.pageNumber * perPage - perPage;
-  let to = currentPage.pageNumber * perPage;
-  return teams.slice(from, to);
-};
-const defaultPage = { pageNumber: 1, isActive: true };
 const perPage = 10;
-
-const filterPosts = (arr, str) => {
-  let strLowCase = str.toLowerCase();
-
-  let stringArray = arr.map((item) => (item = Object.values(item).join(",")));
-
-  let results = stringArray.filter((post) =>
-    post.toLowerCase().includes(strLowCase)
-  );
-  return results.map((element) => element.split(","));
-};
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
@@ -83,10 +68,10 @@ const Teams = () => {
     }
 
     if (!searchResults.length) {
-      setError("No posts found");
+      setError("No teams found");
     }
 
-    let resultItems = searchResults.map((item) => ({
+    const resultItems = searchResults.map((item) => ({
       id: item[0],
       name: item[1],
       crestUrl: item[2],

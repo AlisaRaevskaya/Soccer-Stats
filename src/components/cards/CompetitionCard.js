@@ -1,19 +1,21 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
-const CompetitionCard = (props) => {
-  const competition = props.competition;
-  
+const CompetitionCardInner = ({ competition }) => {
   return (
     <div className="card competition-card">
       <Link to={`/competitions/${competition.id}`}>
         <div className="card-content">
-          <p className="card-title">Лига: {competition.name}</p>
-          <p className="card-subtitle">Страна: {competition.area}</p>
+          {competition.name && (
+            <p className="card-title">Лига: {competition.name}</p>
+          )}
+          {competition.area && (
+            <p className="card-subtitle">Страна: {competition.area}</p>
+          )}
         </div>
       </Link>
     </div>
   );
 };
 
-export default CompetitionCard;
+export const CompetitionCard = memo(CompetitionCardInner);

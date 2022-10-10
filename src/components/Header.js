@@ -1,11 +1,11 @@
 import React from "react";
-import Menu from "../components/Menu";
+import Nav from "./Nav";
 
 const Header = () => {
   return (
     <>
       <header className="page-head">
-        <Menu />
+        <Nav />
       </header>
     </>
   );

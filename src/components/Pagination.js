@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Pagination = (props) =>{
+const Pagination = (props) => {
   const { perPage, currentPage, totalRecords } = props.paginationObject;
   const [page, setPage] = useState(currentPage);
 
@@ -8,7 +8,7 @@ const Pagination = (props) =>{
     props.onPageClicked(page);
   }, [page, currentPage]);
 
-  let ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
+  const ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
 
   const getButtonsCount = (ButtonCount) => {
     let content = [];
@@ -24,13 +24,13 @@ const Pagination = (props) =>{
 
   const setPrevious = () => {
     if (page.pageNumber != 1) {
-      setPage({ pageNumber: page.pageNumber - 1, isActive: true } );
+      setPage({ pageNumber: page.pageNumber - 1, isActive: true });
     }
   };
 
   const setNext = () => {
     if (page.pageNumber != ButtonCount) {
-      setPage({ pageNumber: page.pageNumber + 1, isActive: true } );
+      setPage({ pageNumber: page.pageNumber + 1, isActive: true });
     }
   };
 
@@ -40,7 +40,7 @@ const Pagination = (props) =>{
         <li>
           <span className="pagination-button">
             <button type="button" onClick={setPrevious}>
-            &#60;&#60;
+              &#60;&#60;
             </button>
           </span>
         </li>
@@ -50,8 +50,11 @@ const Pagination = (props) =>{
               <li className="pagination-item" key={num}>
                 <button
                   type="button"
-                  className={ page.pageNumber == num && page.isActive ? "page-active" : "" }
-                  onClick={() => onPageClick(num)}>
+                  className={
+                    page.pageNumber == num && page.isActive ? "page-active" : ""
+                  }
+                  onClick={() => onPageClick(num)}
+                >
                   {num}
                 </button>
               </li>
@@ -61,12 +64,12 @@ const Pagination = (props) =>{
         <li>
           <span className="pagination-button">
             <button type="button" onClick={setNext}>
-            &#62;	&#62;
+              &#62; &#62;
             </button>
           </span>
         </li>
       </ul>
     </div>
   );
-}
- export default Pagination;
+};
+export default Pagination;

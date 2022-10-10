@@ -4,10 +4,10 @@ import searchIcon from "../assets/svg/search.svg";
 const Search = ({ onSearchSubmit }) => {
   const [searchString, setSearchString] = useState("");
 
-  function submitHandler(event) {
-    event.preventDefault();
-    onSearchSubmit(searchString);
-  }
+  const submitHandler = (event)=> {
+      event.preventDefault();
+      onSearchSubmit(searchString);
+    }
 
   return (
     <div className="site-search">

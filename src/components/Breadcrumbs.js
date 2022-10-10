@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Breadcrumbs = (props) => {
+const Breadcrumbs = ({ breadCrumbs }) => {
   return (
     <div className="breadcrumbs">
       <ul className="breadcrumbs__list">
-        {props.breadCrumbs &&
-          props.breadCrumbs.map((breadcrumb) => (
+        {breadCrumbs &&
+          breadCrumbs.map((breadcrumb) => (
             <li key={breadcrumb.id}>
               {breadcrumb.url ? (
                 <Link to={breadcrumb.url} className="breadcrumbs-link">

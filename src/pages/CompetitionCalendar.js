@@ -7,14 +7,13 @@ import Pagination from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";
+import { paginate } from "../utils/functions";
+import { defaultPage } from "../utils/variables";
 
-const paginate = (matches, currentPage, perPage) => {
-  let from = currentPage.pageNumber * perPage - perPage;
-  let to = currentPage.pageNumber * perPage;
-  return matches.slice(from, to);
-};
+
+//Страница возвращает ошибку поскольку платный ресурс.
+
 const perPage = 10;
-const defaultPage = { pageNumber: 1, isActive: true };
 
 const CompetitionCalendar = () => {
   const { id } = useParams();
@@ -23,7 +22,7 @@ const CompetitionCalendar = () => {
   const [displayedMatches, setDisplayedMatches] = useState([]);
   const [resultMatches, setResultMatches] = useState([]);
   const [error, setError] = useState("");
-  const [totalRecords, setTotalRecords] = useState(matches.length);
+  const [totalRecords, setTotalRecords] = useState(null);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
   const [dateTo, setDateTo] = useState("");
@@ -156,4 +155,3 @@ const CompetitionCalendar = () => {
 
 export default CompetitionCalendar;
 
-//Страница возвращает ошибку поскольку платный ресурс.

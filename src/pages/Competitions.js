@@ -5,14 +5,9 @@ import Preloader from "../components/PreLoader";
 import Pagination from "../components/Pagination";
 import Search from "../components/Search";
 import ApiFootballData from "../utils/ApiFootballData";
-import CompetitionCard from "../components/cards/CompetitionCard";
-
-const paginate = (competitions_items, currentPage, perPage) => {
-  let from = currentPage.pageNumber * perPage - perPage;
-  let to = currentPage.pageNumber * perPage;
-  return competitions_items.slice(from, to);
-};
-const defaultPage = { pageNumber: 1, isActive: true };
+import { CompetitionCard } from "../components/cards/CompetitionCard";
+import { paginate, filterPosts } from "../utils/functions";
+import { defaultPage } from "../utils/variables";
 const perPage = 9;
 
 const Competitions = () => {
@@ -22,13 +17,13 @@ const Competitions = () => {
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [resultCompetitions, setResultCompetitions] = useState([]); //all found by search
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
-  const [totalRecords, setTotalRecords] = useState(competitions.length);
+  const [totalRecords, setTotalRecords] = useState(1);
 
-  const paginationObject = {
+  const paginationObject = useMemo(() => ({
     perPage: perPage,
     currentPage: currentPage,
     totalRecords: totalRecords,
-  };
+  }), [totalRecords, currentPage]);
 
   const pages = useMemo(
     () => paginate(resultCompetitions, currentPage, perPage),
@@ -69,18 +64,6 @@ const Competitions = () => {
 
   /* Search */
 
-  const filterPosts = (arr, str) => {
-    let strLowCase = str.toLowerCase();
-
-    let stringArray = arr.map((item) => Object.values(item).join(","));
-
-    let results = stringArray.filter((post) =>
-      post.toLowerCase().includes(strLowCase)
-    );
-
-    return results.map((element) => element.split(","));
-  };
-
   const onSearchSubmit = (str) => {
     setError(null);
 
@@ -94,7 +77,7 @@ const Competitions = () => {
     }
 
     if (!searchResults.length) {
-      setError("No posts found");
+      setError("No competitions found");
     }
 
     const resultItems = searchResults.map((item) => ({

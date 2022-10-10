@@ -1,21 +1,19 @@
-// Список лиг/соревнований
-
 import React from "react";
 import DateHandler from "../../utils/DateHandler";
 
-const MatchesTable = (props) => {
-  //Отображаются значения только отличные от null
-  const outputScoreIfNotNull = (score1, score2) => {
-    if (score1 != null || score2 != null) {
-      return (
-        <td>
-          {score1} : {score2}
-        </td>
-      );
-    }
-    return <td> - </td>;
-  };
+//Отображаются значения только отличные от null
+const outputScoreIfNotNull = (score1, score2) => {
+  if (score1 != null || score2 != null) {
+    return (
+      <td>
+        {score1} : {score2}
+      </td>
+    );
+  }
+  return <td> - </td>;
+};
 
+const MatchesTable = (props) => {
   return (
     <table>
       <thead>
