@@ -1,0 +1,15 @@
+.dates-filter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  @include sm {
+    justify-content: center;
+  }
+
+  .dates-filter__to,
+  .dates-filter__from {
+    padding: 0.4rem;
+  }
+}

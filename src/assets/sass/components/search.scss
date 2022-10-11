@@ -18,7 +18,7 @@
   @include md {
     width: 150px;
     height: 45px;
-    padding-left:1rem;
+    padding-left: 1rem;
   }
 
   .site-search__form {
@@ -28,29 +28,22 @@
     .site-search__input {
       border-radius: 0;
       border: 1px solid black;
-      padding:1rem;
+      padding: 1rem;
 
-      -webkit-transition: background .55s ease;
--moz-transition: background .55s ease;
--ms-transition: background .55s ease;
--o-transition: background .55s ease;
-transition: background .55s ease;
+      -webkit-transition: background 0.55s ease;
+      -moz-transition: background 0.55s ease;
+      -ms-transition: background 0.55s ease;
+      -o-transition: background 0.55s ease;
+      transition: background 0.55s ease;
     }
     .site-search__btn {
       border: solid 1px transparent;
       border-radius: 0;
       cursor: pointer;
-      // position: relative;
       width: 3rem;
 
       .site-search__icon {
-        // position: absolute;
-        // left: 25%;
-        // top: 25%;
-        // bottom:25%;
-        // z-index: 1;
-        width:1.5rem;
-       
+        width: 1.5rem;
       }
     }
   }
