@@ -18,27 +18,39 @@
   @include md {
     width: 150px;
     height: 45px;
+    padding-left:1rem;
   }
+
   .site-search__form {
     display: grid;
     grid-template-columns: 1fr 2em;
 
     .site-search__input {
-      // width: 621px;
       border-radius: 0;
       border: 1px solid black;
+      padding:1rem;
 
-      .site-search__btn {
-        border: solid 1px transparent;
-        border-radius: 0;
-        cursor: pointer;
-        position: relative;
+      -webkit-transition: background .55s ease;
+-moz-transition: background .55s ease;
+-ms-transition: background .55s ease;
+-o-transition: background .55s ease;
+transition: background .55s ease;
+    }
+    .site-search__btn {
+      border: solid 1px transparent;
+      border-radius: 0;
+      cursor: pointer;
+      // position: relative;
+      width: 3rem;
 
-        .site-search__icon {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-        }
+      .site-search__icon {
+        // position: absolute;
+        // left: 25%;
+        // top: 25%;
+        // bottom:25%;
+        // z-index: 1;
+        width:1.5rem;
+       
       }
     }
   }

@@ -1,13 +1,31 @@
 .team-cards {
   display: grid;
-  grid-template-columns: repeat(5,  1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
+
+  @include md{
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+  }
+  @include sm{
+    grid-template-columns: 1fr;
+    padding: 1em;
+  }
 }
 .competition-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
-  //the screen size is larger than or equal to 700px min-width
+
+  @include md{
+    grid-template-columns: 1fr 1fr;
+    padding: 1em;
+  }
+
+  @include sm{
+    grid-template-columns: 1fr;
+    padding: 1em;
+  }
 }
 
 .card {

@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+const getButtonsArray = (ButtonCount) => {
+  let arr = [];
+  for (let i = 1; i <= ButtonCount; i++) {
+    arr.push(i);
+  }
+  return arr;
+};
+
 const Pagination = (props) => {
   const { perPage, currentPage, totalRecords } = props.paginationObject;
   const [page, setPage] = useState(currentPage);
@@ -9,14 +17,7 @@ const Pagination = (props) => {
   }, [page, currentPage]);
 
   const ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
-
-  const getButtonsCount = (ButtonCount) => {
-    let content = [];
-    for (let i = 1; i <= ButtonCount; i++) {
-      content.push(i);
-    }
-    return content;
-  };
+  const PaginationButtons = getButtonsArray(ButtonCount);
 
   const onPageClick = (num) => {
     setPage({ pageNumber: num, isActive: true });
@@ -37,34 +38,31 @@ const Pagination = (props) => {
   return (
     <div className="pagination">
       <ul className="pagination-list">
-        <li>
-          <span className="pagination-button">
+        <li className="pagination-item">
+          <span>
             <button type="button" onClick={setPrevious}>
               &#60;&#60;
             </button>
           </span>
         </li>
-        <li>
-          <ul>
-            {getButtonsCount(ButtonCount).map((num) => (
-              <li className="pagination-item" key={num}>
-                <button
-                  type="button"
-                  className={
-                    page.pageNumber == num && page.isActive ? "page-active" : ""
-                  }
-                  onClick={() => onPageClick(num)}
-                >
-                  {num}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </li>
-        <li>
-          <span className="pagination-button">
+        {PaginationButtons &&
+          PaginationButtons.map((num) => (
+            <li className="pagination-item" key={num}>
+              <button
+                type="button"
+                className={
+                  page.pageNumber == num && page.isActive ? "page-active" : ""
+                }
+                onClick={() => onPageClick(num)}
+              >
+                {num}
+              </button>
+            </li>
+          ))}
+        <li className="pagination-item">
+          <span>
             <button type="button" onClick={setNext}>
-              &#62; &#62;
+              &#62;&#62;
             </button>
           </span>
         </li>
