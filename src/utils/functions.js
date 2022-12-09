@@ -1,5 +1,3 @@
- 
- 
  export const paginate = (competitions_items, currentPage, perPage) => {
    let from = currentPage.pageNumber * perPage - perPage;
    let to = currentPage.pageNumber * perPage;

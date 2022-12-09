@@ -1,6 +1,6 @@
 import React from "react";
 
-const PreLoader=()=> {
+const PreLoader = ()=> {
   return (
       <div className="spinner">
         <span className="spinner-inner-1"></span>
@@ -8,6 +8,6 @@ const PreLoader=()=> {
         <span className="spinner-inner-3"></span>
       </div>     
   );
-}
+};
 
 export default PreLoader;

@@ -49,6 +49,7 @@ const Competitions = () => {
       })
       .catch((error) => {
         setError("Повторите попытку позже.");
+        console.log(error);
       })
       .finally(() => {
         setIsLoaded(true);

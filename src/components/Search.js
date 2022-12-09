@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import searchIcon from "../assets/svg/search.svg";
+import PropTypes from "prop-types";
 
 const Search = ({ onSearchSubmit }) => {
   const [searchString, setSearchString] = useState("");
@@ -7,7 +8,7 @@ const Search = ({ onSearchSubmit }) => {
   const submitHandler = (event)=> {
       event.preventDefault();
       onSearchSubmit(searchString);
-    }
+    };
 
   return (
     <div className="site-search">
@@ -32,4 +33,9 @@ const Search = ({ onSearchSubmit }) => {
     </div>
   );
 };
+
+Search.propTypes = {
+  onSearchSubmit: PropTypes.func,
+};
+
 export default Search;

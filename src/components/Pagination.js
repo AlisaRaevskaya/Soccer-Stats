@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const getButtonsArray = (ButtonCount) => {
   let arr = [];
@@ -8,12 +9,12 @@ const getButtonsArray = (ButtonCount) => {
   return arr;
 };
 
-const Pagination = (props) => {
-  const { perPage, currentPage, totalRecords } = props.paginationObject;
+const Pagination = ({ paginationObject, onPageClicked }) => {
+  const { perPage, currentPage, totalRecords } = paginationObject;
   const [page, setPage] = useState(currentPage);
 
   useEffect(() => {
-    props.onPageClicked(page);
+    onPageClicked(page);
   }, [page, currentPage]);
 
   const ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
@@ -70,4 +71,17 @@ const Pagination = (props) => {
     </div>
   );
 };
+
+Pagination.propTypes = {
+  paginationObject: PropTypes.shape({
+    perPage: PropTypes.number,
+    currentPage: PropTypes.shape({
+      isActive: PropTypes.bool,
+      pageNumber: PropTypes.number,
+    }),
+    totalRecords: PropTypes.number,
+  }),
+  onPageClicked: PropTypes.func,
+};
+
 export default Pagination;

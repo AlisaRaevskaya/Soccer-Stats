@@ -1,5 +1,6 @@
 import React from "react";
 import DateHandler from "../../utils/DateHandler";
+import PropTypes from "prop-types";
 
 //Отображаются значения только отличные от null
 const outputScoreIfNotNull = (score1, score2) => {
@@ -13,7 +14,7 @@ const outputScoreIfNotNull = (score1, score2) => {
   return <td> - </td>;
 };
 
-const MatchesTable = (props) => {
+const MatchesTable = ({ matches }) => {
   return (
     <table>
       <thead>
@@ -47,8 +48,8 @@ const MatchesTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.matches &&
-          props.matches.map((item) => (
+        {matches &&
+          matches.map((item) => (
             <tr key={item.id}>
               <td scope="row">{DateHandler.setDateForOutput(item.utcDate)}</td>
               <td scope="row">{DateHandler.setTimeForOutput(item.utcDate)}</td>
@@ -76,6 +77,23 @@ const MatchesTable = (props) => {
       </tbody>
     </table>
   );
+};
+
+MatchesTable.propTypes = {
+  matches: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      utcDate: PropTypes.string,
+      status: PropTypes.string,
+      awayTeam: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+      homeTeam: PropTypes.shape({
+        name: PropTypes.string,
+      }),
+      score: PropTypes.object,
+    })
+  ),
 };
 
 export default MatchesTable;

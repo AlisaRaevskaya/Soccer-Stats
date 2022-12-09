@@ -18,7 +18,6 @@ const perPage = 10;
 const CompetitionCalendar = () => {
   const { id } = useParams();
   const [breadCrumbs, setBreadCrumbs] = useState([]);
-  const [matches, setMatches] = useState([]);
   const [displayedMatches, setDisplayedMatches] = useState([]);
   const [resultMatches, setResultMatches] = useState([]);
   const [error, setError] = useState("");
@@ -45,7 +44,6 @@ const CompetitionCalendar = () => {
   function getMatches() {
     ApiFootballData.competitions("matches", { competition_id: id })
       .then((response) => {
-        setMatches(response.matches);
         setDisplayedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
         setDates([

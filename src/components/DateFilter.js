@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import DateHandler from "../utils/DateHandler";
+import PropTypes from "prop-types";
 
-const DateFilter = (props) => {
-  const { lastDate, firstDate } = props.dates;
+const DateFilter = ({ dates, onDateFilterSubmit }) => {
+  const { lastDate, firstDate } = dates;
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
 
   useEffect(() => {
-    props.onDateFilterSubmit(userInput);
+    onDateFilterSubmit(userInput);
   }, [userInput]);
 
   const handleDateInputFrom = (from) => {
@@ -40,13 +41,10 @@ const DateFilter = (props) => {
     });
   };
 
-  console.log(userInput);
-
   return (
     <div className="mt-1 mb-1">
-
       <div className="dates-filter">
-      <span className="dates-filter__caption">Матчи</span>
+        <span className="dates-filter__caption">Матчи</span>
         <div className="dates-filter__from">
           <span className="pl-1 pr-1"> с</span>
           <input
@@ -71,4 +69,13 @@ const DateFilter = (props) => {
     </div>
   );
 };
+
+DateFilter.propTypes = {
+  dates: PropTypes.shape({
+    lastDate: PropTypes.string,
+    firstDate: PropTypes.string,
+  }),
+  onDateFilterSubmit: PropTypes.func,
+};
+
 export default DateFilter;

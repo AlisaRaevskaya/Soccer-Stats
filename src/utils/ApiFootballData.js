@@ -7,7 +7,7 @@ class ApiFootballData {
       // this.apiKey = '1e76ed510bd246519dedbf03833e5322'),
       (this.endpoints = {
         teams: {
-          list: (options = {}) => {
+          list: () => {
             return {
               method: "GET",
               resource: "teams",
@@ -37,7 +37,7 @@ class ApiFootballData {
           },
         },
         competitions: {
-          list: (options = {}) => {
+          list: () => {
             return {
               method: "GET",
               resource: "competitions",

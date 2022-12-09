@@ -1,5 +1,6 @@
 import React, {memo} from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const TeamCardInner = ({ team }) => {
   return (
@@ -16,5 +17,13 @@ const TeamCardInner = ({ team }) => {
       </Link>
     </div>
   );
+};
+
+TeamCardInner.propTypes = {
+  team: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string,
+    crestUrl: PropTypes.string,
+  }),
 };
 export const TeamCard = memo(TeamCardInner);
