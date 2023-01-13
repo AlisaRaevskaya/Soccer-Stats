@@ -37,7 +37,7 @@ const Competitions = () => {
       .then((response) => {
         let competitionsPosts = response?.competitions.map((item) => {
           const { id, name, area } = item;
-          return (item = { id: id, name: name, area: area.name });
+          return (item = { id, name, area: area.name });
         });
 
         setCompetitions(competitionsPosts);

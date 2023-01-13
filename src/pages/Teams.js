@@ -36,7 +36,7 @@ const Teams = () => {
       .then((response) => {
         let teamsPosts = response?.teams.map((item) => {
           const { id, name, crestUrl } = item;
-          return (item = { id: id, name: name, crestUrl: crestUrl });
+          return (item = { id, name, crestUrl});
         });
 
         setTeams(teamsPosts);

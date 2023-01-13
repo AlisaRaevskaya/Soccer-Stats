@@ -10,7 +10,6 @@ import errorImage from "../assets/images/error.png";
 import { paginate } from "../utils/functions";
 import { defaultPage } from "../utils/variables";
 
-
 //Страница возвращает ошибку поскольку платный ресурс.
 
 const perPage = 10;
