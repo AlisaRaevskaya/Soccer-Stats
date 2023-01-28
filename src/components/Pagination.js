@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-
-const getButtonsArray = (ButtonCount) => {
-  let arr = [];
-  for (let i = 1; i <= ButtonCount; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
+import { makeButtonsArray } from "../utils/functions";
 
 const Pagination = ({ paginationObject, onPageClicked }) => {
   const { perPage, currentPage, totalRecords } = paginationObject;
@@ -18,7 +11,7 @@ const Pagination = ({ paginationObject, onPageClicked }) => {
   }, [page, currentPage]);
 
   const ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
-  const PaginationButtons = getButtonsArray(ButtonCount);
+  const PaginationButtons = makeButtonsArray(ButtonCount);
 
   const onPageClick = (num) => {
     setPage({ pageNumber: num, isActive: true });

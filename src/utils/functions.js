@@ -14,3 +14,11 @@
    );
    return results.map((element) => element.split(","));
  };
+
+ export const makeButtonsArray = (ButtonCount) => {
+  let arr = [];
+  for (let i = 1; i <= ButtonCount; i++) {
+    arr.push(i);
+  }
+  return arr;
+};

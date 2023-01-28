@@ -75,6 +75,7 @@ const Competitions = () => {
         Object.values(item).join(",").split(",")
       );
       setError(null);
+      setCurrentPage(defaultPage);
     }
 
     if (!searchResults.length) {
