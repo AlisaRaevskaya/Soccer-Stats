@@ -55,7 +55,7 @@ const MatchesTable = ({ matches }) => {
               <td scope="row">{DateHandler.setTimeForOutput(item.utcDate)}</td>
               <td>{item.status}</td>
               <td>
-                {item.awayTeam.name} - {item.homeTeam.name}
+                {item.homeTeam.name} - {item.awayTeam.name}
               </td>
 
               {outputScoreIfNotNull(
