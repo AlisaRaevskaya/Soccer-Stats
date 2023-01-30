@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Breadcrumbs = ({ breadCrumbs }) => {
+const BreadcrumbsInner = ({ breadCrumbs }) => {
   console.log(breadCrumbs.map((i) => console.log(typeof i.id)));
   return (
     <div className="breadcrumbs">
@@ -24,7 +24,7 @@ const Breadcrumbs = ({ breadCrumbs }) => {
   );
 };
 
-Breadcrumbs.propTypes = {
+BreadcrumbsInner.propTypes = {
   breadCrumbs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -33,4 +33,4 @@ Breadcrumbs.propTypes = {
   ),
 };
 
-export default Breadcrumbs;
+export const Breadcrumbs = memo(BreadcrumbsInner);

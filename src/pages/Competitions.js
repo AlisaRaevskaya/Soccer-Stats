@@ -1,9 +1,9 @@
 // Список лиг/соревнований
 
 import React, { useEffect, useState, useMemo } from "react";
-import Preloader from "../components/PreLoader";
-import Pagination from "../components/Pagination";
 import Search from "../components/Search";
+import Preloader from "../components/PreLoader";
+import { Pagination } from "../components/Pagination";
 import ApiFootballData from "../utils/ApiFootballData";
 import { CompetitionCard } from "../components/cards/CompetitionCard";
 import { paginate, filterPosts } from "../utils/functions";
@@ -15,16 +15,11 @@ const Competitions = () => {
   const [error, setError] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [resultCompetitions, setResultCompetitions] = useState([]); //all found by search
-  const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
+  const [resultCompetitions, setResultCompetitions] = useState([]); //all competitions found by search
+  const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(1);
 
-
-  const pages = useMemo(
-    () => paginate(resultCompetitions, currentPage, perPage),
-    [resultCompetitions, currentPage, perPage]
-  );
-
+  /* Get Competitions */
   useEffect(getCompetitions, []);
 
   function getCompetitions() {
@@ -37,7 +32,7 @@ const Competitions = () => {
 
         setCompetitions(competitionsPosts);
         setResultCompetitions(competitionsPosts);
-        setDisplayedCompetitions(
+        setPaginatedCompetitions(
           paginate(resultCompetitions, currentPage, perPage)
         );
         setTotalRecords(competitionsPosts.length);
@@ -53,9 +48,12 @@ const Competitions = () => {
 
   /* Pagination */
 
+  const pages = useMemo(() => paginate(resultCompetitions, currentPage, perPage), [resultCompetitions, currentPage, perPage]
+  );
+
   const pageClickHandler = (page) => {
     setCurrentPage(page);
-    setDisplayedCompetitions(pages);
+    setPaginatedCompetitions(pages);
   };
 
   /* Search */
@@ -70,7 +68,6 @@ const Competitions = () => {
         Object.values(item).join(",").split(",")
       );
       setError(null);
-      setCurrentPage(defaultPage);
     }
 
     if (!searchResults.length) {
@@ -84,9 +81,13 @@ const Competitions = () => {
     }));
 
     setResultCompetitions(resultItems);
-    setDisplayedCompetitions(resultItems.slice(0, perPage));
+    setCurrentPage(defaultPage);
+    setPaginatedCompetitions(paginate(resultItems, defaultPage, perPage));
     setTotalRecords(resultItems.length);
   };
+
+  console.log(pages, "pages");
+  console.log(resultCompetitions, "resultcompetitions");
 
   if (error) {
     return (
@@ -110,17 +111,19 @@ const Competitions = () => {
         <h1>Лиги</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="competition-cards">
-          {displayedCompetitions &&
-            displayedCompetitions.map((competition) => (
+          {paginatedCompetitions &&
+            paginatedCompetitions.map((competition) => (
               <CompetitionCard competition={competition} key={competition.id} />
             ))}
         </div>
-        <Pagination
-          perPage= {perPage}
-          currentPage= {currentPage}
-          totalRecords={totalRecords}
-          onPageClicked={pageClickHandler}
-        />
+        {paginatedCompetitions && (
+          <Pagination
+            perPage={perPage}
+            currentPage={currentPage}
+            totalRecords={totalRecords}
+            onPageClicked={pageClickHandler}
+          />
+        )}
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import Table from "../components/tables/MatchesTable";
-import Breadcrumbs from "../components/Breadcrumbs";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import DateFilter from "../components/DateFilter";
-import Pagination from "../components/Pagination";
+import { Pagination } from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import PropTypes from "prop-types";
 import { makeButtonsArray } from "../utils/functions";
 
-const Pagination = ({ perPage, currentPage, totalRecords, onPageClicked }) => {
+const PaginationInner = ({ perPage, currentPage, totalRecords, onPageClicked }) => {
   const [page, setPage] = useState(currentPage);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const Pagination = ({ perPage, currentPage, totalRecords, onPageClicked }) => {
   );
 };
 
-Pagination.propTypes = {
+PaginationInner.propTypes = {
   perPage: PropTypes.number,
   currentPage: PropTypes.shape({
     isActive: PropTypes.bool,
@@ -74,4 +74,4 @@ Pagination.propTypes = {
   onPageClicked: PropTypes.func,
 };
 
-export default Pagination;
+export const Pagination = React.memo(PaginationInner);

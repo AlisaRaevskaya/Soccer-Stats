@@ -1,13 +1,12 @@
 // - Список команд
 import React, { useEffect, useState, useMemo } from "react";
 import Preloader from "../components/PreLoader";
-import Pagination from "../components/Pagination";
 import Search from "../components/Search";
-import ApiFootballData from "../utils/ApiFootballData";
+import { Pagination } from "../components/Pagination";
 import { TeamCard } from "../components/cards/TeamCard";
 import { paginate, filterPosts } from "../utils/functions";
 import { defaultPage } from "../utils/variables";
-
+import ApiFootballData from "../utils/ApiFootballData";
 const perPage = 10;
 
 const Teams = () => {
@@ -15,7 +14,7 @@ const Teams = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [displayedTeams, setDisplayedTeams] = useState([]);
+  const [paginatedTeams, setPaginatedTeams] = useState([]);
   const [resultTeams, setResultTeams] = useState([]);
   const [totalRecords, setTotalRecords] = useState(teams.length);
 
@@ -35,7 +34,7 @@ const Teams = () => {
 
         setTeams(teamsPosts);
         setResultTeams(teamsPosts);
-        setDisplayedTeams(resultTeams.slice(0, perPage));
+        setPaginatedTeams(resultTeams.slice(0, perPage));
         setTotalRecords(teamsPosts.length);
       })
       .catch((error) => {
@@ -48,7 +47,6 @@ const Teams = () => {
   }
 
   /* Search Logic */
-
   const onSearchSubmit = (str) => {
     setError(null);
 
@@ -72,7 +70,7 @@ const Teams = () => {
     }));
 
     setResultTeams(resultItems);
-    setDisplayedTeams(paginate(resultItems, defaultPage, perPage));
+    setPaginatedTeams(paginate(resultItems, defaultPage, perPage));
     setTotalRecords(resultItems.length);
   };
 
@@ -80,7 +78,7 @@ const Teams = () => {
 
   const pageClickHandler = (page) => {
     setCurrentPage(page);
-    setDisplayedTeams(pages);
+    setPaginatedTeams(pages);
   };
 
   if (error) {
@@ -105,8 +103,8 @@ const Teams = () => {
         <h1>Команды</h1>
         <Search onSearchSubmit={onSearchSubmit} />
         <div className="team-cards">
-          {displayedTeams &&
-            displayedTeams.map((team) => (
+          {paginatedTeams &&
+            paginatedTeams.map((team) => (
               <TeamCard team={team} key={team.id} />
             ))}
         </div>
