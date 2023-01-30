@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { makeButtonsArray } from "../utils/functions";
 
-const Pagination = ({ paginationObject, onPageClicked }) => {
-  const { perPage, currentPage, totalRecords } = paginationObject;
+const Pagination = ({ perPage, currentPage, totalRecords, onPageClicked }) => {
   const [page, setPage] = useState(currentPage);
 
   useEffect(() => {
@@ -66,14 +65,12 @@ const Pagination = ({ paginationObject, onPageClicked }) => {
 };
 
 Pagination.propTypes = {
-  paginationObject: PropTypes.shape({
-    perPage: PropTypes.number,
-    currentPage: PropTypes.shape({
-      isActive: PropTypes.bool,
-      pageNumber: PropTypes.number,
-    }),
-    totalRecords: PropTypes.number,
+  perPage: PropTypes.number,
+  currentPage: PropTypes.shape({
+    isActive: PropTypes.bool,
+    pageNumber: PropTypes.number,
   }),
+  totalRecords: PropTypes.number,
   onPageClicked: PropTypes.func,
 };
 

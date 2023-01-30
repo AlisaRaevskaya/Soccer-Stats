@@ -12,7 +12,6 @@ import { paginate } from "../utils/functions";
 import { defaultPage } from "../utils/variables";
 const perPage = 10;
 
-
 const TeamCalendar = () => {
   const { id } = useParams();
   const [breadCrumbs, setBreadCrumbs] = useState([]);
@@ -26,16 +25,9 @@ const TeamCalendar = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState({});
 
-  const paginationObject = {
-    perPage: perPage,
-    currentPage: currentPage,
-    totalRecords: totalRecords,
-  };
-
   const pages = useMemo(() => {
     return paginate(resultMatches, currentPage, perPage);
   }, [resultMatches, currentPage, perPage]);
-
 
   useEffect(getMatches, [id]);
 
@@ -139,14 +131,14 @@ const TeamCalendar = () => {
         {displayedMatches.length > 0 ? (
           <Table matches={displayedMatches} />
         ) : (
-          <div className="text-center">
-            Матчей на заданные даты не найдено.
-          </div>
+          <div className="text-center">Матчей на заданные даты не найдено.</div>
         )}
 
         {displayedMatches.length > 0 && (
           <Pagination
-            paginationObject={paginationObject}
+            perPage={perPage}
+            currentPage={currentPage}
+            totalRecords={totalRecords}
             onPageClicked={pageClickHandler}
           />
         )}

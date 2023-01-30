@@ -27,16 +27,9 @@ const CompetitionCalendar = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
 
-  const paginationObject = {
-    perPage: perPage,
-    currentPage: currentPage,
-    totalRecords: totalRecords,
-  };
-
   const pages = useMemo(() => {
     return paginate(resultMatches, currentPage, perPage);
   }, [resultMatches, currentPage, perPage]);
-
 
   useEffect(getMatches, [id]);
 
@@ -142,7 +135,9 @@ const CompetitionCalendar = () => {
           </div>
         )}
         <Pagination
-          paginationObject={paginationObject}
+          perPage={perPage}
+          currentPage={currentPage}
+          totalRecords={totalRecords}
           onPageClicked={pageClickHandler}
         />
       </div>
@@ -151,4 +146,3 @@ const CompetitionCalendar = () => {
 };
 
 export default CompetitionCalendar;
-

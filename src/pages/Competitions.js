@@ -19,11 +19,6 @@ const Competitions = () => {
   const [displayedCompetitions, setDisplayedCompetitions] = useState([]);
   const [totalRecords, setTotalRecords] = useState(1);
 
-  const paginationObject = useMemo(() => ({
-    perPage: perPage,
-    currentPage: currentPage,
-    totalRecords: totalRecords,
-  }), [totalRecords, currentPage]);
 
   const pages = useMemo(
     () => paginate(resultCompetitions, currentPage, perPage),
@@ -121,7 +116,9 @@ const Competitions = () => {
             ))}
         </div>
         <Pagination
-          paginationObject={paginationObject}
+          perPage= {perPage}
+          currentPage= {currentPage}
+          totalRecords={totalRecords}
           onPageClicked={pageClickHandler}
         />
       </div>
