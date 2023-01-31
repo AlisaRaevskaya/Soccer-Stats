@@ -1,5 +1,5 @@
 // Список лиг/соревнований
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../components/Search";
 import Preloader from "../components/PreLoader";
 import { Pagination } from "../components/Pagination";
@@ -17,6 +17,7 @@ const Competitions = () => {
   const [resultCompetitions, setResultCompetitions] = useState([]); //all competitions found by search
   const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);//competitions sliced by pages and displayed on UI
   const [totalRecords, setTotalRecords] = useState(null);
+  console.log('component');
 
   /* Get Competitions */
   useEffect(getCompetitions, []);
@@ -56,7 +57,7 @@ const Competitions = () => {
 
   const onSearchSubmit = (str) => {
     setError(null);
-
+    
     let searchResults = filterPosts(competitions, str);
 
     if (!str) {

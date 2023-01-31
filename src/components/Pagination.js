@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import { makeButtonsArray } from "../utils/functions";
 
 const PaginationInner = ({perPage, currentPage, totalRecords, onPageChange}) => {
-  const [activePage, setCurrentPage] = useState(currentPage);
+  const [activePage, setActivetPage] = useState(currentPage);
   const ButtonCount = useMemo(() => Math.floor(Math.ceil(totalRecords / perPage)), [totalRecords, perPage]);
+
+  console.log('pagination');
 
   useEffect(() => {
     onPageChange(activePage);
@@ -13,18 +15,18 @@ const PaginationInner = ({perPage, currentPage, totalRecords, onPageChange}) => 
   const PaginationButtons = makeButtonsArray(ButtonCount);
 
   const onPageClick = (num) => {
-    setCurrentPage(num);
+    setActivetPage(num);
   };
 
   const setPrevious = () => {
     if (activePage != 1) {
-      setCurrentPage(activePage - 1);
+      setActivetPage(activePage - 1);
     }
   };
 
   const setNext = () => {
     if (activePage != ButtonCount) {
-      setCurrentPage(activePage + 1);
+      setActivetPage(activePage + 1);
     }
   };
 
@@ -43,7 +45,7 @@ const PaginationInner = ({perPage, currentPage, totalRecords, onPageChange}) => 
             <li className="pagination-item" key={num}>
               <button
                 type="button"
-                className={currentPage == num ? "page-active" : ""}
+                className={activePage == num ? "page-active" : ""}
                 onClick={() => onPageClick(num)}
               >
                 {num}
