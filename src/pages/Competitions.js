@@ -15,9 +15,14 @@ const Competitions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [resultCompetitions, setResultCompetitions] = useState([]); //all competitions found by search
-  const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);//competitions sliced by pages and displayed on UI
+  const [paginatedCompetitions, setPaginatedCompetitions] = useState([]); //competitions sliced by pages and displayed on UI
   const [totalRecords, setTotalRecords] = useState(null);
 
+  // const setCurrentPage = (...args) => {
+  //   console.log('setCurrentPageInteral', ...args);
+  //   setCurrentPageInteral(...args);
+  // }
+ 
   /* Get Competitions */
   useEffect(getCompetitions, []);
 
@@ -56,7 +61,7 @@ const Competitions = () => {
 
   const onSearchSubmit = (str) => {
     setError(null);
-    
+
     let searchResults = filterPosts(competitions, str);
 
     if (!str) {
@@ -76,12 +81,12 @@ const Competitions = () => {
       area: item[2],
     }));
 
+    setCurrentPage(1);
     setResultCompetitions(resultItems);
     setPaginatedCompetitions(paginate(resultItems, defaultPage, perPage));
     setTotalRecords(resultItems.length);
   };
 
-  // console.log(resultCompetitions, "resultcompetitions");
 
   if (error) {
     return (
@@ -110,12 +115,12 @@ const Competitions = () => {
               <CompetitionCard competition={competition} key={competition.id} />
             ))}
         </div>
-          <Pagination
-            perPage={perPage}
-            currentPage={currentPage}
-            totalRecords={totalRecords}
-            onPageChange={handlePageChange}
-          />
+        <Pagination
+          perPage={perPage}
+          currentPage={currentPage}
+          totalRecords={totalRecords}
+          onPageChange={handlePageChange}
+        />
       </div>
     );
   }

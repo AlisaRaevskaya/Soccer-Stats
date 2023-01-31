@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 const Search = ({ onSearchSubmit }) => {
   const [searchString, setSearchString] = useState("");
-  console.log('search')
 
   const submitHandler = (event)=> {
       event.preventDefault();
