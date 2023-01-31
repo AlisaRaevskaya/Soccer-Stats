@@ -1,5 +1,4 @@
 // Список лиг/соревнований
-
 import React, { useEffect, useState, useMemo } from "react";
 import Search from "../components/Search";
 import Preloader from "../components/PreLoader";
@@ -17,7 +16,12 @@ const Competitions = () => {
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [resultCompetitions, setResultCompetitions] = useState([]); //all competitions found by search
   const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);
-  const [totalRecords, setTotalRecords] = useState(1);
+  const [totalRecords, setTotalRecords] = useState(null);
+  
+  const pages = useMemo(
+    () => paginate(resultCompetitions, currentPage, perPage),
+    [resultCompetitions, currentPage, perPage]
+  );
 
   /* Get Competitions */
   useEffect(getCompetitions, []);
@@ -48,10 +52,7 @@ const Competitions = () => {
 
   /* Pagination */
 
-  const pages = useMemo(() => paginate(resultCompetitions, currentPage, perPage), [resultCompetitions, currentPage, perPage]
-  );
-
-  const pageClickHandler = (page) => {
+  const handlePageChange = (page) => {
     setCurrentPage(page);
     setPaginatedCompetitions(pages);
   };
@@ -81,13 +82,11 @@ const Competitions = () => {
     }));
 
     setResultCompetitions(resultItems);
-    setCurrentPage(defaultPage);
     setPaginatedCompetitions(paginate(resultItems, defaultPage, perPage));
     setTotalRecords(resultItems.length);
   };
 
-  console.log(pages, "pages");
-  console.log(resultCompetitions, "resultcompetitions");
+  // console.log(resultCompetitions, "resultcompetitions");
 
   if (error) {
     return (
@@ -121,7 +120,7 @@ const Competitions = () => {
             perPage={perPage}
             currentPage={currentPage}
             totalRecords={totalRecords}
-            onPageClicked={pageClickHandler}
+            onPageChange={handlePageChange}
           />
         )}
       </div>

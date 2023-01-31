@@ -54,7 +54,7 @@ const CompetitionCalendar = () => {
   }
 
   /* Pagination */
-  const pageClickHandler = (page) => {
+  const handlePageChange = (page) => {
     setDisplayedMatches(pages);
     setCurrentPage(page);
   };
@@ -138,7 +138,7 @@ const CompetitionCalendar = () => {
           perPage={perPage}
           currentPage={currentPage}
           totalRecords={totalRecords}
-          onPageClicked={pageClickHandler}
+          onPageChange={handlePageChange}
         />
       </div>
     );

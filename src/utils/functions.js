@@ -1,7 +1,7 @@
- export const paginate = (competitions_items, currentPage, perPage) => {
-   let from = currentPage.pageNumber * perPage - perPage;
-   let to = currentPage.pageNumber * perPage;
-   return competitions_items.slice(from, to);
+ export const paginate = (items, currentPage, perPage) => {
+   let from = currentPage * perPage - perPage;
+   let to = currentPage * perPage;
+   return items.slice(from, to);
  };
 
  export const filterPosts = (arr, str) => {

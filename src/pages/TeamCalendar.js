@@ -53,7 +53,7 @@ const TeamCalendar = () => {
 
   /* Pagination Logic */
 
-  const pageClickHandler = (page) => {
+  const handlePageChange = (page) => {
     setDisplayedMatches(pages);
     setCurrentPage(page);
   };
@@ -139,7 +139,7 @@ const TeamCalendar = () => {
             perPage={perPage}
             currentPage={currentPage}
             totalRecords={totalRecords}
-            onPageClicked={pageClickHandler}
+            onPageChange={handlePageChange}
           />
         )}
       </div>

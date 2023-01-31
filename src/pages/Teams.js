@@ -76,7 +76,7 @@ const Teams = () => {
 
   /* Pagination Logic */
 
-  const pageClickHandler = (page) => {
+  const handlePageChange = (page) => {
     setCurrentPage(page);
     setPaginatedTeams(pages);
   };
@@ -112,7 +112,7 @@ const Teams = () => {
            perPage={perPage}
            currentPage={currentPage}
            totalRecords= {totalRecords}
-          onPageClicked={pageClickHandler}
+           onPageChange={handlePageChange}
         />
       </div>
     );

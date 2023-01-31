@@ -2,29 +2,29 @@ import React, { useEffect, useState, memo } from "react";
 import PropTypes from "prop-types";
 import { makeButtonsArray } from "../utils/functions";
 
-const PaginationInner = ({ perPage, currentPage, totalRecords, onPageClicked }) => {
-  const [page, setPage] = useState(currentPage);
+const PaginationInner = ({perPage, currentPage, totalRecords, onPageChange}) => {
+  const [activePage, setCurrentPage] = useState(currentPage);
 
   useEffect(() => {
-    onPageClicked(page);
-  }, [page, currentPage]);
+    onPageChange(activePage);
+  }, [activePage, currentPage]);
 
   const ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
   const PaginationButtons = makeButtonsArray(ButtonCount);
 
   const onPageClick = (num) => {
-    setPage({ pageNumber: num, isActive: true });
+    setCurrentPage(num);
   };
 
   const setPrevious = () => {
-    if (page.pageNumber != 1) {
-      setPage({ pageNumber: page.pageNumber - 1, isActive: true });
+    if (activePage != 1) {
+      setCurrentPage(activePage - 1);
     }
   };
 
   const setNext = () => {
-    if (page.pageNumber != ButtonCount) {
-      setPage({ pageNumber: page.pageNumber + 1, isActive: true });
+    if (activePage != ButtonCount) {
+      setCurrentPage(activePage + 1);
     }
   };
 
@@ -43,9 +43,7 @@ const PaginationInner = ({ perPage, currentPage, totalRecords, onPageClicked }) 
             <li className="pagination-item" key={num}>
               <button
                 type="button"
-                className={
-                  page.pageNumber == num && page.isActive ? "page-active" : ""
-                }
+                className={currentPage == num ? "page-active" : ""}
                 onClick={() => onPageClick(num)}
               >
                 {num}
@@ -66,12 +64,9 @@ const PaginationInner = ({ perPage, currentPage, totalRecords, onPageClicked }) 
 
 PaginationInner.propTypes = {
   perPage: PropTypes.number,
-  currentPage: PropTypes.shape({
-    isActive: PropTypes.bool,
-    pageNumber: PropTypes.number,
-  }),
+  currentPage: PropTypes.number,
   totalRecords: PropTypes.number,
-  onPageClicked: PropTypes.func,
+  onPageChange: PropTypes.func,
 };
 
-export const Pagination = React.memo(PaginationInner);
+export const Pagination = memo(PaginationInner);
