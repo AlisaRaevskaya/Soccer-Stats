@@ -25,9 +25,6 @@ const TeamCalendar = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState({});
 
-  const pages = useMemo(() => {
-    return paginate(resultMatches, currentPage, perPage);
-  }, [resultMatches, currentPage, perPage]);
 
   useEffect(getMatches, [id]);
 
@@ -54,7 +51,7 @@ const TeamCalendar = () => {
   /* Pagination Logic */
 
   const handlePageChange = (page) => {
-    setDisplayedMatches(pages);
+    setDisplayedMatches(paginate(resultMatches, currentPage, perPage));
     setCurrentPage(page);
   };
 

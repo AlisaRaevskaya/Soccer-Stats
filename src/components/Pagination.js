@@ -1,15 +1,15 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { useEffect, useState, useMemo, memo } from "react";
 import PropTypes from "prop-types";
 import { makeButtonsArray } from "../utils/functions";
 
 const PaginationInner = ({perPage, currentPage, totalRecords, onPageChange}) => {
   const [activePage, setCurrentPage] = useState(currentPage);
+  const ButtonCount = useMemo(() => Math.floor(Math.ceil(totalRecords / perPage)), [totalRecords, perPage]);
 
   useEffect(() => {
     onPageChange(activePage);
   }, [activePage, currentPage]);
 
-  const ButtonCount = Math.floor(Math.ceil(totalRecords / perPage));
   const PaginationButtons = makeButtonsArray(ButtonCount);
 
   const onPageClick = (num) => {

@@ -9,7 +9,6 @@ import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";
 import { paginate } from "../utils/functions";
 import { defaultPage } from "../utils/variables";
-
 //Страница возвращает ошибку поскольку платный ресурс.
 
 const perPage = 10;
@@ -26,10 +25,6 @@ const CompetitionCalendar = () => {
   const [dateTo, setDateTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState([]);
-
-  const pages = useMemo(() => {
-    return paginate(resultMatches, currentPage, perPage);
-  }, [resultMatches, currentPage, perPage]);
 
   useEffect(getMatches, [id]);
 
@@ -55,7 +50,7 @@ const CompetitionCalendar = () => {
 
   /* Pagination */
   const handlePageChange = (page) => {
-    setDisplayedMatches(pages);
+    setDisplayedMatches(paginate(resultMatches, currentPage, perPage));
     setCurrentPage(page);
   };
 

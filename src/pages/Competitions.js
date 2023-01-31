@@ -15,13 +15,8 @@ const Competitions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [resultCompetitions, setResultCompetitions] = useState([]); //all competitions found by search
-  const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);
+  const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);//competitions sliced by pages and displayed on UI
   const [totalRecords, setTotalRecords] = useState(null);
-  
-  const pages = useMemo(
-    () => paginate(resultCompetitions, currentPage, perPage),
-    [resultCompetitions, currentPage, perPage]
-  );
 
   /* Get Competitions */
   useEffect(getCompetitions, []);
@@ -54,7 +49,7 @@ const Competitions = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setPaginatedCompetitions(pages);
+    setPaginatedCompetitions(paginate(resultCompetitions, page, perPage));
   };
 
   /* Search */
@@ -115,14 +110,12 @@ const Competitions = () => {
               <CompetitionCard competition={competition} key={competition.id} />
             ))}
         </div>
-        {paginatedCompetitions && (
           <Pagination
             perPage={perPage}
             currentPage={currentPage}
             totalRecords={totalRecords}
             onPageChange={handlePageChange}
           />
-        )}
       </div>
     );
   }

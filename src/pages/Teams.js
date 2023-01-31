@@ -18,10 +18,6 @@ const Teams = () => {
   const [resultTeams, setResultTeams] = useState([]);
   const [totalRecords, setTotalRecords] = useState(teams.length);
 
-  const pages = useMemo(() => {
-    return paginate(resultTeams, currentPage, perPage);
-  }, [resultTeams, currentPage, perPage]);
-
   useEffect(getTeams, []);
 
   function getTeams() {
@@ -78,7 +74,7 @@ const Teams = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setPaginatedTeams(pages);
+    setPaginatedTeams(paginate(resultTeams, currentPage, perPage));
   };
 
   if (error) {
