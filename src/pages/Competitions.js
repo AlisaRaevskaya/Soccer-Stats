@@ -17,7 +17,6 @@ const Competitions = () => {
   const [resultCompetitions, setResultCompetitions] = useState([]); //all competitions found by search
   const [paginatedCompetitions, setPaginatedCompetitions] = useState([]);//competitions sliced by pages and displayed on UI
   const [totalRecords, setTotalRecords] = useState(null);
-  console.log('component');
 
   /* Get Competitions */
   useEffect(getCompetitions, []);
