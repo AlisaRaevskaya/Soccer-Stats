@@ -26,7 +26,7 @@ const Search = ({ onSearchSubmit }) => {
           placeholder="Поиск.."
           onChange={(e) => setSearchString(e.target.value)}
         />
-        <button type="submit" className="site-search__btn" value="Submit">
+        <button type="submit" className="site-search__btn btn" value="Submit">
           <img src={searchIcon} className="site-search__icon" />
         </button>
       </form>
