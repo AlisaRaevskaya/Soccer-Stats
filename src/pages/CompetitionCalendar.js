@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Table from "../components/tables/MatchesTable";
 import { Breadcrumbs } from "../components/Breadcrumbs";
@@ -7,7 +7,7 @@ import { Pagination } from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";
-import { paginate } from "../utils/helpers";
+import { paginate } from "../utils/Helpers";
 export const defaultPage = 1;
 //Страница возвращает ошибку поскольку платный ресурс.
 

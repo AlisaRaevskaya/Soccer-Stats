@@ -4,7 +4,7 @@ import Preloader from "../components/PreLoader";
 import Search from "../components/Search";
 import { Pagination } from "../components/Pagination";
 import { TeamCard } from "../components/cards/TeamCard";
-import { paginate, filterPosts } from "../utils/helpers";
+import { paginate, filterPosts } from "../utils/Helpers";
 import ApiFootballData from "../utils/ApiFootballData";
 const perPage = 10;
 export const defaultPage = 1;

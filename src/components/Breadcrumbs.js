@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const BreadcrumbsInner = ({ breadCrumbs }) => {
-  // console.log(breadCrumbs.map((i) => console.log(typeof i.id)));
   return (
     <div className="breadcrumbs">
       <ul className="breadcrumbs__list">

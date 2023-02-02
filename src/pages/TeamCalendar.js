@@ -8,7 +8,7 @@ import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import DateHandler from "../utils/DateHandler";
 import errorImage from "../assets/images/error.png";
-import { paginate } from "../utils/helpers";
+import { paginate } from "../utils/Helpers";
 export const defaultPage = 1;
 const perPage = 10;
 

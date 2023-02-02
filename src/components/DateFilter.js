@@ -51,7 +51,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
       <div className="dates-filter">
         <span className="dates-filter__caption">Матчи</span>
         <div className="dates-filter__from">
-          <span className="pl-1 pr-1">с</span>
+          <span className="pr-1">с</span>
           <input
             type="date"
             name="From"
@@ -61,7 +61,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
           />
         </div>
         <div className="dates-filter__to">
-          <span className="pl-1 pr-1">до</span>
+          <span className="pr-1">до</span>
           <input
             type="date"
             placeholder="Select date end"

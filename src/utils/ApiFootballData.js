@@ -1,10 +1,7 @@
-//https://cheatcode.co/tutorials/how-to-write-an-api-wrapper-using-javascript-classes-and-fetch
-
 class ApiFootballData {
   constructor() {
     (
       this.apiKey = process.env.DOTENV.API_KEY),
-      // this.apiKey = '1e76ed510bd246519dedbf03833e5322'),
       (this.endpoints = {
         teams: {
           list: () => {
