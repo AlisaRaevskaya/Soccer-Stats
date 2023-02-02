@@ -12,4 +12,24 @@
   .dates-filter__from {
     padding: 0.4rem;
   }
+
+  input[type="date"] {
+    background-color: #4aae9b;
+    padding: 15px;
+    font-family: "Roboto Mono", monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  }
+  .dates-filter__btn {
+    background-color: #4aae9b;
+    padding: 0.45rem 0.7rem;
+    cursor: pointer;
+
+    .dates-filter__icon {
+      width: 1.5rem;
+    }
+  }
 }

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DateHandler from "../utils/DateHandler";
+import searchIcon from "../assets/svg/search.svg";
 import PropTypes from "prop-types";
 
 const DateFilter = ({ dates, onDateFilterSubmit }) => {
@@ -8,12 +9,6 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
     dateFrom: DateHandler.convertToUTCdate(firstDate),
     dateTo: DateHandler.convertToUTCdate(lastDate),
   });
-
-  console.log(lastDate, "to", firstDate, "from");
-
-  // useEffect(() => {
-  //   onDateFilterSubmit(userInput);
-  // }, [userInput]);
 
   const handleSubmit = () => {
     onDateFilterSubmit(userInput);
@@ -56,7 +51,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
       <div className="dates-filter">
         <span className="dates-filter__caption">Матчи</span>
         <div className="dates-filter__from">
-          <span className="pl-1 pr-1"> с</span>
+          <span className="pl-1 pr-1">с</span>
           <input
             type="date"
             name="From"
@@ -76,7 +71,9 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
           />
         </div>
         <div>
-          <button className="btn" onClick={handleSubmit}>Search</button>
+          <button className="dates-filter__btn" onClick={handleSubmit}>
+            <img src={searchIcon} className="site-search__icon" />
+          </button>
         </div>
       </div>
     </div>
