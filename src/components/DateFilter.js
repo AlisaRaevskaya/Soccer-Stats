@@ -4,13 +4,20 @@ import PropTypes from "prop-types";
 
 const DateFilter = ({ dates, onDateFilterSubmit }) => {
   const { firstDate, lastDate } = dates;
-  const [userInput, setUserInput] = useState({ dateFrom: DateHandler.convertToUTCdate(firstDate), dateTo: DateHandler.convertToUTCdate(lastDate) });
+  const [userInput, setUserInput] = useState({
+    dateFrom: DateHandler.convertToUTCdate(firstDate),
+    dateTo: DateHandler.convertToUTCdate(lastDate),
+  });
 
-  console.log(lastDate, 'to', firstDate, 'from');
+  console.log(lastDate, "to", firstDate, "from");
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   onDateFilterSubmit(userInput);
+  // }, [userInput]);
+
+  const handleSubmit = () => {
     onDateFilterSubmit(userInput);
-  }, [userInput]);
+  };
 
   const handleDateInputFrom = (from) => {
     if (from) {
@@ -28,7 +35,6 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
       return DateHandler.convertToUTCdate(lastDate);
     }
   };
- 
 
   const dateFromChangeHandler = (event) => {
     setUserInput((prevState) => {
@@ -68,6 +74,9 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
             onChange={dateToChangeHandler}
             min={userInput.dateFrom}
           />
+        </div>
+        <div>
+          <button className="btn" onClick={handleSubmit}>Search</button>
         </div>
       </div>
     </div>

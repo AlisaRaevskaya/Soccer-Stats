@@ -64,7 +64,8 @@ const Teams = () => {
       name: item[1],
       crestUrl: item[2],
     }));
-
+    
+    setCurrentPage(1);
     setResultTeams(resultItems);
     setPaginatedTeams(paginate(resultItems, defaultPage, perPage));
     setTotalRecords(resultItems.length);

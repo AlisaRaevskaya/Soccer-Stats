@@ -88,6 +88,7 @@ const CompetitionCalendar = () => {
         dateTo: dateTo,
       })
         .then((response) => {
+          setCurrentPage(1);
           setDisplayedMatches(response?.matches.slice(0, perPage));
           setTotalRecords(response?.matches.length);
         })

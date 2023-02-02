@@ -92,6 +92,7 @@ const TeamCalendar = () => {
         dateTo: dateTo,
       })
         .then((response) => {
+          setCurrentPage(1);
           setResultMatches(response.matches);
           setDisplayedMatches(response?.matches.slice(0, perPage));
           setTotalRecords(response?.matches.length);
