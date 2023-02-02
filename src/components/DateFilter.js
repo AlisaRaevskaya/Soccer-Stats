@@ -3,8 +3,10 @@ import DateHandler from "../utils/DateHandler";
 import PropTypes from "prop-types";
 
 const DateFilter = ({ dates, onDateFilterSubmit }) => {
-  const { lastDate, firstDate } = dates;
-  const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
+  const { firstDate, lastDate } = dates;
+  const [userInput, setUserInput] = useState({ dateFrom: DateHandler.convertToUTCdate(firstDate), dateTo: DateHandler.convertToUTCdate(lastDate) });
+
+  console.log(lastDate, 'to', firstDate, 'from');
 
   useEffect(() => {
     onDateFilterSubmit(userInput);
@@ -14,17 +16,19 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
     if (from) {
       return DateHandler.convertToUTCdate(from);
     } else {
-      return DateHandler.convertToUTCdate(lastDate);
+      return DateHandler.convertToUTCdate(firstDate);
     }
   };
 
   const handleDateInputTo = (to) => {
+    console.log(to);
     if (to) {
       return DateHandler.convertToUTCdate(to);
     } else {
-      return DateHandler.convertToUTCdate(firstDate);
+      return DateHandler.convertToUTCdate(lastDate);
     }
   };
+ 
 
   const dateFromChangeHandler = (event) => {
     setUserInput((prevState) => {
@@ -72,8 +76,8 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
 
 DateFilter.propTypes = {
   dates: PropTypes.shape({
-    lastDate: PropTypes.string,
     firstDate: PropTypes.string,
+    lastDate: PropTypes.string,
   }),
   onDateFilterSubmit: PropTypes.func,
 };

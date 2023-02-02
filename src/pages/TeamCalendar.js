@@ -35,8 +35,8 @@ const TeamCalendar = () => {
         setDisplayedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
         setDates({
-          lastDate: response?.matches[0].utcDate,
-          firstDate: response?.matches[response.matches.length - 1].utcDate,
+          firstDate: response?.matches[0].utcDate,
+          lastDate: response?.matches[response.matches.length - 1].utcDate,
         });
       })
       .catch((error) => {
@@ -83,7 +83,7 @@ const TeamCalendar = () => {
 
   function handleDateFilter() {
     if (dateFrom && !dateTo) {
-      setDateTo(DateHandler.convertToUTCdate(dates.firstDate));
+      setDateTo(DateHandler.convertToUTCdate(dates.lastDate));
     }
     if (dateTo && dateFrom) {
       ApiFootballData.teams("dates", {

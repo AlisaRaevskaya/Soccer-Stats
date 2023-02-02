@@ -7,9 +7,7 @@ const PaginationInner = ({ perPage, currentPage, totalRecords, onPageChange }) =
   const [activePage, setActivetPage] = useState(currentPage);
   const ButtonsCount = useMemo(() => Math.floor(Math.ceil(totalRecords / perPage)), [totalRecords, perPage]); //number of buttons we need
   const PaginationButtons = makeButtonsArray(ButtonsCount); //set array of buttons
-
-  console.log( currentPage, "pagination current Page");
-
+  
   useEffect(() => {
     onPageChange(activePage);
   }, [activePage]);
