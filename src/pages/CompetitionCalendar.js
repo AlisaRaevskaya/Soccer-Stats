@@ -7,8 +7,8 @@ import { Pagination } from "../components/Pagination";
 import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";
-import { paginate } from "../utils/functions";
-import { defaultPage } from "../utils/variables";
+import { paginate } from "../utils/helpers";
+export const defaultPage = 1;
 //Страница возвращает ошибку поскольку платный ресурс.
 
 const perPage = 10;

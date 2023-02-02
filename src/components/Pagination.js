@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, memo } from "react";
 import PropTypes from "prop-types";
-import { makeButtonsArray } from "../utils/functions";
+import { makeButtonsArray } from "../utils/helpers";
 //дефолтное значение не изменяется про ререндере
 
 const PaginationInner = ({ perPage, currentPage, totalRecords, onPageChange }) => {

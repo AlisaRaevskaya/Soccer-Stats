@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Table from "../components/tables/MatchesTable";
 import { Breadcrumbs } from "../components/Breadcrumbs";
@@ -8,8 +8,8 @@ import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import DateHandler from "../utils/DateHandler";
 import errorImage from "../assets/images/error.png";
-import { paginate } from "../utils/functions";
-import { defaultPage } from "../utils/variables";
+import { paginate } from "../utils/helpers";
+export const defaultPage = 1;
 const perPage = 10;
 
 const TeamCalendar = () => {

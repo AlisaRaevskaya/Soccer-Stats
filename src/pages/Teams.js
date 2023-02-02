@@ -1,13 +1,13 @@
 // - Список команд
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Preloader from "../components/PreLoader";
 import Search from "../components/Search";
 import { Pagination } from "../components/Pagination";
 import { TeamCard } from "../components/cards/TeamCard";
-import { paginate, filterPosts } from "../utils/functions";
-import { defaultPage } from "../utils/variables";
+import { paginate, filterPosts } from "../utils/helpers";
 import ApiFootballData from "../utils/ApiFootballData";
 const perPage = 10;
+export const defaultPage = 1;
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);

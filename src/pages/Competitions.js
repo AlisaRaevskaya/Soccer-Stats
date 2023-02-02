@@ -5,8 +5,8 @@ import Preloader from "../components/PreLoader";
 import { Pagination } from "../components/Pagination";
 import ApiFootballData from "../utils/ApiFootballData";
 import { CompetitionCard } from "../components/cards/CompetitionCard";
-import { paginate, filterPosts } from "../utils/functions";
-import { defaultPage } from "../utils/variables";
+import { paginate, filterPosts } from "../utils/helpers";
+export const defaultPage = 1;
 const perPage = 9;
 
 const Competitions = () => {
