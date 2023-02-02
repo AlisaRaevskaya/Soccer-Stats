@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 
 const CompetitionCardInner = ({ competition }) => {
   return (
-    <div className="card competition-card">
+    <div className="card">
       <Link to={`/competitions/${competition.id}`}>
-        <div className="card-content">
+        <div>
           {competition.name && (
-            <p className="card-title">Лига: {competition.name}</p>
+            <p>Лига: {competition.name}</p>
           )}
           {competition.area && (
-            <p className="card-subtitle">Страна: {competition.area}</p>
+            <p>Страна: {competition.area}</p>
           )}
         </div>
       </Link>

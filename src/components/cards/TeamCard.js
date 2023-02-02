@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 
 const TeamCardInner = ({ team }) => {
   return (
-    <div className="card team-card">
+    <div className="card">
       <Link to={`/teams/${team.id}`}>
-        <div className="card-content">
-          {team.name && <p className="card-title pb-1">Лига: {team.name}</p>}
+        <div>
+          {team.name && <p className="pb-1">Лига: {team.name}</p>}
           {team.crestUrl && (
-            <figure className="card-image">
+            <figure>
               <img src={team.crestUrl} alt={team.name} width="96" height="96" />
             </figure>
           )}

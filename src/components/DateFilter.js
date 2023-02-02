@@ -49,7 +49,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
   return (
     <div className="mt-1 mb-1">
       <div className="dates-filter">
-        <span className="dates-filter__caption">Матчи</span>
+        <span>Матчи</span>
         <div className="dates-filter__from">
           <span className="pr-1">с</span>
           <input

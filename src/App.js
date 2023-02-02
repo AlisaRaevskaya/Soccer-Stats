@@ -8,6 +8,12 @@ import TeamCalendar from "./pages/TeamCalendar";
 import CompetitionCalendar from "./pages/CompetitionCalendar";
 import Competitions from "./pages/Competitions";
 import NotFound from "./pages/NotFound";
+import { CheckCSS } from "checkcss";
+
+// Create CheckCSS instance
+const checkcss = new CheckCSS();
+checkcss.scan().watch();
+
 
 export default function App() {
   return (

@@ -12,3 +12,14 @@ $text-positions: (
     text-align: $val;
   }
 }
+
+$display-options: (
+  "block": block,
+  "inline-block": inline-block,
+);
+
+@each $key, $val in $display-options{
+  .display-#{$key} {
+    display: $val;
+  }
+}
