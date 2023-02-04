@@ -7,7 +7,7 @@ import { TeamCard } from "../components/cards/TeamCard";
 import { paginate, filterPosts } from "../utils/Helpers";
 import ApiFootballData from "../utils/ApiFootballData";
 const perPage = 10;
-export const defaultPage = 1;
+const defaultPage = 1;
 
 const Teams = () => {
   const [teams, setTeams] = useState([]);
@@ -30,7 +30,9 @@ const Teams = () => {
 
         setTeams(teamsPosts);
         setResultTeams(teamsPosts);
-        setPaginatedTeams(resultTeams.slice(0, perPage));
+        setPaginatedTeams(
+          paginate(resultTeams, currentPage, perPage)
+        );
         setTotalRecords(teamsPosts.length);
       })
       .catch((error) => {
@@ -75,7 +77,7 @@ const Teams = () => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setPaginatedTeams(paginate(resultTeams, currentPage, perPage));
+    setPaginatedTeams(paginate(resultTeams, page, perPage));
   };
 
   if (error) {

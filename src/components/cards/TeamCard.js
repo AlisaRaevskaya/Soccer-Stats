@@ -7,7 +7,7 @@ const TeamCardInner = ({ team }) => {
     <div className="card">
       <Link to={`/teams/${team.id}`}>
         <div>
-          {team.name && <p className="pb-1">Лига: {team.name}</p>}
+          {team.name && <p className="pb-1">Команда: {team.name}</p>}
           {team.crestUrl && (
             <figure>
               <img src={team.crestUrl} alt={team.name} width="96" height="96" />
