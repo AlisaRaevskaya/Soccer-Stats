@@ -9,6 +9,7 @@ import Table from "../components/tables/MatchesTable";
 import ApiFootballData from "../utils/ApiFootballData";
 import { convertToUTCdate, convertToOneFormat } from "../utils/datesHandlers";
 import errorImage from "../assets/images/error.png";
+import { maxRange } from "../utils/datesHandlers";
 const defaultPage = 1;
 const perPage = 10;
 
@@ -83,28 +84,31 @@ const TeamCalendar = () => {
   const handleDateFilterSubmit = (date) => {
     setErrorDates("");
 
-    date = {
-      dateFrom: convertToUTCdate(date.dateFrom),
-      dateTo: convertToUTCdate(date.dateTo),
-    };
+    console.log(date.dateFrom, Date.parse(date.dateFrom), "dateParsefrom");
+    console.log(date.dateTo, Date.parse(date.dateTo), "dateParseTo");
 
-    console.log(date.dateFrom, Date.parse(date.dateFrom), "dateParse");
-
-    if (date.dateTo && !date.dateFrom) {
+    if (!date.dateFrom && date.dateTo) {
       console.log("empty from");
       setErrorDates("Определите точную дату начала периода");
     } else if (date.dateFrom && !date.dateTo) {
       console.log("empty to");
       setErrorDates("Определите точную дату конца периода");
     } else {
-      if (isNaN(Date.parse(date.dateFrom)) || isNaN(Date.parse(date.dateTo))) {
-        setErrorDates("Проверьте правильность данных");
-      }
-      if (convertToOneFormat(date.dateFrom) > convertToOneFormat(date.dateTo)) {
-        setErrorDates("Конец периода не может быть раньше начала периода");
-      } else {
-        setDateFrom(date.dateFrom);
-        setDateTo(date.dateTo);
+      switch (true) {
+        case isNaN(Date.parse(date.dateFrom)) || isNaN(Date.parse(date.dateTo)):
+          setErrorDates("Проверьте правильность данных");
+          break;
+        case maxRange(date.dateFrom, date.dateTo) > 750:
+          setErrorDates("Specified period must not exceed 750 days");
+          break;
+        case convertToOneFormat(date.dateFrom) >
+          convertToOneFormat(date.dateTo):
+          setErrorDates("Конец периода не может быть раньше начала периода");
+          break;
+        default:
+          setDateFrom(date.dateFrom);
+          setDateTo(date.dateTo);
+          break;
       }
     }
   };
@@ -162,7 +166,9 @@ const TeamCalendar = () => {
         {paginatedMatches.length > 0 ? (
           <Table matches={paginatedMatches} />
         ) : (
-          <div className="text-center">Матчей на заданные даты не найдено.</div>
+          <div className="text-center pb-2">
+            Матчей на заданные даты не найдено.
+          </div>
         )}
         {paginatedMatches.length > 0 && (
           <Pagination
