@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Table from "../components/tables/MatchesTable";
 import { Breadcrumbs } from "../components/Breadcrumbs";
-import DateFilter from "../components/DateFilter";
-import {Pagination} from "../components/Pagination";
-import Preloader from "../components/PreLoader";
-import ApiFootballData from "../utils/ApiFootballData";
-import DateHandler from "../utils/DateHandler";
-import errorImage from "../assets/images/error.png";
+import { Pagination } from "../components/Pagination";
 import { paginate } from "../utils/Helpers";
-export const defaultPage = 1;
+import DateFilter from "../components/DateFilter";
+import Preloader from "../components/PreLoader";
+import Table from "../components/tables/MatchesTable";
+import ApiFootballData from "../utils/ApiFootballData";
+import { convertToUTCdate, convertToOneFormat } from "../utils/datesHandlers";
+import errorImage from "../assets/images/error.png";
+
+const defaultPage = 1;
 const perPage = 10;
 
 const TeamCalendar = () => {
   const { id } = useParams();
   const [breadCrumbs, setBreadCrumbs] = useState([]);
-  const [displayedMatches, setDisplayedMatches] = useState([]);
+  const [paginatedMatches, setPaginatedMatches] = useState([]);
   const [resultMatches, setResultMatches] = useState([]);
   const [error, setError] = useState("");
+  const [errorDates, setErrorDates] = useState("");
   const [totalRecords, setTotalRecords] = useState(null);
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,18 +27,17 @@ const TeamCalendar = () => {
   const [dateFrom, setDateFrom] = useState("");
   const [dates, setDates] = useState({});
 
-
   useEffect(getMatches, [id]);
 
   function getMatches() {
     ApiFootballData.teams("matches", { team_id: id })
       .then((response) => {
         setResultMatches(response.matches);
-        setDisplayedMatches(response.matches.slice(0, perPage));
+        setPaginatedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
         setDates({
-          firstDate: response?.matches[0].utcDate,
-          lastDate: response?.matches[response.matches.length - 1].utcDate,
+          firstDateFrom: response?.matches[0].utcDate,
+          lastDateTo: response?.matches[response.matches.length - 1].utcDate,
         });
       })
       .catch((error) => {
@@ -51,7 +52,7 @@ const TeamCalendar = () => {
   /* Pagination Logic */
 
   const handlePageChange = (page) => {
-    setDisplayedMatches(paginate(resultMatches, currentPage, perPage));
+    setPaginatedMatches(paginate(resultMatches, page, perPage));
     setCurrentPage(page);
   };
 
@@ -63,8 +64,8 @@ const TeamCalendar = () => {
     ApiFootballData.teams("breadcrumbs", { id: id })
       .then((response) => {
         setBreadCrumbs([
-          { name: "Команды", id: new Date().toISOString(), url: "/teams" },
-          { name: response.name, id: id, url: false },
+          { name: "Команды", url: "/teams" },
+          { name: response.name, url: false },
         ]);
       })
       .catch(() => {
@@ -75,16 +76,27 @@ const TeamCalendar = () => {
   /* Date Filter Handler */
 
   const handleDateFilterSubmit = (date) => {
-    setDateFrom(date.dateFrom);
-    setDateTo(date.dateTo);
+    setErrorDates("");
+
+    if (date.dateFrom && !date.dateTo) {
+      setDateTo(convertToUTCdate(dates.lastDateTo));
+    } else if (date.dateTo && !date.dateFrom) {
+      setDateFrom(convertToUTCdate(dates.firstDateFrom));
+    } else {
+      const fr = convertToOneFormat(date.dateFrom);
+      const to = convertToOneFormat(date.dateTo);
+      if (fr < to || fr === to) {
+        setDateFrom(date.dateFrom);
+        setDateTo(date.dateTo);
+      } else {
+        setErrorDates("Дата с должна быть раньше даты до");
+      }
+    }
   };
 
   useEffect(handleDateFilter, [dateFrom, dateTo]);
 
   function handleDateFilter() {
-    if (dateFrom && !dateTo) {
-      setDateTo(DateHandler.convertToUTCdate(dates.lastDate));
-    }
     if (dateTo && dateFrom) {
       ApiFootballData.teams("dates", {
         team_id: id,
@@ -92,13 +104,14 @@ const TeamCalendar = () => {
         dateTo: dateTo,
       })
         .then((response) => {
-          setCurrentPage(1);
-          setResultMatches(response.matches);
-          setDisplayedMatches(response?.matches.slice(0, perPage));
-          setTotalRecords(response?.matches.length);
+          setCurrentPage(defaultPage);
+          const filteredtMatches = response.matches;
+          setResultMatches(filteredtMatches);
+          setPaginatedMatches(paginate(filteredtMatches, defaultPage, perPage));
+          setTotalRecords(filteredtMatches.length);
         })
         .catch((error) => {
-          setError("Повторите попытку позже.");
+          setError("Ошибка.Повторите попытку позже.");
           console.log(error);
         });
     }
@@ -123,16 +136,19 @@ const TeamCalendar = () => {
   } else {
     return (
       <div>
-        <DateFilter onDateFilterSubmit={handleDateFilterSubmit} dates={dates} />
+        <DateFilter
+          onDateFilterSubmit={handleDateFilterSubmit}
+          dates={dates}
+          validationError={errorDates}
+        />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
         <h1 className="pt-1 pb-1">Календарь Команды</h1>
-        {displayedMatches.length > 0 ? (
-          <Table matches={displayedMatches} />
+        {paginatedMatches.length > 0 ? (
+          <Table matches={paginatedMatches} />
         ) : (
           <div className="text-center">Матчей на заданные даты не найдено.</div>
         )}
-
-        {displayedMatches.length > 0 && (
+        {paginatedMatches.length > 0 && (
           <Pagination
             perPage={perPage}
             currentPage={currentPage}

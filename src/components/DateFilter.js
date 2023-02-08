@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import DateHandler from "../utils/DateHandler";
 import searchIcon from "../assets/svg/search.svg";
 import PropTypes from "prop-types";
+import { convertToUTCdate } from "../utils/datesHandlers";
 
-const DateFilter = ({ dates, onDateFilterSubmit }) => {
-  const { firstDate, lastDate } = dates;
+const DateFilter = ({ dates, onDateFilterSubmit, validationError}) => {
+  const { firstDateFrom, lastDateTo } = dates;
   const [userInput, setUserInput] = useState({
-    dateFrom: DateHandler.convertToUTCdate(firstDate),
-    dateTo: DateHandler.convertToUTCdate(lastDate),
+    dateFrom: convertToUTCdate(firstDateFrom),
+    dateTo: convertToUTCdate(lastDateTo),
   });
 
   const handleSubmit = () => {
@@ -16,18 +16,17 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
 
   const handleDateInputFrom = (from) => {
     if (from) {
-      return DateHandler.convertToUTCdate(from);
+      return convertToUTCdate(from);
     } else {
-      return DateHandler.convertToUTCdate(firstDate);
+      return convertToUTCdate(firstDateFrom);
     }
   };
 
   const handleDateInputTo = (to) => {
-    console.log(to);
     if (to) {
-      return DateHandler.convertToUTCdate(to);
+      return convertToUTCdate(to);
     } else {
-      return DateHandler.convertToUTCdate(lastDate);
+      return convertToUTCdate(lastDateTo);
     }
   };
 
@@ -49,6 +48,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
   return (
     <div className="mt-1 mb-1">
       <div className="dates-filter">
+    
         <span>Матчи</span>
         <div className="dates-filter__from">
           <span className="pr-1">с</span>
@@ -58,6 +58,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
             placeholder="Select date start"
             onChange={dateFromChangeHandler}
             max={userInput.dateTo}
+            value={userInput.dateFrom}
           />
         </div>
         <div className="dates-filter__to">
@@ -68,6 +69,7 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
             name="To"
             onChange={dateToChangeHandler}
             min={userInput.dateFrom}
+            value={userInput.dateTo}
           />
         </div>
         <div>
@@ -76,16 +78,18 @@ const DateFilter = ({ dates, onDateFilterSubmit }) => {
           </button>
         </div>
       </div>
+      {validationError && <div className="text-red">{validationError}</div>}
     </div>
   );
 };
 
 DateFilter.propTypes = {
   dates: PropTypes.shape({
-    firstDate: PropTypes.string,
-    lastDate: PropTypes.string,
+    firstDateFrom: PropTypes.string,
+    lastDateTo: PropTypes.string,
   }),
   onDateFilterSubmit: PropTypes.func,
+  validationError: PropTypes.string
 };
 
 export default DateFilter;

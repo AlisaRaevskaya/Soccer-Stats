@@ -7,8 +7,8 @@ const BreadcrumbsInner = ({ breadCrumbs }) => {
     <div className="breadcrumbs">
       <ul className="breadcrumbs__list">
         {breadCrumbs &&
-          breadCrumbs.map((breadcrumb) => (
-            <li key={breadcrumb.id}>
+          breadCrumbs.map((breadcrumb, index) => (
+            <li key={index}>
               {breadcrumb.url ? (
                 <Link to={breadcrumb.url} className="breadcrumbs-link">
                   <span>{breadcrumb.name}</span>
@@ -26,7 +26,6 @@ const BreadcrumbsInner = ({ breadCrumbs }) => {
 BreadcrumbsInner.propTypes = {
   breadCrumbs: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
       name: PropTypes.string,
     })
   ),

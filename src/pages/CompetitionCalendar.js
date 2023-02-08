@@ -8,7 +8,7 @@ import Preloader from "../components/PreLoader";
 import ApiFootballData from "../utils/ApiFootballData";
 import errorImage from "../assets/images/error.png";
 import { paginate } from "../utils/Helpers";
-export const defaultPage = 1;
+ const defaultPage = 1;
 //Страница возвращает ошибку поскольку платный ресурс.
 
 const perPage = 10;
@@ -50,7 +50,7 @@ const CompetitionCalendar = () => {
 
   /* Pagination */
   const handlePageChange = (page) => {
-    setDisplayedMatches(paginate(resultMatches, currentPage, perPage));
+    setDisplayedMatches(paginate(resultMatches, page, perPage));
     setCurrentPage(page);
   };
 
@@ -59,18 +59,17 @@ const CompetitionCalendar = () => {
   useEffect(getBreadCrumbs, [id]);
 
   function getBreadCrumbs() {
-    ApiFootballData.competitions("breadcrumbs", { id: id })
+    ApiFootballData.teams("breadcrumbs", { id: id })
       .then((response) => {
         setBreadCrumbs([
-          { name: "Competitions", id: "id" },
-          { name: response.name, id: id },
+          { name: "Соревнования", url: "/competitions" },
+          { name: response.name, url: false },
         ]);
       })
       .catch(() => {
         console.log(error);
       });
   }
-
   /* Date Filter Handler */
 
   const handleDateFilterSubmit = (date) => {

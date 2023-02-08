@@ -1,5 +1,5 @@
 import React from "react";
-import DateHandler from "../../utils/DateHandler";
+import { setDateForOutput, setTimeForOutput } from "../../utils/datesHandlers";
 import PropTypes from "prop-types";
 
 //Отображаются значения только отличные от null
@@ -51,8 +51,8 @@ const MatchesTable = ({ matches }) => {
         {matches &&
           matches.map((item) => (
             <tr key={item.id}>
-              <td scope="row">{DateHandler.setDateForOutput(item.utcDate)}</td>
-              <td scope="row">{DateHandler.setTimeForOutput(item.utcDate)}</td>
+              <td scope="row">{setDateForOutput(item.utcDate)}</td>
+              <td scope="row">{setTimeForOutput(item.utcDate)}</td>
               <td>{item.status}</td>
               <td>
                 {item.homeTeam.name} - {item.awayTeam.name}
