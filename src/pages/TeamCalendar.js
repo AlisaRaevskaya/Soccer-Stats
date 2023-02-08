@@ -9,7 +9,6 @@ import Table from "../components/tables/MatchesTable";
 import ApiFootballData from "../utils/ApiFootballData";
 import { convertToUTCdate, convertToOneFormat } from "../utils/datesHandlers";
 import errorImage from "../assets/images/error.png";
-
 const defaultPage = 1;
 const perPage = 10;
 
@@ -36,8 +35,8 @@ const TeamCalendar = () => {
         setPaginatedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
         setDates({
-          from: response?.matches[0].utcDate,
-          to: response?.matches[response.matches.length - 1].utcDate,
+          defaultFrom: response?.matches[0].utcDate,
+          defaultTo: response?.matches[response.matches.length - 1].utcDate,
         });
       })
       .catch((error) => {
@@ -76,14 +75,16 @@ const TeamCalendar = () => {
   /* Date Filter Handler */
 
   const clearFilters = () => {
-    console.log(convertToUTCdate(dates.from), convertToUTCdate(dates.to));
-    setDateFrom(convertToUTCdate(dates.from));
-    setDateTo(convertToUTCdate(dates.to));
+    setErrorDates("");
+    setDateFrom(convertToUTCdate(dates.defaultFrom));
+    setDateTo(convertToUTCdate(dates.defaultTo));
   };
 
   const handleDateFilterSubmit = (date) => {
     setErrorDates("");
     console.log(date.dateFrom);
+
+    date = { dateFrom: convertToUTCdate(date.dateFrom), dateTo: convertToUTCdate(date.dateTo) };
 
     console.log(Date.parse(date.dateFrom));
 

@@ -1,43 +1,34 @@
 import React, { useState } from "react";
 import searchIcon from "../assets/svg/search.svg";
 import PropTypes from "prop-types";
-import { convertToUTCdate } from "../utils/datesHandlers";
 
-const DateFilter = ({ onDateFilterSubmit, onClearFilters, validationError, dates }) => {
-  const { from, to } = dates;
-  const [userInput, setUserInput] = useState({
-    dateFrom: "",
-    dateTo: "",
-  });
+const DateFilter = ({onDateFilterSubmit, onClearFilters, validationError, dates}) => {
+  const { defaultFrom, defaultTo } = dates;
+  const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
+  console.log(defaultFrom, defaultTo , 'dates');
 
   const handleClearFilters = () => {
-    setUserInput({ dateFrom: from, dateTo: to });
+   setUserInput({ dateFrom: defaultFrom, dateTo: defaultTo });
     onClearFilters();
   };
+  console.log(dates);
+
   const handleSubmit = () => {
     onDateFilterSubmit(userInput);
-  };
-
-  const handleDateInputFrom = (from) => {
-    return convertToUTCdate(from);
-  };
-
-  const handleDateInputTo = (to) => {
-    return convertToUTCdate(to);
   };
 
   const dateFromChangeHandler = (event) => {
     setUserInput((prevState) => {
       return {
         ...prevState,
-        dateFrom: handleDateInputFrom(event.target.value),
+        dateFrom: event.target.value,
       };
     });
   };
 
   const dateToChangeHandler = (event) => {
     setUserInput((prevState) => {
-      return { ...prevState, dateTo: handleDateInputTo(event.target.value) };
+      return { ...prevState, dateTo: event.target.value };
     });
   };
 
@@ -83,8 +74,8 @@ const DateFilter = ({ onDateFilterSubmit, onClearFilters, validationError, dates
 
 DateFilter.propTypes = {
   dates: PropTypes.shape({
-    from: PropTypes.string,
-    to: PropTypes.string,
+    defaultFrom: PropTypes.string,
+    defaultTo: PropTypes.string,
   }),
   onDateFilterSubmit: PropTypes.func,
   onClearFilters: PropTypes.func,
