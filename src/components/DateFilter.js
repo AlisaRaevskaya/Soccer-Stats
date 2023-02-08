@@ -3,31 +3,27 @@ import searchIcon from "../assets/svg/search.svg";
 import PropTypes from "prop-types";
 import { convertToUTCdate } from "../utils/datesHandlers";
 
-const DateFilter = ({ dates, onDateFilterSubmit, validationError}) => {
-  const { firstDateFrom, lastDateTo } = dates;
+const DateFilter = ({ onDateFilterSubmit, onClearFilters, validationError, dates }) => {
+  const { from, to } = dates;
   const [userInput, setUserInput] = useState({
-    dateFrom: convertToUTCdate(firstDateFrom),
-    dateTo: convertToUTCdate(lastDateTo),
+    dateFrom: "",
+    dateTo: "",
   });
 
+  const handleClearFilters = () => {
+    setUserInput({ dateFrom: from, dateTo: to });
+    onClearFilters();
+  };
   const handleSubmit = () => {
     onDateFilterSubmit(userInput);
   };
 
   const handleDateInputFrom = (from) => {
-    if (from) {
-      return convertToUTCdate(from);
-    } else {
-      return convertToUTCdate(firstDateFrom);
-    }
+    return convertToUTCdate(from);
   };
 
   const handleDateInputTo = (to) => {
-    if (to) {
-      return convertToUTCdate(to);
-    } else {
-      return convertToUTCdate(lastDateTo);
-    }
+    return convertToUTCdate(to);
   };
 
   const dateFromChangeHandler = (event) => {
@@ -48,7 +44,6 @@ const DateFilter = ({ dates, onDateFilterSubmit, validationError}) => {
   return (
     <div className="mt-1 mb-1">
       <div className="dates-filter">
-    
         <span>Матчи</span>
         <div className="dates-filter__from">
           <span className="pr-1">с</span>
@@ -78,6 +73,9 @@ const DateFilter = ({ dates, onDateFilterSubmit, validationError}) => {
           </button>
         </div>
       </div>
+      <div className="link" onClick={handleClearFilters}>
+        Сбросить фильтр
+      </div>
       {validationError && <div className="text-red">{validationError}</div>}
     </div>
   );
@@ -85,11 +83,12 @@ const DateFilter = ({ dates, onDateFilterSubmit, validationError}) => {
 
 DateFilter.propTypes = {
   dates: PropTypes.shape({
-    firstDateFrom: PropTypes.string,
-    lastDateTo: PropTypes.string,
+    from: PropTypes.string,
+    to: PropTypes.string,
   }),
   onDateFilterSubmit: PropTypes.func,
-  validationError: PropTypes.string
+  onClearFilters: PropTypes.func,
+  validationError: PropTypes.string,
 };
 
 export default DateFilter;

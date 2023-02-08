@@ -36,12 +36,12 @@ const TeamCalendar = () => {
         setPaginatedMatches(response.matches.slice(0, perPage));
         setTotalRecords(response.matches.length);
         setDates({
-          firstDateFrom: response?.matches[0].utcDate,
-          lastDateTo: response?.matches[response.matches.length - 1].utcDate,
+          from: response?.matches[0].utcDate,
+          to: response?.matches[response.matches.length - 1].utcDate,
         });
       })
       .catch((error) => {
-        setError("Повторите попытку позже.");
+        setError("Нет информации о доступных матчах");
         console.log(error);
       })
       .finally(() => {
@@ -75,13 +75,24 @@ const TeamCalendar = () => {
 
   /* Date Filter Handler */
 
+  const clearFilters = () => {
+    console.log(convertToUTCdate(dates.from), convertToUTCdate(dates.to));
+    setDateFrom(convertToUTCdate(dates.from));
+    setDateTo(convertToUTCdate(dates.to));
+  };
+
   const handleDateFilterSubmit = (date) => {
     setErrorDates("");
+    console.log(date.dateFrom);
 
-    if (date.dateFrom && !date.dateTo) {
-      setDateTo(convertToUTCdate(dates.lastDateTo));
-    } else if (date.dateTo && !date.dateFrom) {
-      setDateFrom(convertToUTCdate(dates.firstDateFrom));
+    console.log(Date.parse(date.dateFrom));
+
+    if (date.dateTo && !date.dateFrom) {
+      console.log("empty from");
+      setErrorDates("Определите точную дату начала периода");
+    } else if (date.dateFrom && !date.dateTo) {
+      console.log("empty to");
+      setErrorDates("Определите точную дату конца периода");
     } else {
       const fr = convertToOneFormat(date.dateFrom);
       const to = convertToOneFormat(date.dateTo);
@@ -89,7 +100,7 @@ const TeamCalendar = () => {
         setDateFrom(date.dateFrom);
         setDateTo(date.dateTo);
       } else {
-        setErrorDates("Дата с должна быть раньше даты до");
+        setErrorDates("Конец периода не может быть раньше начала периода");
       }
     }
   };
@@ -104,14 +115,14 @@ const TeamCalendar = () => {
         dateTo: dateTo,
       })
         .then((response) => {
+          const filteredMatches = response.matches;
           setCurrentPage(defaultPage);
-          const filteredtMatches = response.matches;
-          setResultMatches(filteredtMatches);
-          setPaginatedMatches(paginate(filteredtMatches, defaultPage, perPage));
-          setTotalRecords(filteredtMatches.length);
+          setResultMatches(filteredMatches);
+          setPaginatedMatches(paginate(filteredMatches, defaultPage, perPage));
+          setTotalRecords(filteredMatches.length);
         })
         .catch((error) => {
-          setError("Ошибка.Повторите попытку позже.");
+          setError("Ошибка. Повторите попытку позже.");
           console.log(error);
         });
     }
@@ -138,8 +149,9 @@ const TeamCalendar = () => {
       <div>
         <DateFilter
           onDateFilterSubmit={handleDateFilterSubmit}
-          dates={dates}
           validationError={errorDates}
+          onClearFilters={clearFilters}
+          dates={dates}
         />
         <Breadcrumbs breadCrumbs={breadCrumbs} />
         <h1 className="pt-1 pb-1">Календарь Команды</h1>

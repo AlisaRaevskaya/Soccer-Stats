@@ -38,17 +38,18 @@ export const setZerosForDates = (dateNumber)=> {
     return date.getTime();
   };
 
- export const validateDate = (fr, to, firstdate, lastdate) => {
-    console.log(fr, to, firstdate, lastdate);
-    let fdt = convertToUTCdate(firstdate);
-    let ldt = convertToUTCdate(lastdate);
-    console.log(fr, fdt, ldt);
+//  export const validateDate = (fr, to, firstdate, lastdate) => {
+//     console.log(fr, to, firstdate, lastdate);
+//     let fdt = convertToUTCdate(firstdate);
+//     let ldt = convertToUTCdate(lastdate);
+//     console.log(fr, fdt, ldt);
 
-    fdt = convertToOneFormat(fdt);
-    ldt = convertToOneFormat(ldt);
-    let frdt = convertToOneFormat(fr);
-    let todt = convertToOneFormat(to);
+//     fdt = convertToOneFormat(fdt);
+//     ldt = convertToOneFormat(ldt);
+//     let frdt = convertToOneFormat(fr);
+//     let todt = convertToOneFormat(to);
 
-    console.log(frdt, todt, ldt, fdt);
-  };
+//     console.log(frdt, todt, ldt, fdt);
+//   };
 
+export const isValidDate = (dateString) => new Date(dateString).toString() !== 'Invalid Date';
