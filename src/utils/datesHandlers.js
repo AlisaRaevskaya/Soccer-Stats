@@ -3,6 +3,7 @@ export const setZerosForDates = (dateNumber)=> {
     if (dateNumber < 10) return "0" + dateNumber;
     return dateNumber;
   };
+  //.toISOString().substr(0,10)
 
  export const setDateForOutput = (dt) => {
     let d = new Date(dt);
@@ -20,6 +21,11 @@ export const setZerosForDates = (dateNumber)=> {
 
  export const convertToUTCdate = (dt)=> {
     let date = new Date(dt);
+  //  let m = date.getUTCMonth() + 1;
+console.log(dt, 'date');
+
+  //console.log(date.toISOString().substr(0,10), 'm');
+
     let mm = setZerosForDates(date.getUTCMonth() + 1);
     let dd = setZerosForDates(date.getUTCDate());
     let yyyy = date.getUTCFullYear();
@@ -51,5 +57,3 @@ export const setZerosForDates = (dateNumber)=> {
 
 //     console.log(frdt, todt, ldt, fdt);
 //   };
-
-export const isValidDate = (dateString) => new Date(dateString).toString() !== 'Invalid Date';

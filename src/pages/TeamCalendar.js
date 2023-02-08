@@ -82,11 +82,13 @@ const TeamCalendar = () => {
 
   const handleDateFilterSubmit = (date) => {
     setErrorDates("");
-    console.log(date.dateFrom);
 
-    date = { dateFrom: convertToUTCdate(date.dateFrom), dateTo: convertToUTCdate(date.dateTo) };
+    date = {
+      dateFrom: convertToUTCdate(date.dateFrom),
+      dateTo: convertToUTCdate(date.dateTo),
+    };
 
-    console.log(Date.parse(date.dateFrom));
+    console.log(date.dateFrom, Date.parse(date.dateFrom), "dateParse");
 
     if (date.dateTo && !date.dateFrom) {
       console.log("empty from");
@@ -95,13 +97,14 @@ const TeamCalendar = () => {
       console.log("empty to");
       setErrorDates("Определите точную дату конца периода");
     } else {
-      const fr = convertToOneFormat(date.dateFrom);
-      const to = convertToOneFormat(date.dateTo);
-      if (fr < to || fr === to) {
+      if (isNaN(Date.parse(date.dateFrom)) || isNaN(Date.parse(date.dateTo))) {
+        setErrorDates("Проверьте правильность данных");
+      }
+      if (convertToOneFormat(date.dateFrom) > convertToOneFormat(date.dateTo)) {
+        setErrorDates("Конец периода не может быть раньше начала периода");
+      } else {
         setDateFrom(date.dateFrom);
         setDateTo(date.dateTo);
-      } else {
-        setErrorDates("Конец периода не может быть раньше начала периода");
       }
     }
   };

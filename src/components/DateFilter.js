@@ -5,13 +5,11 @@ import PropTypes from "prop-types";
 const DateFilter = ({onDateFilterSubmit, onClearFilters, validationError, dates}) => {
   const { defaultFrom, defaultTo } = dates;
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
-  console.log(defaultFrom, defaultTo , 'dates');
 
   const handleClearFilters = () => {
    setUserInput({ dateFrom: defaultFrom, dateTo: defaultTo });
     onClearFilters();
   };
-  console.log(dates);
 
   const handleSubmit = () => {
     onDateFilterSubmit(userInput);
@@ -64,9 +62,9 @@ const DateFilter = ({onDateFilterSubmit, onClearFilters, validationError, dates}
           </button>
         </div>
       </div>
-      <div className="link" onClick={handleClearFilters}>
+      <span className="link" onClick={handleClearFilters}>
         Сбросить фильтр
-      </div>
+      </span>
       {validationError && <div className="text-red">{validationError}</div>}
     </div>
   );
