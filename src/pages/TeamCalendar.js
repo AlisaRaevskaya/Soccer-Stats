@@ -84,9 +84,6 @@ const TeamCalendar = () => {
   const handleDateFilterSubmit = (date) => {
     setErrorDates("");
 
-    console.log(date.dateFrom, Date.parse(date.dateFrom), "dateParsefrom");
-    console.log(date.dateTo, Date.parse(date.dateTo), "dateParseTo");
-
     if (!date.dateFrom && date.dateTo) {
       console.log("empty from");
       setErrorDates("Определите точную дату начала периода");
@@ -99,7 +96,7 @@ const TeamCalendar = () => {
           setErrorDates("Проверьте правильность данных");
           break;
         case maxRange(date.dateFrom, date.dateTo) > 750:
-          setErrorDates("Specified period must not exceed 750 days");
+          setErrorDates("Указанный период не должен превышать 750 дней");
           break;
         case convertToOneFormat(date.dateFrom) >
           convertToOneFormat(date.dateTo):

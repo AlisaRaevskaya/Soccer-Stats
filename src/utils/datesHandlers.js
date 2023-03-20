@@ -42,21 +42,12 @@ export const setZerosForDates = (dateNumber)=> {
     return date.getTime();
   };
 
-  export const addDays = (date, days)=> {
-    date.setDate(date.getDate() + days);
-    return date;
-  };
-
-  export const getMaxDate = ()=>{
-    const today = new Date();
-    return convertToUTCdate(addDays(today, 750));
-  };
-
   export const maxRange = (date1, date2)=>{
     let difference = new Date(date1).getTime() - new Date(date2).getTime();
     let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
     return Math.abs(TotalDays);
   };
+  
 //  export const validateDate = (fr, to, firstdate, lastdate) => {
 //     console.log(fr, to, firstdate, lastdate);
 //     let fdt = convertToUTCdate(firstdate);

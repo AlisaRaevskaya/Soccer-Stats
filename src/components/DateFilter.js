@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import searchIcon from "../assets/svg/search.svg";
 import PropTypes from "prop-types";
 
-
 const DateFilter = ({onDateFilterSubmit, onClearFilters, validationError, dates}) => {
   const { defaultFrom, defaultTo } = dates;
   const [userInput, setUserInput] = useState({ dateFrom: "", dateTo: "" });
-
 
   const handleClearFilters = () => {
    setUserInput({ dateFrom: defaultFrom, dateTo: defaultTo });
