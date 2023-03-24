@@ -3,16 +3,17 @@ import { setDateForOutput, setTimeForOutput } from "../../utils/datesHandlers";
 import PropTypes from "prop-types";
 
 //Отображаются значения только отличные от null
-const outputScoreIfNotNull = (score1, score2) => {
-  if (score1 != null || score2 != null) {
+ const outputScoreIfNotNull = (score1, score2) => {
+  if (score1 !== null || score2 !== null) {
     return (
       <td>
         {score1} : {score2}
       </td>
     );
   }
-  return <td> - </td>;
+  return (<td> - </td>);
 };
+
 
 const MatchesTable = ({ matches }) => {
   return (

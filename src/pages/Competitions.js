@@ -22,6 +22,8 @@ const Competitions = () => {
   //   console.log('setCurrentPageInteral', ...args);
   //   setCurrentPageInteral(...args);
   // }
+
+  console.log(competitions);
  
   /* Get Competitions */
   useEffect(getCompetitions, []);
