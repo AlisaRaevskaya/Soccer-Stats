@@ -5,8 +5,8 @@ import { makeButtonsArray } from "../utils/Helpers";
 
 const PaginationInner = ({ perPage, currentPage, totalRecords, onPageChange }) => {
   const [activePage, setActivetPage] = useState(currentPage);
-  const ButtonsCount = useMemo(() => Math.floor(Math.ceil(totalRecords / perPage)), [totalRecords, perPage]); //number of buttons we need
-  const PaginationButtons = makeButtonsArray(ButtonsCount); //set array of buttons
+  const buttonsCount = useMemo(() => Math.floor(Math.ceil(totalRecords / perPage)), [totalRecords, perPage]); //number of buttons we need
+  const paginationButtons = makeButtonsArray(buttonsCount); //set array of buttons
   
   useEffect(() => {
     onPageChange(activePage);
@@ -27,7 +27,7 @@ const PaginationInner = ({ perPage, currentPage, totalRecords, onPageChange }) =
   };
 
   const setNext = () => {
-    if (activePage != ButtonsCount) {
+    if (activePage != buttonsCount) {
       setActivetPage(activePage + 1);
     }
   };
@@ -42,8 +42,8 @@ const PaginationInner = ({ perPage, currentPage, totalRecords, onPageChange }) =
             </button>
           </span>
         </li>
-        {PaginationButtons &&
-          PaginationButtons.map((num) => (
+        {paginationButtons &&
+          paginationButtons.map((num) => (
             <li className="pagination-item" key={num}>
               <button
                 type="button"
