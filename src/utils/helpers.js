@@ -4,7 +4,6 @@
    return items.slice(from, to);
  };
 
- 
  export const filterPosts = (arr, str) => {
    let strLowCase = str.toLowerCase();
  
